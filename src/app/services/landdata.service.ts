@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/operators';
 
 const baseUrl1 = 'http://localhost:8080/landdigitdata/add';
 const baseUrl2 = 'http://localhost:8080/landdigitdata/get';
