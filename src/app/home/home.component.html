@@ -1,0 +1,176 @@
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+      <br>
+      <br>
+      <section id="hero" class="hero">
+        <div class="container position-relative">
+          <div class="row gy-5" data-aos="fade-in">
+            <h2 class="text-center">Land Digitization<span></span></h2>
+
+            <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+
+              </div>
+            <div class="col-lg-6 order-1 order-lg-2">
+              <img src="" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
+            </div>
+          </div>
+        </div>
+
+    <div class="icon-boxes position-relative">
+      <div class="container position-relative">
+        <div class="row gy-4 mt-5">
+
+          <div class="col-xl-1 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <!-- <div class="icon-box">
+              <div class="icon"><i class="bi bi-easel"></i></div>
+              <h4 class="title"><a  class="stretched-link"></a></h4>
+            </div> -->
+          </div><!--End Icon Box -->
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box">
+              <!-- <div  style="font-weight: 700;
+              font-size: 40px; color:white">60,000</div> -->
+               <div  style="font-weight: 700;
+               font-size: 40px; color:white">{{ totalcountsingle }}</div>
+              <h4 class="title" style="font-weight: 400;
+              font-size: 24px;" ><a class="stretched-link">Total Lands</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box">
+              <!-- <div style="font-weight: 700;
+              font-size: 40px; color:white">20,000</div> -->
+              <div style="font-weight: 700;
+              font-size: 40px; color:white">{{ alldata.length }}</div>
+              <h4 class="title" style="font-weight: 400;
+              font-size: 24px;"><a  class="stretched-link">Digitized Lands</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box">
+              <!-- <div style="font-weight: 700;
+              font-size: 40px; color:white">40,000</div> -->
+              <div style="font-weight: 700;
+              font-size: 40px; color:white">{{ (totalcountsingle) - (alldata.length) }}</div>
+              <h4 class="title" style="font-weight: 400;
+              font-size: 24px;"><a  class="stretched-link">Yet to be Digitized</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+</div>
+</div>
+</div>
+</section>
+</section>
+  <!-- End Hero Section -->
+
+<!-- Main Section Starts -->
+<section class="about">
+    <div class="container position-relative">
+        <div class="d-flex align-items-center">
+
+            <div class="flex-grow-1 me-3">
+                <div class="form-group has-search">
+                  <span class="bi bi-search form-control-feedback"></span>
+                  <input type="text" class="form-control" [(ngModel)]="searchText" (input)="searchfilterData()" placeholder="Search">
+                </div>
+              </div>
+
+            <div class="me-3">
+
+                <select class="select" style="color: black;" [(ngModel)]="legalProceedingsFilter" name="legalproceedings" >
+
+                  <option value='' disabled>Legal Proceedings</option>
+                  <option value="">All</option>
+                 <option>O.S</option>
+                 <option>W.P</option>
+                 <option>W.A</option>
+                 <option>SLP(L.A)</option>
+                 <option>LAOP</option>
+                 <option>APPEAL SUIT AGAINST LAOP</option>
+                 <option>APPEAL SUIT AGAINST OS</option>
+                 <option>SLP(E. C)</option>
+                 <option>CIVIL SUIT</option>
+                 <option>CRP</option>
+                 <option>REVIEW PETITION</option>
+                 <option>CONTEMPT PETITION</option>
+                 <option>E.P</option>
+                </select>
+
+            </div>
+
+            <div class="me-3">
+              <div class="dropdown">
+
+              <select class="select" [(ngModel)]="statusFilter" name="status" required>
+                <option value='' disabled>Land Status</option>
+                <option value="">All</option>
+                <option >Registering the land details in Asset Management</option>
+                <option >Handover the land for Project Management</option>
+
+              </select>
+
+              </div>
+            </div>
+
+            <div>
+              <a mat-raised-button color="primary" ngxExportAs="xlsx" fileName="report" (click)="exportExcel()" class="btn btn-light">Download</a>
+            </div>
+          </div>
+        </div>
+<br>
+<br>
+
+    <div class="container">
+      <div class="table-responsive">
+        <table id="tableId">
+          <thead class="tblHead" style="text-align: center;" id="tableId">
+              <th>UNI.ID</th>
+              <th>Land Name</th>
+              <th>Type of Division</th>
+              <th>Name of the Division</th>
+              <th>Total Extent of Land Acquired</th>
+              <th>Possession Handed over</th>
+              <th>Possession Not Handed over</th>
+              <th>Legal Proceeding</th>
+              <th>Action View/Edit/Delete</th>
+            </thead>
+            <tbody >
+              <tr *ngFor="let data of (searchText ? filteredData : filterData) | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"  style="text-align: center;">
+                <td>{{data.unique_code}} </td>
+                <td>{{data.land_name}} </td>
+                <td>{{data.citynrural}} </td>
+                <td>{{data.division}} </td>
+                <td>{{data.total_extent_land_acquired}} </td>
+                <td>{{data.extent}}</td>
+                <td>{{data.not_handed_over_extent}} </td>
+                <td>{{data.legalproceedings}}</td>
+                <td> &nbsp; &nbsp; &nbsp;
+
+                     <a class="confirmation" [routerLink]="['/view']"><i class="bi bi-eye-fill"></i></a>
+
+                     <a class="confirmation" [routerLink]="['/edit', data.id]"><i class="bi bi-pencil-fill"></i></a>
+
+                    <a class="confirmation" style="cursor:pointer;" (click)="Delete( data.id )"><i class="bi bi-trash-fill"></i></a>
+
+                  </td>
+
+            </tr>
+          </tbody>
+          </table>
+          <br>
+          </div>
+          <div class="pagination" style="float:right">
+            <button style="background-color: #3FB8DE;border: none;border-radius: 5px;"[disabled]="currentPage === 1" (click)="currentPage = currentPage - 1">&lt;</button>
+            &nbsp;&nbsp;
+
+            <button style="background-color: #3FB8DE;border: none;border-radius: 5px;" [disabled]="currentPage === totalPages" (click)="currentPage = currentPage + 1">&gt;</button>
+            </div>
+        </div>
+        <br>
+        <br>
+
+
+<!-- Main Section Ends -->
