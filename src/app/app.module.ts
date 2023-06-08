@@ -24,7 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 
@@ -60,6 +60,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     BrowserAnimationsModule,
     MatSelectModule,
     MatExpansionModule,
+    MatTooltipModule
 
   ],
   providers: [],

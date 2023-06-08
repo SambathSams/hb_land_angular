@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-viewland',
@@ -17,7 +19,8 @@ export class ViewlandComponent implements OnInit {
   isPanel3Expanded = false;
   isPanel4Expanded = false;
   @ViewChild('stepper') stepper: MatStepper;
-
+  landId: string;
+  LandData: any;
   togglePanel1() {
     this.isPanel1Expanded = !this.isPanel1Expanded;
   }
@@ -36,9 +39,63 @@ export class ViewlandComponent implements OnInit {
   submitted = false;
   awardInfoFormGroup!: FormGroup;
   index = 0;
+  types = [
+    { label: 'City', value: 'city' },
+    { label: 'Rural', value: 'rural' },
+  ];
+  constructor(private builder: FormBuilder, private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private router: Router, private commonService: CommonService) {
+    this.activeRoute.paramMap.subscribe(params => {
+      this.landId = params.get('id');
+      if (this.landId && this.router.url.includes('edit')) {
+        this.edit = true;
+        this.getLandandFileDetails();
+      } else if (this.router.url.includes('view')) {
+        this.view = true;
+        this.getLandandFileDetails();
+      }
+    })
 
-  constructor(private builder: FormBuilder, private formBuilder: FormBuilder) { }
+  }
   isLinear = true;
+  files: any;
+  getLandandFileDetails() {
+    this.commonService.apiGetDetailsCall(this.landId, 'landdigitdata/get').subscribe(data => {
+      if (data) {
+        this.LandData = data;
+        this.personalInfoFormGroup.patchValue(data);
+        if (this.LandData.land_name) {
+          this.commonService.apiGetDetailsCall(this.LandData.land_name, 'getfile').subscribe(file => {
+            this.files = file;
+            if (file) {
+              for (const item of this.files) {
+                const fileGroup = this.formBuilder.group({
+                  file: null
+                });
+                this.filesArray.push(fileGroup);
+              
+                const index = this.filesArray.length - 1;
+                const fileControl = fileGroup.get('file');
+                fileControl.setValidators(Validators.required); // Optional: Add validators if needed
+                fileControl.updateValueAndValidity();
+              
+                // Create a File object from the file path
+                const file = new File([item.filename], item.filename);
+              console.log(file)
+                // Patch the file value
+                fileControl.patchValue(file);
+              }
+            }
+          })
+        }
+      }
+    })
+  }
+
+  getFileUrl(index: number): string {
+    const fileGroup = this.filesArray.at(index);
+    const file = fileGroup.get('file').value;
+    return file ? URL.createObjectURL(file) : '#';
+  }
 
   getformone(data: MatStepper, d: number) {
     this.submitted = true;
@@ -58,19 +115,21 @@ export class ViewlandComponent implements OnInit {
     });
 
     this.personalInfoFormGroup = this.formBuilder.group({
-      uniqueId: [],
-      city: ['City'],
+      citynrural: ['', Validators.required],
       circle: ['', Validators.required],
       division: ['', Validators.required],
       village: ['', Validators.required],
-      land: ['', Validators.required],
-      geoTagging: ['', Validators.required],
+      unique_code: [''],
+      land_name: ['', Validators.required],
+      geo_tagging_geo_fencing: ['', Validators.required],
     });
 
     this.contactInfoFormGroup = this.formBuilder.group({
       files: this.formBuilder.array([])
     });
-    this.addNewFileGroup();
+    if(!this.edit && !this.view){
+      this.addNewFileGroup();
+    }
   }
 
   get filesArray() {
@@ -87,10 +146,10 @@ export class ViewlandComponent implements OnInit {
   deleteFileGroup(index: number) {
     this.filesArray.removeAt(index);
   }
-    triggerUpload(index: number) {
-      const fileInput = document.getElementsByClassName('file-input')[index] as HTMLInputElement;
-      fileInput.click();
-    }  
+  triggerUpload(index: number) {
+    const fileInput = document.getElementsByClassName('file-input')[index] as HTMLInputElement;
+    fileInput.click();
+  }
 
   onFileChange(event: any, index: number) {
     const fileGroup = this.filesArray.at(index);

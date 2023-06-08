@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'newpwd',pathMatch: 'full',component: NewpwdComponent},
   {path: 'home',pathMatch: 'full',component: HomeComponent},
   {path: 'add',pathMatch: 'full',component: AddlandComponent},
-  {path: 'view',pathMatch: 'full',component: ViewlandComponent},
+  {path: 'view/:id',pathMatch: 'full',component: ViewlandComponent},
   {path: 'edit/:id',pathMatch: 'full',component: EditlandComponent},
   {path: 'report1LA',pathMatch: 'full',component: Report1LAComponent},
   {path: 'report2LP',pathMatch: 'full',component: Report2LPComponent},

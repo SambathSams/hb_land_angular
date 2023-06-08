@@ -30,19 +30,20 @@
                 <div class="row mb-3" *ngIf="edit || view">
                   <label class="col-sm-9 col-form-label" style="font-weight: bold">Unique Id:</label>
                   <div class="col-sm-10">
-                    <input matInput type="text" class="form-control" formControlName="uniqueId" required />
+                    <input matInput type="text" class="form-control" formControlName="unique_code" required />
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label class="col-sm-5 col-form-label" style="font-weight: bold">Type of Division:</label>
-
-                  <div class="col-sm-10 mb-1">
-                    <input matInput type="text" class="form-control" formControlName="city" required />
+                  <div class="col-sm-10">
+                    <mat-select formControlName="citynrural" class="form-control">
+                      <mat-option *ngFor="let row of types" [value]="row.value">{{row.label}}</mat-option>
+                  </mat-select>
+                    <mat-error *ngIf="submitted && personalInfoFormGroup.get('citynrural')?.errors?.required">{{'Division type
+                      is
+                      required'}}</mat-error>
                   </div>
-                  <mat-error *ngIf="submitted && personalInfoFormGroup.get('city')?.errors?.required">{{'Division type
-                    is
-                    required'}}</mat-error>
                 </div>
 
 
@@ -78,9 +79,9 @@
                 <div class="row mb-3">
                   <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Land:</label>
                   <div class="col-sm-10 mb-1">
-                    <input matInput type="text" class="form-control" formControlName="land" required />
+                    <input matInput type="text" class="form-control" formControlName="land_name" required />
                   </div>
-                  <mat-error *ngIf="submitted && personalInfoFormGroup.get('land')?.errors?.required">{{'Land is
+                  <mat-error *ngIf="submitted && personalInfoFormGroup.get('land_name')?.errors?.required">{{'Land is
                     required'}}</mat-error>
                 </div>
 
@@ -89,17 +90,17 @@
                   <label class="col-sm-9 col-form-label" style="font-weight: bold">Geo Tagging:
                   </label>
                   <div class="col-sm-10 mb-1">
-                    <a *ngIf="edit || view" href="#" target="_blank"><i class="bi bi-geo-alt-fill"
-                        style="color: red;font-size: 32px;"></i></a>
-                    <input matInput type="text" *ngIf="!edit && !view" class="form-control" formControlName="geoTagging"
+                    <a *ngIf="edit || view" [href]="personalInfoFormGroup.get('geo_tagging_geo_fencing').value" target="_blank"><i class="bi bi-geo-alt-fill"
+                      style="color: red;font-size: 32px;"></i></a>
+                    <input matInput type="text" *ngIf="!edit && !view" class="form-control" formControlName="geo_tagging_geo_fencing"
                       required />
                   </div>
-                  <mat-error *ngIf="submitted && personalInfoFormGroup.get('geoTagging')?.errors?.required">{{'Geo
+                  <mat-error *ngIf="submitted && personalInfoFormGroup.get('geo_tagging_geo_fencing')?.errors?.required">{{'Geo
                     Tagging is
                     required'}}</mat-error>
                 </div>
 
-                <div class="mb-1 flex-b">
+                <div class="mb-1 flex-b" >
                   <button mat-raised-button class="primary" [disabled]=""
                     (click)="getformone(mystepper,1)">Next</button>
                 </div>
@@ -121,15 +122,18 @@
                             <span class="file-text">{{getFileName(i)}}</span>
                           </label>
                         </div>
-                        <div class="col">
-                          <i class="bi bi-upload" style="color: red; font-size: 32px;"
+                        <div class="col" >
+                          <i class="bi bi-upload" *ngIf="!view" style="color: red; font-size: 32px;"
                             (click)="triggerUpload(i)"></i>
                           <i class="bi bi-patch-plus-fill add-icon" style="font-size: 32px;"
-                            (click)="addNewFileGroup()"></i>
-                          <i *ngIf="filesArray.length > 1 && i!==0" class="bi bi-trash-fill delete-icon" style="font-size: 32px;"
-                            (click)="deleteFileGroup(i)"></i>&nbsp;&nbsp;
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-box-arrow-up-right"
+                            (click)="addNewFileGroup()" *ngIf="!view"></i>
+                          <span *ngIf="!view"><i *ngIf="filesArray.length > 1 && i!==0" class="bi bi-trash-fill delete-icon" style="font-size: 32px;"
+                            (click)="deleteFileGroup(i)" ></i></span>&nbsp;&nbsp;
+                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" *ngIf="!view"><i class="bi bi-box-arrow-up-right"
                               style="color: #3FB8DE;font-size: 32px;"></i></a>
+                              <a [href]="getFileUrl(i)" matTooltip="Download File" *ngIf="view" download="{{getFileName(i)}}">
+                                <i class="icon-copy bi bi-file-earmark-pdf-fill"style=color:red> Download Attachment</i>
+                              </a>
                         </div>
 
                       </div>
