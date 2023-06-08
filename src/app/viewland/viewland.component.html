@@ -535,315 +535,617 @@
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>
             </mat-step>
-            <mat-step [stepControl]="awardInfoFormGroup">
+           <mat-step [stepControl]="awardInfoFormGroup">
               <mat-accordion>
-                <mat-expansion-panel [expanded]="isPanel4Expanded" (opened)="togglePanel4()" (closed)="togglePanel4()">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>Award Information</mat-panel-title>
-                  </mat-expansion-panel-header>
+            <mat-expansion-panel [expanded]="isPanel4Expanded" (opened)="togglePanel4()" (closed)="togglePanel4()">
+              <mat-expansion-panel-header>
+                <mat-panel-title>Award Information</mat-panel-title>
+              </mat-expansion-panel-header>
 
-                  <form [formGroup]="awardInfoFormGroup">
-                    <ng-template matStepLabel>Award Information</ng-template>
-                    <div class="row mb-3">
-                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Number:<span
-                          class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="number" name="number" required />
+            <form [formGroup]="awardInfoFormGroup">
+              <ng-template matStepLabel>Award Information</ng-template>
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Number:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="1234"
+                  disabled
+                />
+                </div>
+              </div>
 
-                      </div>
-                    </div>
+             <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Date:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="12-12-2012"
+                  disabled
+                />
+                </div>
+             </div>
 
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Date:<span
-                          class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input matInput type="date" class="form-control" id="date_of_court_case"
-                          name="date_of_court_case" required />
-                      </div>
-                    </div>
+             <div class="row mb-3">
+              <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:</label>
+              <div class="col-sm-10">
+                <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+              </div>
+          </div>
 
-                    <div class="row mb-3">
-                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:<span
-                          class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input matInput type="text" class="form-control" id="numbers" name="numbers" required />
-                        <small class="form-text text-muted">Please separate the Survey Nos with commas.</small>
-                      </div>
-                    </div>
+              <div class="row mb-3">
+              <label class="col-sm-10 col-form-label" style="font-weight: bold" >Extent(in acres):</label>
+                <div class="col-sm-10">
+                  <input matInput
+                      type="text"
+                      class="form-control"
+                      value="1234"
+                      disabled
+                    />
+                </div>
+              </div>
 
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent(in acres):<span
-                          class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input matInput type="text" class="form-control" id="extent" name="extent" required />
+              <div class="row mb-3">
 
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-
-                      <div class="col-sm-10">
-                        <label class="col-sm-9 col-form-label" style="font-weight: bold">Boundary PDF File:</label>
-                        <a target="_blank" href="#"><i class="bi bi-download"
-                            style="color: red;font-size: 32px;"></i></a>
-                      </div>
-
-
-                    </div>
-
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Notified Person:<span
-                          class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input matInput type="text" class="form-control" id="notified_person" name="notified_person"
-                          required />
-
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Direct
-                        Payment:<span class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input matInput type="text" class="form-control" id="awardamount_direct_payment"
-                          name="awardamount_direct_payment" required />
-
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Revenue
-                        Deposit:<span class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input matInput type="text" class="form-control" id="awardamount_revenue_deposit"
-                          name="awardamount_revenue_deposit" required />
-
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Civil Court
-                        Deposit:<span class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input matInput type="text" class="form-control" id="awardamount_civil_court_deposit"
-                          name="awardamount_civil_court_deposit" required />
-
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <div class="col-sm-10">
-                        <label class="col-sm-9 col-form-label" style="font-weight: bold;color:red">Possession Not Handed
-                          Over:</label>
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Survey numbers:<span
-                          class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="not_handed_over_extent"
-                          name="not_handed_over_extent" required />
-
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent (in acres):<span
-                          class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="not_handed_over_extent"
-                          name="not_handed_over_extent" required />
-
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered by court case(in
-                        acres):<span class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="not_handed_over_extent_covered_by_court_case"
-                          name="not_handed_over_extent_covered_by_court_case" required />
-
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">court case - Legal Proceedings
-                        Status:<span class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <select class="form-select" aria-label="Default select example" id="legalproceedings"
-                          name="legalproceedings" required>
-                          <option [selected]="true" value="Select" selected disabled hidden>Select</option>
-                          <option>O.S</option>
-                          <option>W.P</option>
-                          <option>W.A</option>
-                          <option>SLP(L.A)</option>
-                          <option>LAOP</option>
-                          <option>APPEAL SUIT AGAINST LAOP</option>
-                          <option>APPEAL SUIT AGAINST OS</option>
-                          <option>SLP(E.C)</option>
-                          <option>CIVIL SUIT</option>
-                          <option>CRP</option>
-                          <option>REVIEW PETITION</option>
-                          <option>CONTEMPT PETITION</option>
-                          <option>E.P</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <div class="col-sm-10">
-                        <label class="col-sm-10 col-form-label" style="font-weight: bold">Court Case - Document:<span
-                            class="required-asterisk">*</span></label>
-                        <a target="_blank" href="#"><i class="bi bi-download"
-                            style="color: red;font-size: 32px;"></i></a>
-                      </div>
-
-                    </div>
+              <div class="col-sm-10">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Boundary PDF File:</label>
+              <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
+              </div>
 
 
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under
-                        encroachment(in acres):<span class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="not_handed_over_extent_covered_by_court_case"
-                          name="not_handed_over_extent_covered_by_court_case" required />
+                </div>
 
-                      </div>
-                    </div>
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label"style="font-weight: bold">Notified Person:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="Ramesh"
+                  disabled
+                />
 
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment - Legal Proceedings
-                        Status:<span class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <select class="form-select" aria-label="Default select example" id="legalproceedings"
-                          name="legalproceedings" required>
-                          <option [selected]="true" value="Select" selected disabled hidden>Select</option>
-                          <option>O.S</option>
-                          <option>W.P</option>
-                          <option>W.A</option>
-                          <option>SLP(L.A)</option>
-                          <option>LAOP</option>
-                          <option>APPEAL SUIT AGAINST LAOP</option>
-                          <option>APPEAL SUIT AGAINST OS</option>
-                          <option>SLP(E.C)</option>
-                          <option>CIVIL SUIT</option>
-                          <option>CRP</option>
-                          <option>REVIEW PETITION</option>
-                          <option>CONTEMPT PETITION</option>
-                          <option>E.P</option>
-                        </select>
-                      </div>
-                    </div>
+                </div>
+              </div>
 
-                    <div class="row mb-3">
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Direct Payment:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+                </div>
+              </div>
 
-                      <div class="col-sm-10">
-                        <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment - Document:<span
-                            class="required-asterisk">*</span></label>
-                        <a target="_blank" href="#"><i class="bi bi-download"
-                            style="color: red;font-size: 32px;"></i></a>
-                      </div>
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Revenue Deposit:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
 
-                    </div>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Civil Court Deposit:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-sm-10">
+                  <label class="col-sm-9 col-form-label" style="font-weight: bold;color:red">Possession Taken Over:</label>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:</label>
+                <div class="col-sm-10">
+                <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+                </div>
+            </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent (in acres):</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Scheme Implemented_Survey Numbers:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="1234"
+                  disabled
+                />
+                </div>
+            </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Scheme Implemented_Extent (in acres):</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+
+                </div>
+              </div>
+                <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent cannot be utilized for Scheme Implemented_Survey Numbers:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+                </div>
+            </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent cannot be utilized for Scheme Implemented_Extent (in acres):</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="1234"
+                  disabled
+                />
+
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered by Court Case(in acres)</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">court case - Legal Proceedings Status:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="O.S"
+                  disabled
+                />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                  <div class="col-sm-10">
+                    <label class="col-sm-10 col-form-label"style="font-weight: bold">Court Case - Document:</label>
+                  <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
+                </div>
+
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under Want of approach road:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="1234"
+                  disabled
+                />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Want of approach road - Legal Proceedings Status:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="O.S"
+                  disabled
+                />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                  <div class="col-sm-10">
+                    <label class="col-sm-10 col-form-label"style="font-weight: bold">Want of approach road - Document:</label>
+                  <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
+                </div>
+
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under Encroachment:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment - Legal Proceedings Status:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="O.S"
+                  disabled
+                />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                  <div class="col-sm-10">
+                    <label class="col-sm-10 col-form-label"style="font-weight: bold">Encroachment - Document:</label>
+                  <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
+                </div>
+
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under Scattered:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="1234"
+                  disabled
+                />
+
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Scattered - Legal Proceedings Status:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="O.S"
+                  disabled
+                />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                  <div class="col-sm-10">
+                    <label class="col-sm-10 col-form-label"style="font-weight: bold">Scattered - Document:</label>
+                  <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
+                </div>
+
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under Quashed:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Legal Proceedings Status:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="O.S"
+                  disabled
+                />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                  <div class="col-sm-10">
+                    <label class="col-sm-10 col-form-label"style="font-weight: bold">Quashed - Document:</label>
+                  <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
+                </div>
+
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under Reconveyed:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Reconveyed - Legal Proceedings Status:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="O.S"
+                  disabled
+                />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                  <div class="col-sm-10">
+                    <label class="col-sm-10 col-form-label"style="font-weight: bold">Reconveyed - Document:</label>
+                  <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
+                </div>
+
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under NOC Issued:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">NOC Issued - Legal Proceedings Status:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="O.S"
+                  disabled
+                />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                  <div class="col-sm-10">
+                    <label class="col-sm-10 col-form-label"style="font-weight: bold">NOC Issued - Document:</label>
+                  <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
+                </div>
+
+              </div>
+
+              <!-- <div class="row mb-3">
+                <div class="col-sm-10">
+                  <label class="col-sm-9 col-form-label" style="font-weight: bold;color:blue">Extent available for scheme implementation:</label>
+                </div>
+              </div> -->
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent available for scheme implementation_Survey Numbers:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+                </div>
+            </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent available for scheme implementation_Extent (in acres):</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="1234"
+                  disabled
+                />
+                </div>
+              </div>
 
 
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under quashed(in
-                        acres):<span class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="not_handed_over_extent_covered_by_court_case"
-                          name="not_handed_over_extent_covered_by_court_case" required />
+              <div class="row mb-3">
+                <div class="col-sm-10">
+                  <label class="col-sm-9 col-form-label" style="font-weight: bold;color:red">Possession Not Handed Over:</label>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="1234"
+                  disabled
+                />
+                </div>
+            </div>
 
-                      </div>
-                    </div>
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label"style="font-weight: bold">Extent (in acres):</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
 
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Legal Proceedings
-                        Status:<span class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <select class="form-select" aria-label="Default select example" id="legalproceedings"
-                          name="legalproceedings" required>
-                          <option [selected]="true" value="Select" selected disabled hidden>Select</option>
-                          <option>O.S</option>
-                          <option>W.P</option>
-                          <option>W.A</option>
-                          <option>SLP(L.A)</option>
-                          <option>LAOP</option>
-                          <option>APPEAL SUIT AGAINST LAOP</option>
-                          <option>APPEAL SUIT AGAINST OS</option>
-                          <option>SLP(E.C)</option>
-                          <option>CIVIL SUIT</option>
-                          <option>CRP</option>
-                          <option>REVIEW PETITION</option>
-                          <option>CONTEMPT PETITION</option>
-                          <option>E.P</option>
-                        </select>
-                      </div>
-                    </div>
+                </div>
+              </div>
 
-                    <div class="row mb-3">
-                      <div class="col-sm-10">
-                        <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Document:<span
-                            class="required-asterisk">*</span></label>
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered by court case(in acres):</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
 
-                        <a target="_blank" href="#"><i class="bi bi-download"
-                            style="color: red;font-size: 32px;"></i></a>
-                      </div>
+                </div>
+              </div>
 
-                    </div>
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">court case - Legal Proceedings Status:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="O.S"
+                  disabled
+                />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                  <div class="col-sm-10">
+                    <label class="col-sm-10 col-form-label"style="font-weight: bold">Court Case - Document:</label>
+                  <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
+                </div>
+
+              </div>
+
+
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under encroachment(in acres):</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment - Legal Proceedings Status:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="O.S"
+                  disabled
+                />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+
+                <div class="col-sm-10">
+                  <label class="col-sm-10 col-form-label"style="font-weight: bold">Encroachment - Document:</label>
+                  <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
+                </div>
+
+              </div>
+
+
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under quashed(in acres):</label>
+                <div class="col-sm-10">
+                  <input matInput
+                type="text"
+                class="form-control"
+                value="1234"
+                disabled
+              />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Legal Proceedings Status:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="O.S"
+                  disabled
+                />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-sm-10">
+                <label class="col-sm-10 col-form-label"style="font-weight: bold">Quashed - Document:</label>
+
+                  <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
+                </div>
+
+              </div>
 
 
 
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under Without
-                        encumbrance(in acres):<span class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="not_handed_over_extent_covered_by_court_case"
-                          name="not_handed_over_extent_covered_by_court_case" required />
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under Without encumbrance(in acres):</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="1234"
+                  disabled
+                />
 
-                      </div>
-                    </div>
+                </div>
+              </div>
 
-                    <div class="row mb-3">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Without encumbrance - Legal
-                        Proceedings Status:<span class="required-asterisk">*</span></label>
-                      <div class="col-sm-10">
-                        <select class="form-select" aria-label="Default select example" id="legalproceedings"
-                          name="legalproceedings" required>
-                          <option [selected]="true" value="Select" selected disabled hidden>Select</option>
-                          <option>O.S</option>
-                          <option>W.P</option>
-                          <option>W.A</option>
-                          <option>SLP(L.A)</option>
-                          <option>LAOP</option>
-                          <option>APPEAL SUIT AGAINST LAOP</option>
-                          <option>APPEAL SUIT AGAINST OS</option>
-                          <option>SLP(E.C)</option>
-                          <option>CIVIL SUIT</option>
-                          <option>CRP</option>
-                          <option>REVIEW PETITION</option>
-                          <option>CONTEMPT PETITION</option>
-                          <option>E.P</option>
-                        </select>
-                      </div>
-                    </div>
+              <div class="row mb-3">
+                <label class="col-sm-10 col-form-label" style="font-weight: bold">Without encumbrance - Legal Proceedings Status:</label>
+                <div class="col-sm-10">
+                  <input matInput
+                  type="text"
+                  class="form-control"
+                  value="O.S"
+                  disabled
+                />
+                </div>
+              </div>
 
-                    <div class="row mb-3">
-                      <div class="col-sm-10">
-                        <label class="col-sm-10 col-form-label" style="font-weight: bold">Without encumbrance -
-                          Document:<span class="required-asterisk">*</span></label>
+              <div class="row mb-3">
+                <div class="col-sm-10">
+                <label class="col-sm-10 col-form-label"style="font-weight: bold">Without encumbrance - Document:</label>
 
-                        <a target="_blank" href="#"><i class="bi bi-download"
-                            style="color: red;font-size: 32px;"></i></a>
-                      </div>
+                  <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
+                </div>
 
-                    </div>
+              </div>
 
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
-                  </form>
-                </mat-expansion-panel>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </form>
+          </mat-expansion-panel>
               </mat-accordion>
             </mat-step>
 
