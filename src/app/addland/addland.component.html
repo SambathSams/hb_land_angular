@@ -8,833 +8,1002 @@
 
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
 
-          </div>
+        </div>
         <div class="col-lg-6 order-1 order-lg-2">
           <img src="" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
         </div>
       </div>
     </div>
 
-</section>
+  </section>
 </section>
 <br>
-<main id="main" class="main" style="margin-left: 150px;" >
+<main id="main" class="main mx-auto">
   <div class="row">
-<div class="col-lg-10">
-  <div class="card">
-    <div class="card-body">
-  <mat-horizontal-stepper>
-    <mat-step [stepControl]="personalInfoFormGroup">
-      <form [formGroup]="personalInfoFormGroup">
-        <ng-template matStepLabel>Enter Land Details</ng-template>
-          <div class="row mb-3">
-          <label
-            class="col-sm-5 col-form-label"
-            style="font-weight: bold"
-            >Type of Division:</label
-          >
 
-          <div class="col-sm-10">
-            <select class="form-select" aria-label="Default select example" id="citynrural"  name="citynrural" required >
-              <option selected disabled hidden>Select</option>
-              <option >City </option>
-            </select>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-body">
+        <mat-horizontal-stepper>
+          <mat-step [stepControl]="personalInfoFormGroup">
+            <form [formGroup]="personalInfoFormGroup">
+              <ng-template matStepLabel>Enter Land Details</ng-template>
+              <div class="row">
+                <div class="row mb-3 col-6">
+                  <label class="col-sm-5 col-form-label" style="font-weight: bold">Type of Division:</label>
+
+                  <div class="col-sm-10">
+                    <select class="form-select" aria-label="type of division">
+                      <option selected>Select</option>
+                      <option value="city">City</option>
+                      <option value="rural">Rural</option>
+                    </select>
+                  </div>
+                </div>
 
 
-        <div class="row mb-3">
-          <label
-            class="col-sm-5 col-form-label"
-            style="font-weight: bold"
-            >Name of the Circle:</label
-          >
+                <div class="row mb-3 col-6">
+                  <label class="col-sm-5 col-form-label" style="font-weight: bold">Name of the Circle:</label>
 
-          <div class="col-sm-10">
-            <select class="form-select" aria-label="Default select example" id="circle"    name="circle" required  >
-              <option selected disabled hidden>Select</option>
-              <option> Chennai </option>
-            </select>
-          </div>
-        </div>
+                  <div class="col-sm-10">
+                    <select class="form-select" aria-label="name of the circle">
+                      <option selected>Select</option>
+                      <option value="city">Chennai</option>
+                      <option value="rural">Trichy</option>
+                      <option value="rural">Madurai</option>
+                    </select>
+                  </div>
+                </div>
 
-        <div class="row mb-3">
-          <label
-            class="col-sm-9 col-form-label"
-            style="font-weight: bold"
-            >Name of the Division:</label
-          >
-          <div class="col-sm-10">
-            <select class="form-select" aria-label="Default select example" id="division"  name="division" required >
-              <option selected disabled hidden>Select</option>
-              <option > AnnaNagar </option>
-            </select>
-          </div>
-        </div>
+                <div class="row mb-3 col-6">
+                  <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Division:</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" aria-label="name of the division">
+                      <option selected>Select</option>
+                      <option value="city">Anna Nagar</option>
+                      <option value="rural">JJ Nagar</option>
+                      <option value="rural">Besant Nagar</option>
+                    </select>
+                  </div>
+                </div>
 
-        <div class="row mb-3">
-          <label
-            class="col-sm-9 col-form-label"
-            style="font-weight: bold"
-            >Name of the Village:</label
-          >
-          <div class="col-sm-10">
-            <select class="form-select" aria-label="Default select example" id="division"  name="division" required >
-              <option selected disabled hidden>Select</option>
-              <option > Village1 </option>
-            </select>
-          </div>
-        </div>
+                <div class="row mb-3 col-6">
+                  <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Village:</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" aria-label="name of the village">
+                      <option selected>Select</option>
+                      <option value="city">Ramapuram</option>
+                      <option value="rural">Porur</option>
+                      <option value="rural">Valasaravakkam</option>
+                    </select>
+                  </div>
+                </div>
 
-
-
-        <div class="row mb-3">
-          <label
-            class="col-sm-9 col-form-label"
-            style="font-weight: bold"
-            >Name of the Land:</label
-          >
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="land_name" name="land_name" required/>
-          </div>
-        </div>
+                <div class="row mb-3 col-6">
+                  <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Land:</label>
+                  <div class="col-sm-10">
+                    <input matInput type="text" class="form-control" value="" />
+                  </div>
+                </div>
 
 
-        <div class="row mb-3">
-          <label
-            class="col-sm-9 col-form-label"
-            style="font-weight: bold"
-            >Geo Tagging:
+                <div class="row mb-3 col-6">
+                  <label class="col-sm-9 col-form-label" style="font-weight: bold">Geo Tagging:</label>
+                  <div class="col-sm-10">
+                    <input matInput type="text" class="form-control" value="" />
+                  </div>
+                </div>
+              </div>
+              <button matStepperNext mat-button style="background-color: #3FB8DE;" class="float-end">Next</button>
+            </form>
+          </mat-step>
 
-           </label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="geo_tagging_geo_fencing" name="geo_tagging_geo_fencing" required/>
-          </div>
-        </div>
+          <mat-step [stepControl]="contactInfoFormGroup">
+            <mat-accordion>
 
-        <button mat-button matStepperNext>Next</button>
-      </form>
-    </mat-step>
+              <form [formGroup]="contactInfoFormGroup">
+                <ng-template matStepLabel>LPS</ng-template>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <label class="col-6 col-form-label" style="font-weight: bold">File 1</label>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="row col-7 mb-3">
+                    <div class="input-group">
+                      <input type="file" class="form-control" id="inputGroupFile04"
+                        aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                      <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                    </div>
+                  </div>
+                  <div class="row col-7 mb-3">
+                    <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="refno">
+                    </div>
+                  </div>
+                  <div class="row col-7 mb-3">
+                    <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="extent">
+                    </div>
+                  </div>
+                  <div class="row col-7 mb-3">
+                    <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="surveyno">
+                    </div>
+                  </div>
+                  <div *ngFor="let field of fields"
+                    class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
+                    <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
+                      style="width: 45%;">
+                    <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
+                      style="width: 45%;">
+                    <button (click)="removeInputField(field)" class="btn-close" aria-label="Close"
+                      style="background-color: gray;"></button>
+                  </div>
+                  <div class="row col-7 mb-3">
+                    <button (click)="addInputField()" type="button" class="btn btn-primary ms-2"
+                      style="width: 4rem;">Add</button>
+                  </div>
+                </mat-expansion-panel>
 
-    <mat-step [stepControl]="contactInfoFormGroup">
-      <form [formGroup]="contactInfoFormGroup">
-        <ng-template matStepLabel>LPS</ng-template>
-        <div class="row mb-3">
-          <div class="col-sm-10">
-            <label class="col-sm-9 col-form-label" style="font-weight: bold">File 1:</label>
-          <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
-          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-          <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-patch-plus-fill" style="color: #3FB8DE;font-size: 32px;"  ></i></a>
-        </div>
-      </div>
+
+                <div *ngFor="let form of forms" [(ngModel)]="form.value" class="mb-3">
+                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <label class="col-6 col-form-label" style="font-weight: bold">File {{form.index}}</label>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="row col-7 mb-3">
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                      </div>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="refno">
+                      </div>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="extent">
+                      </div>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="surveyno">
+                      </div>
+                    </div>
+                    <div *ngFor="let field2 of fields2"
+                      class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
+                      <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
+                        style="width: 45%;">
+                      <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
+                        style="width: 45%;">
+                      <button (click)="removeInputField2(field2)" class="btn-close" aria-label="Close"
+                        style="background-color: gray;"></button>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <button (click)="addInputField2()" type="button" class="btn btn-primary ms-2"
+                        style="width: 4rem;">Add</button>
+                    </div>
+                  </mat-expansion-panel>
+                </div>
+                <button (click)="addForm()" class="btn btn-primary mb-3" style="width: 3rem;"><i
+                    class="bi bi-plus-circle"></i></button><br>
+                <div class="d-flex justify-content-end">
+                  <button mat-button matStepperPrevious class="border">Back</button>
+                  <button mat-button matStepperNext style="background-color: #3FB8DE;" class="ms-2">Next</button>
+                </div>
+
+              </form>
+            </mat-accordion>
+          </mat-step>
+
+          <mat-step [stepControl]="contactInfoFormGroup">
+            <form [formGroup]="contactInfoFormGroup">
+              <ng-template matStepLabel>FMB</ng-template>
+              <mat-accordion>
+
+                <form [formGroup]="contactInfoFormGroup">
+                  <ng-template matStepLabel>LPS</ng-template>
+                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <label class="col-6 col-form-label" style="font-weight: bold">File 1</label>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="row col-7 mb-3">
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                      </div>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="refno">
+                      </div>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="extent">
+                      </div>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="surveyno">
+                      </div>
+                    </div>
+                    <div *ngFor="let field of fields"
+                      class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
+                      <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
+                        style="width: 45%;">
+                      <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
+                        style="width: 45%;">
+                      <button (click)="removeInputField(field)" class="btn-close" aria-label="Close"
+                        style="background-color: gray;"></button>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <button (click)="addInputField()" type="button" class="btn btn-primary ms-2"
+                        style="width: 4rem;">Add</button>
+                    </div>
+                  </mat-expansion-panel>
 
 
+                  <div *ngFor="let form of forms" [(ngModel)]="form.value" class="mb-3">
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <label class="col-6 col-form-label" style="font-weight: bold">File {{form.index}}</label>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <div class="row col-7 mb-3">
+                        <div class="input-group">
+                          <input type="file" class="form-control" id="inputGroupFile04"
+                            aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                          <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                        </div>
+                      </div>
+                      <div class="row col-7 mb-3">
+                        <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="refno">
+                        </div>
+                      </div>
+                      <div class="row col-7 mb-3">
+                        <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="extent">
+                        </div>
+                      </div>
+                      <div class="row col-7 mb-3">
+                        <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="surveyno">
+                        </div>
+                      </div>
+                      <div *ngFor="let field2 of fields2"
+                        class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
+                        <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
+                          style="width: 45%;">
+                        <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
+                          style="width: 45%;">
+                        <button (click)="removeInputField2(field2)" class="btn-close" aria-label="Close"
+                          style="background-color: gray;"></button>
+                      </div>
+                      <div class="row col-7 mb-3">
+                        <button (click)="addInputField2()" type="button" class="btn btn-primary ms-2"
+                          style="width: 4rem;">Add</button>
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <button (click)="addForm()" class="btn btn-primary mb-3" style="width: 3rem;"><i
+                      class="bi bi-plus-circle"></i></button><br>
+                  <div class="d-flex justify-content-end">
+                    <button mat-button matStepperPrevious class="border">Back</button>
+                    <button mat-button matStepperNext style="background-color: #3FB8DE;" class="ms-2">Next</button>
+                  </div>
+
+                </form>
+              </mat-accordion>
+
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="contactInfoFormGroup">
+            <form [formGroup]="contactInfoFormGroup">
+              <ng-template matStepLabel>4(1)</ng-template>
+              <mat-accordion>
+
+                <form [formGroup]="contactInfoFormGroup">
+                  <ng-template matStepLabel>LPS</ng-template>
+                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <label class="col-6 col-form-label" style="font-weight: bold">File 1</label>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="row col-7 mb-3">
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                      </div>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="refno">
+                      </div>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="extent">
+                      </div>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="surveyno">
+                      </div>
+                    </div>
+                    <div *ngFor="let field of fields"
+                      class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
+                      <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
+                        style="width: 45%;">
+                      <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
+                        style="width: 45%;">
+                      <button (click)="removeInputField(field)" class="btn-close" aria-label="Close"
+                        style="background-color: gray;"></button>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <button (click)="addInputField()" type="button" class="btn btn-primary ms-2"
+                        style="width: 4rem;">Add</button>
+                    </div>
+                  </mat-expansion-panel>
+
+
+                  <div *ngFor="let form of forms" [(ngModel)]="form.value" class="mb-3">
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <label class="col-6 col-form-label" style="font-weight: bold">File {{form.index}}</label>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <div class="row col-7 mb-3">
+                        <div class="input-group">
+                          <input type="file" class="form-control" id="inputGroupFile04"
+                            aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                          <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                        </div>
+                      </div>
+                      <div class="row col-7 mb-3">
+                        <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="refno">
+                        </div>
+                      </div>
+                      <div class="row col-7 mb-3">
+                        <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="extent">
+                        </div>
+                      </div>
+                      <div class="row col-7 mb-3">
+                        <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="surveyno">
+                        </div>
+                      </div>
+                      <div *ngFor="let field2 of fields2"
+                        class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
+                        <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
+                          style="width: 45%;">
+                        <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
+                          style="width: 45%;">
+                        <button (click)="removeInputField2(field2)" class="btn-close" aria-label="Close"
+                          style="background-color: gray;"></button>
+                      </div>
+                      <div class="row col-7 mb-3">
+                        <button (click)="addInputField2()" type="button" class="btn btn-primary ms-2"
+                          style="width: 4rem;">Add</button>
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <button (click)="addForm()" class="btn btn-primary mb-3" style="width: 3rem;"><i
+                      class="bi bi-plus-circle"></i></button><br>
+                  <div class="d-flex justify-content-end">
+                    <button mat-button matStepperPrevious class="border">Back</button>
+                    <button mat-button matStepperNext style="background-color: #3FB8DE;" class="ms-2">Next</button>
+                  </div>
+
+                </form>
+              </mat-accordion>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="contactInfoFormGroup">
+            <form [formGroup]="contactInfoFormGroup">
+              <ng-template matStepLabel>6DD</ng-template>
+              <mat-accordion>
+
+                <form [formGroup]="contactInfoFormGroup">
+                  <ng-template matStepLabel>LPS</ng-template>
+                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <label class="col-6 col-form-label" style="font-weight: bold">File 1</label>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="row col-7 mb-3">
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                      </div>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="refno">
+                      </div>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="extent">
+                      </div>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="surveyno">
+                      </div>
+                    </div>
+                    <div *ngFor="let field of fields"
+                      class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
+                      <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
+                        style="width: 45%;">
+                      <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
+                        style="width: 45%;">
+                      <button (click)="removeInputField(field)" class="btn-close" aria-label="Close"
+                        style="background-color: gray;"></button>
+                    </div>
+                    <div class="row col-7 mb-3">
+                      <button (click)="addInputField()" type="button" class="btn btn-primary ms-2"
+                        style="width: 4rem;">Add</button>
+                    </div>
+                  </mat-expansion-panel>
+
+
+                  <div *ngFor="let form of forms" [(ngModel)]="form.value" class="mb-3">
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <label class="col-6 col-form-label" style="font-weight: bold">File {{form.index}}</label>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <div class="row col-7 mb-3">
+                        <div class="input-group">
+                          <input type="file" class="form-control" id="inputGroupFile04"
+                            aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                          <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                        </div>
+                      </div>
+                      <div class="row col-7 mb-3">
+                        <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="refno">
+                        </div>
+                      </div>
+                      <div class="row col-7 mb-3">
+                        <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="extent">
+                        </div>
+                      </div>
+                      <div class="row col-7 mb-3">
+                        <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="surveyno">
+                        </div>
+                      </div>
+                      <div *ngFor="let field2 of fields2"
+                        class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
+                        <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
+                          style="width: 45%;">
+                        <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
+                          style="width: 45%;">
+                        <button (click)="removeInputField2(field2)" class="btn-close" aria-label="Close"
+                          style="background-color: gray;"></button>
+                      </div>
+                      <div class="row col-7 mb-3">
+                        <button (click)="addInputField2()" type="button" class="btn btn-primary ms-2"
+                          style="width: 4rem;">Add</button>
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <button (click)="addForm()" class="btn btn-primary mb-3" style="width: 3rem;"><i
+                      class="bi bi-plus-circle"></i></button><br>
+                  <div class="d-flex justify-content-end">
+                    <button mat-button matStepperPrevious class="border">Back</button>
+                    <button mat-button matStepperNext style="background-color: #3FB8DE;" class="ms-2">Next</button>
+                  </div>
+                </form>
+              </mat-accordion>
+            </form>
+
+
+          </mat-step>
+          <mat-step [stepControl]="awardInfoFormGroup">
+            <mat-accordion>
+              <mat-expansion-panel [expanded]="isPanel4Expanded" (opened)="togglePanel4()" (closed)="togglePanel4()">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>Award Information</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <form [formGroup]="awardInfoFormGroup">
+                  <ng-template matStepLabel>Award Information</ng-template>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Number:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Date:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent(in acres):</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+
+                    <div class="col-sm-10">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Boundary PDF File:</label>
+                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    </div>
+
+
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Notified Person:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Direct
+                      Payment:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Revenue
+                      Deposit:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Civil Court
+                      Deposit:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold;color:red">Possession Taken
+                        Over:</label>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent (in acres):</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Scheme Implemented_Survey
+                      Numbers:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Scheme Implemented_Extent (in
+                      acres):</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent cannot be utilized for
+                      Scheme Implemented_Survey Numbers:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent cannot be utilized for
+                      Scheme Implemented_Extent (in acres):</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered by Court Case(in
+                      acres)</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">court case - Legal Proceedings
+                      Status:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Court Case - Document:</label>
+                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    </div>
+
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under Want of
+                      approach road:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Want of approach road - Legal
+                      Proceedings Status:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Want of approach road -
+                        Document:</label>
+                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    </div>
+
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under
+                      Encroachment:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment - Legal Proceedings
+                      Status:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment -
+                        Document:</label>
+                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    </div>
+
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under
+                      Scattered:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Scattered - Legal Proceedings
+                      Status:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Scattered - Document:</label>
+                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    </div>
+
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under
+                      Quashed:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Legal Proceedings
+                      Status:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Document:</label>
+                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    </div>
+
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under
+                      Reconveyed:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Reconveyed - Legal Proceedings
+                      Status:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Reconveyed - Document:</label>
+                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    </div>
+
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under NOC
+                      Issued:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">NOC Issued - Legal Proceedings
+                      Status:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">NOC Issued - Document:</label>
+                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    </div>
+
+                  </div>
+
+                  <!-- <div class="row mb-3">
         <div class="col-sm-10">
-          <label class="col-sm-9 col-form-label" style="font-weight: bold">File 2:</label>
-        <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-patch-plus-fill" style="color: #3FB8DE;font-size: 32px;"  ></i></a>
+          <label class="col-sm-9 col-form-label" style="font-weight: bold;color:blue">Extent available for scheme implementation:</label>
+        </div>
+      </div> -->
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent available for scheme
+                      implementation_Survey Numbers:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent available for scheme
+                      implementation_Extent (in acres):</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold;color:red">Possession Not Handed
+                        Over:</label>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent (in acres):</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered by court case(in
+                      acres):</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">court case - Legal Proceedings
+                      Status:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Court Case - Document:</label>
+                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    </div>
+
+                  </div>
+
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under
+                      encroachment(in acres):</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment - Legal Proceedings
+                      Status:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+
+                    <div class="col-sm-10">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment -
+                        Document:</label>
+                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    </div>
+
+                  </div>
+
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under quashed(in
+                      acres):</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Legal Proceedings
+                      Status:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Document:</label>
+
+                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    </div>
+
+                  </div>
+
+
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under Without
+                      encumbrance(in acres):</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Without encumbrance - Legal
+                      Proceedings Status:</label>
+                    <div class="col-sm-10">
+                      <input matInput type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Without encumbrance -
+                        Document:</label>
+
+                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    </div>
+
+                  </div>
+
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion><br>
+            <div class="d-flex justify-content-end">
+              <button mat-button matStepperPrevious class="border">Back</button>
+            </div>
+          </mat-step>
+
+        </mat-horizontal-stepper>
       </div>
-
-      <br>
-
-      <div class="col-sm-10">
-        <label class="col-sm-9 col-form-label" style="font-weight: bold">File 3:</label>
-      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-      <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-patch-plus-fill" style="color: #3FB8DE;font-size: 32px;"  ></i></a>
     </div>
-    <!-- Popup modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Other Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row mb-3">
-          <div class="col">
 
-            <input matInput type="text" class="form-control" value="Ref no" >
-          </div>
-          <div class="col">
-
-            <input matInput type="text" class="form-control" >
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input matInput type="text" class="form-control" value="Extent" >
-          </div>
-          <div class="col">
-            <input matInput type="text" class="form-control" >
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input matInput type="text" class="form-control" value="Suervey no" >
-          </div>
-          <div class="col">
-            <input matInput type="text" class="form-control" >
-          </div>
-        </div>
-      </div>
-
-    </div>
   </div>
-  </div>
-
-
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </form>
-    </mat-step>
-
-    <mat-step [stepControl]="contactInfoFormGroup">
-      <form [formGroup]="contactInfoFormGroup">
-        <ng-template matStepLabel>FMB</ng-template>
-        <div class="row mb-3">
-          <div class="col-sm-10">
-            <label class="col-sm-9 col-form-label" style="font-weight: bold">File 1:</label>
-          <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
-          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-          <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-patch-plus-fill" style="color: #3FB8DE;font-size: 32px;"  ></i></a>
-        </div>
-      </div>
-
-
-        <div class="col-sm-10">
-          <label class="col-sm-9 col-form-label" style="font-weight: bold">File 2:</label>
-        <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-patch-plus-fill" style="color: #3FB8DE;font-size: 32px;"  ></i></a>
-      </div>
-
-      <br>
-
-      <div class="col-sm-10">
-        <label class="col-sm-9 col-form-label" style="font-weight: bold">File 3:</label>
-      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-      <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-patch-plus-fill" style="color: #3FB8DE;font-size: 32px;"  ></i></a>
-    </div>
-    <!-- Popup modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Other Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row mb-3">
-          <div class="col">
-
-            <input matInput type="text" class="form-control" value="Ref no" disabled>
-          </div>
-          <div class="col">
-
-            <input matInput type="text" class="form-control" value="12.dt/0987" disabled>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input matInput type="text" class="form-control" value="Extent" disabled>
-          </div>
-          <div class="col">
-            <input matInput type="text" class="form-control" value="123.7657" disabled>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input matInput type="text" class="form-control" value="Suervey no" disabled>
-          </div>
-          <div class="col">
-            <input matInput type="text" class="form-control" value="123/23,234A/98" disabled>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  </div>
-
-
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </form>
-    </mat-step>
-
-    <mat-step [stepControl]="contactInfoFormGroup">
-      <form [formGroup]="contactInfoFormGroup">
-        <ng-template matStepLabel>4(1)</ng-template>
-        <div class="row mb-3">
-          <div class="col-sm-10">
-            <label class="col-sm-9 col-form-label" style="font-weight: bold">File 1:</label>
-          <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
-          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-          <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-patch-plus-fill" style="color: #3FB8DE;font-size: 32px;"  ></i></a>
-        </div>
-      </div>
-
-
-        <div class="col-sm-10">
-          <label class="col-sm-9 col-form-label" style="font-weight: bold">File 2:</label>
-        <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-patch-plus-fill" style="color: #3FB8DE;font-size: 32px;"  ></i></a>
-      </div>
-
-      <br>
-
-      <div class="col-sm-10">
-        <label class="col-sm-9 col-form-label" style="font-weight: bold">File 3:</label>
-      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-      <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-patch-plus-fill" style="color: #3FB8DE;font-size: 32px;"  ></i></a>
-    </div>
-    <!-- Popup modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Other Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row mb-3">
-          <div class="col">
-
-            <input matInput type="text" class="form-control" value="Ref no" disabled>
-          </div>
-          <div class="col">
-
-            <input matInput type="text" class="form-control" value="12.dt/0987" disabled>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input matInput type="text" class="form-control" value="Extent" disabled>
-          </div>
-          <div class="col">
-            <input matInput type="text" class="form-control" value="123.7657" disabled>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input matInput type="text" class="form-control" value="Suervey no" disabled>
-          </div>
-          <div class="col">
-            <input matInput type="text" class="form-control" value="123/23,234A/98" disabled>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  </div>
-
-
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </form>
-    </mat-step>
-
-    <mat-step [stepControl]="contactInfoFormGroup">
-      <form [formGroup]="contactInfoFormGroup">
-        <ng-template matStepLabel>6DD</ng-template>
-        <div class="row mb-3">
-          <div class="col-sm-10">
-            <label class="col-sm-9 col-form-label" style="font-weight: bold">File 1:</label>
-          <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
-          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-          <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-patch-plus-fill" style="color: #3FB8DE;font-size: 32px;"  ></i></a>
-        </div>
-      </div>
-
-
-        <div class="col-sm-10">
-          <label class="col-sm-9 col-form-label" style="font-weight: bold">File 2:</label>
-        <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-patch-plus-fill" style="color: #3FB8DE;font-size: 32px;"  ></i></a>
-      </div>
-
-      <br>
-
-      <div class="col-sm-10">
-        <label class="col-sm-9 col-form-label" style="font-weight: bold">File 3:</label>
-      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;" ></i></a>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-      <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-patch-plus-fill" style="color: #3FB8DE;font-size: 32px;"  ></i></a>
-    </div>
-    <!-- Popup modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Other Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row mb-3">
-          <div class="col">
-
-            <input matInput type="text" class="form-control" value="Ref no" disabled>
-          </div>
-          <div class="col">
-
-            <input matInput type="text" class="form-control" value="12.dt/0987" disabled>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input matInput type="text" class="form-control" value="Extent" disabled>
-          </div>
-          <div class="col">
-            <input matInput type="text" class="form-control" value="123.7657" disabled>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input matInput type="text" class="form-control" value="Suervey no" disabled>
-          </div>
-          <div class="col">
-            <input matInput type="text" class="form-control" value="123/23,234A/98" disabled>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  </div>
-
-
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </form>
-    </mat-step>
-
-    <mat-step [stepControl]="awardInfoFormGroup">
-      <mat-accordion>
-      <mat-expansion-panel [expanded]="isPanel1Expanded" (opened)="togglePanel1()" (closed)="togglePanel1()">
-        <mat-expansion-panel-header>
-          <mat-panel-title>Left over Between LPS and 4(1)</mat-panel-title>
-        </mat-expansion-panel-header>
-
-      <form [formGroup]="awardInfoFormGroup">
-        <ng-template matStepLabel>Left over</ng-template>
-        <div class="row mb-3">
-          <label
-            class="col-sm-9 col-form-label"
-            style="font-weight: bold"
-            >Survey No:</label
-          >
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control"
-
-            />
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <label
-            class="col-sm-9 col-form-label"
-            style="font-weight: bold"
-            >Extent:</label
-          >
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control"
-
-            />
-          </div>
-        </div>
-
-      </form>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel [expanded]="isPanel2Expanded" (opened)="togglePanel2()" (closed)="togglePanel2()">
-      <mat-expansion-panel-header>
-        <mat-panel-title>Left over Between 4(1) and 6DD</mat-panel-title>
-      </mat-expansion-panel-header>
-
-    <form [formGroup]="awardInfoFormGroup">
-      <ng-template matStepLabel>Left over</ng-template>
-      <div class="row mb-3">
-        <label
-          class="col-sm-9 col-form-label"
-          style="font-weight: bold"
-          >Survey No:</label
-        >
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-
-          />
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label
-          class="col-sm-9 col-form-label"
-          style="font-weight: bold"
-          >Extent:</label
-        >
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-
-          />
-        </div>
-      </div>
-
-
-    </form>
-  </mat-expansion-panel>
-
-
-
-      <mat-expansion-panel [expanded]="isPanel3Expanded" (opened)="togglePanel3()" (closed)="togglePanel3()">
-        <mat-expansion-panel-header>
-          <mat-panel-title>Left over Between 6DD and Award</mat-panel-title>
-        </mat-expansion-panel-header>
-
-      <form [formGroup]="awardInfoFormGroup">
-        <ng-template matStepLabel>Left over</ng-template>
-        <div class="row mb-3">
-          <label
-            class="col-sm-9 col-form-label"
-            style="font-weight: bold"
-            >Survey No:</label
-          >
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control"
-
-            />
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <label
-            class="col-sm-9 col-form-label"
-            style="font-weight: bold"
-            >Extent:</label
-          >
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control"
-
-            />
-          </div>
-        </div>
-
-      </form>
-    </mat-expansion-panel>
-    </mat-accordion>
-    <button mat-button matStepperPrevious>Back</button>
-    <button mat-button matStepperNext>Next</button>
-    </mat-step>
-    <mat-step [stepControl]="awardInfoFormGroup">
-      <mat-accordion>
-    <mat-expansion-panel [expanded]="isPanel4Expanded" (opened)="togglePanel4()" (closed)="togglePanel4()">
-      <mat-expansion-panel-header>
-        <mat-panel-title>Award Information</mat-panel-title>
-      </mat-expansion-panel-header>
-
-    <form [formGroup]="awardInfoFormGroup">
-      <ng-template matStepLabel>Award Information</ng-template>
-      <div class="row mb-3">
-        <label class="col-sm-9 col-form-label" style="font-weight: bold">Number:<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="number"  name="number" required/>
-
-        </div>
-      </div>
-
-     <div class="row mb-3">
-        <label class="col-sm-10 col-form-label" style="font-weight: bold">Date:<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input matInput type="date" class="form-control" id="date_of_court_case" name="date_of_court_case" required/>
-        </div>
-     </div>
-
-     <div class="row mb-3">
-      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:<span class="required-asterisk">*</span></label>
-      <div class="col-sm-10">
-        <input matInput type="text" class="form-control" id="numbers" name="numbers" required/>
-      <small class="form-text text-muted">Please separate the Survey Nos with commas.</small>
-      </div>
-  </div>
-
-      <div class="row mb-3">
-      <label class="col-sm-10 col-form-label" style="font-weight: bold" >Extent(in acres):<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input matInput type="text" class="form-control" id="extent"  name="extent" required/>
-
-        </div>
-      </div>
-
-      <div class="row mb-3">
-
-
-        <label class="col-sm-9 col-form-label" style="font-weight: bold">Boundary PDF File:</label>
-        <div class="col-sm-10">
-          <input class="form-control" accept=".pdf" type="file">
-        </div><br>
-        <button class="uploadbutton">Upload</button>
-
-
-
-        </div>
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label"style="font-weight: bold">Notified Person:<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input matInput type="text" class="form-control" id="notified_person" name="notified_person" required/>
-
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Direct Payment:<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input matInput type="text" class="form-control" id="awardamount_direct_payment"  name="awardamount_direct_payment" required/>
-
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Revenue Deposit:<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input matInput type="text" class="form-control" id="awardamount_revenue_deposit"  name="awardamount_revenue_deposit" required/>
-
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Civil Court Deposit:<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input matInput type="text" class="form-control" id="awardamount_civil_court_deposit"  name="awardamount_civil_court_deposit" required/>
-
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-sm-10">
-          <label class="col-sm-9 col-form-label" style="font-weight: bold;color:red">Possession Not Handed Over:</label>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label"style="font-weight: bold">Survey numbers:<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="not_handed_over_extent" name="not_handed_over_extent" required/>
-
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label"style="font-weight: bold">Extent (in acres):<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="not_handed_over_extent" name="not_handed_over_extent" required/>
-
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered by court case(in acres):<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input type="text"class="form-control" id="not_handed_over_extent_covered_by_court_case" name="not_handed_over_extent_covered_by_court_case" required/>
-
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label" style="font-weight: bold">court case - Legal Proceedings Status:<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-        <select class="form-select" aria-label="Default select example" id="legalproceedings"  name="legalproceedings" required>
-          <option [selected]="true" value="Select" selected disabled hidden>Select</option>
-          <option >O.S</option>
-          <option >W.P</option>
-          <option >W.A</option>
-          <option >SLP(L.A)</option>
-          <option >LAOP</option>
-          <option >APPEAL SUIT AGAINST LAOP</option>
-          <option >APPEAL SUIT AGAINST OS</option>
-          <option >SLP(E.C)</option>
-          <option >CIVIL SUIT</option>
-          <option >CRP</option>
-          <option >REVIEW PETITION</option>
-          <option >CONTEMPT PETITION</option>
-          <option >E.P</option>
-        </select>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-
-           <label class="col-sm-10 col-form-label"style="font-weight: bold">Court Case - Document:<span class="required-asterisk">*</span></label>
-
-        <div class="col-sm-10">
-          <input class="form-control" accept=".pdf" type="file">
-        </div><br>
-        <button class="uploadbutton">Upload</button>
-
-
-      </div>
-
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under encroachment(in acres):<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input type="text"class="form-control" id="not_handed_over_extent_covered_by_court_case" name="not_handed_over_extent_covered_by_court_case" required/>
-
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment - Legal Proceedings Status:<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-        <select class="form-select" aria-label="Default select example" id="legalproceedings"  name="legalproceedings" required>
-          <option [selected]="true" value="Select" selected disabled hidden>Select</option>
-          <option >O.S</option>
-          <option >W.P</option>
-          <option >W.A</option>
-          <option >SLP(L.A)</option>
-          <option >LAOP</option>
-          <option >APPEAL SUIT AGAINST LAOP</option>
-          <option >APPEAL SUIT AGAINST OS</option>
-          <option >SLP(E.C)</option>
-          <option >CIVIL SUIT</option>
-          <option >CRP</option>
-          <option >REVIEW PETITION</option>
-          <option >CONTEMPT PETITION</option>
-          <option >E.P</option>
-        </select>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-
-          <label class="col-sm-10 col-form-label"style="font-weight: bold">Encroachment - Document:<span class="required-asterisk">*</span></label>
-
-        <div class="col-sm-10">
-          <input class="form-control" accept=".pdf" type="file">
-        </div><br>
-        <button class="uploadbutton">Upload</button>
-
-
-      </div>
-
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under quashed(in acres):<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input type="text"class="form-control" id="not_handed_over_extent_covered_by_court_case" name="not_handed_over_extent_covered_by_court_case" required/>
-
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Legal Proceedings Status:<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-        <select class="form-select" aria-label="Default select example" id="legalproceedings"  name="legalproceedings" required>
-          <option [selected]="true" value="Select" selected disabled hidden>Select</option>
-          <option >O.S</option>
-          <option >W.P</option>
-          <option >W.A</option>
-          <option >SLP(L.A)</option>
-          <option >LAOP</option>
-          <option >APPEAL SUIT AGAINST LAOP</option>
-          <option >APPEAL SUIT AGAINST OS</option>
-          <option >SLP(E.C)</option>
-          <option >CIVIL SUIT</option>
-          <option >CRP</option>
-          <option >REVIEW PETITION</option>
-          <option >CONTEMPT PETITION</option>
-          <option >E.P</option>
-        </select>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-
-        <label class="col-sm-10 col-form-label"style="font-weight: bold">Quashed - Document:<span class="required-asterisk">*</span></label>
-
-
-          <div class="col-sm-10">
-            <input class="form-control" accept=".pdf" type="file">
-          </div><br>
-          <button class="uploadbutton">Upload</button>
-
-
-      </div>
-
-
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under Without encumbrance(in acres):<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-          <input type="text"class="form-control" id="not_handed_over_extent_covered_by_court_case" name="not_handed_over_extent_covered_by_court_case" required/>
-
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label class="col-sm-10 col-form-label" style="font-weight: bold">Without encumbrance - Legal Proceedings Status:<span class="required-asterisk">*</span></label>
-        <div class="col-sm-10">
-        <select class="form-select" aria-label="Default select example" id="legalproceedings"  name="legalproceedings" required>
-          <option [selected]="true" value="Select" selected disabled hidden>Select</option>
-          <option >O.S</option>
-          <option >W.P</option>
-          <option >W.A</option>
-          <option >SLP(L.A)</option>
-          <option >LAOP</option>
-          <option >APPEAL SUIT AGAINST LAOP</option>
-          <option >APPEAL SUIT AGAINST OS</option>
-          <option >SLP(E.C)</option>
-          <option >CIVIL SUIT</option>
-          <option >CRP</option>
-          <option >REVIEW PETITION</option>
-          <option >CONTEMPT PETITION</option>
-          <option >E.P</option>
-        </select>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-
-        <label class="col-sm-10 col-form-label"style="font-weight: bold">Without encumbrance - Document:<span class="required-asterisk">*</span></label>
-
-            <div class="col-sm-10">
-            <input class="form-control" accept=".pdf" type="file">
-          </div><br>
-          <button class="uploadbutton">Upload</button>
-
-
-      </div>
-
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </form>
-  </mat-expansion-panel>
-      </mat-accordion>
-    </mat-step>
-
-  </mat-horizontal-stepper>
-</div>
-</div>
-</div>
-</div>
 </main>
 <br>
 <br>
