@@ -179,4 +179,39 @@ export class AddlandComponent implements OnInit {
   }
 
 
+  //left over add-start
+  leftForms1: string[] = [];
+  leftForms2: string[] = [];
+  leftForms3: string[] = [];
+
+  addLeftForm1() {
+    const newLeftForm1 = 'New Left Form1';
+    this.leftForms1.push(newLeftForm1);
+  }
+
+  addLeftForm2() {
+    const newLeftForm2 = 'New Left Form2';
+    this.leftForms2.push(newLeftForm2);
+  }
+
+  addLeftForm3() {
+    const newLeftForm3 = 'New Left Form3';
+    this.leftForms3.push(newLeftForm3);
+  }
+  //left over add-end
+
+  //left over remove-start
+  removeLeftForm1(index: number) {
+    this.leftForms1.splice(index, 1);
+  }
+
+  removeLeftForm2(index: number) {
+    this.leftForms2.splice(index, 1);
+  }
+
+  removeLeftForm3(index: number) {
+    this.leftForms3.splice(index, 1);
+  }
+  //left over remove-end
+
 }
