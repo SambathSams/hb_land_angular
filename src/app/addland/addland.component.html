@@ -541,11 +541,93 @@
                     <button mat-button matStepperPrevious class="border">Back</button>
                     <button mat-button matStepperNext style="background-color: #3FB8DE;" class="ms-2">Next</button>
                   </div>
+
                 </form>
               </mat-accordion>
             </form>
+          </mat-step>
+
+          <mat-step [stepControl]="awardInfoFormGroup">
+            <mat-accordion>
+              <mat-expansion-panel [expanded]="isPanel1Expanded" (opened)="togglePanel1()" (closed)="togglePanel1()">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>Left over Between LPS and 4(1)</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <form [formGroup]="awardInfoFormGroup">
+                  <ng-template matStepLabel>Left over</ng-template>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                </form>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel [expanded]="isPanel2Expanded" (opened)="togglePanel2()" (closed)="togglePanel2()">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>Left over Between 4(1) and 6DD</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <form [formGroup]="awardInfoFormGroup">
+                  <ng-template matStepLabel>Left over</ng-template>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="" />
+                    </div>
+                  </div>
 
 
+                </form>
+              </mat-expansion-panel>
+
+
+
+              <mat-expansion-panel [expanded]="isPanel3Expanded" (opened)="togglePanel3()" (closed)="togglePanel3()">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>Left over Between 6DD and Award</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <form [formGroup]="awardInfoFormGroup">
+                  <ng-template matStepLabel>Left over</ng-template>
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="" />
+                    </div>
+                  </div>
+
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion><br>
+            <div class="d-flex justify-content-end">
+              <button mat-button matStepperPrevious class="border">Back</button>
+              <button mat-button matStepperNext style="background-color: #3FB8DE;" class="ms-2">Next</button>
+            </div>
           </mat-step>
           <mat-step [stepControl]="awardInfoFormGroup">
             <mat-accordion>
