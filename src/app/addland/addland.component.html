@@ -21,6 +21,12 @@
 <main id="main" class="main mx-auto">
   <div class="row">
 
+    <style>
+      ::ng-deep .mat-step-header .mat-step-icon {
+        background-color: #3FB8DE !important;
+      }
+    </style>
+
     <div class="card">
       <div class="card-body">
         <mat-horizontal-stepper>
@@ -29,7 +35,8 @@
               <ng-template matStepLabel>Enter Land Details</ng-template>
               <div class="row">
                 <div class="row mb-3 col-6">
-                  <label class="col-sm-5 col-form-label" style="font-weight: bold">Type of Division:</label>
+                  <label class="col-sm-5 col-form-label" style="font-weight: bold">Type of
+                    Division:<span style="color: red;">*</span></label>
 
                   <div class="col-sm-10">
                     <select class="form-select" aria-label="type of division">
@@ -42,7 +49,8 @@
 
 
                 <div class="row mb-3 col-6">
-                  <label class="col-sm-5 col-form-label" style="font-weight: bold">Name of the Circle:</label>
+                  <label class="col-sm-5 col-form-label" style="font-weight: bold">Name of the Circle:<span
+                      style="color: red;">*</span></label>
 
                   <div class="col-sm-10">
                     <select class="form-select" aria-label="name of the circle">
@@ -55,7 +63,8 @@
                 </div>
 
                 <div class="row mb-3 col-6">
-                  <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Division:</label>
+                  <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Division:<span
+                      style="color: red;">*</span></label>
                   <div class="col-sm-10">
                     <select class="form-select" aria-label="name of the division">
                       <option selected>Select</option>
@@ -67,7 +76,8 @@
                 </div>
 
                 <div class="row mb-3 col-6">
-                  <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Village:</label>
+                  <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Village:<span
+                      style="color: red;">*</span></label>
                   <div class="col-sm-10">
                     <select class="form-select" aria-label="name of the village">
                       <option selected>Select</option>
@@ -79,7 +89,8 @@
                 </div>
 
                 <div class="row mb-3 col-6">
-                  <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Land:</label>
+                  <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Land:<span
+                      style="color: red;">*</span></label>
                   <div class="col-sm-10">
                     <input matInput type="text" class="form-control" value="" />
                   </div>
@@ -87,13 +98,15 @@
 
 
                 <div class="row mb-3 col-6">
-                  <label class="col-sm-9 col-form-label" style="font-weight: bold">Geo Tagging:</label>
+                  <label class="col-sm-9 col-form-label" style="font-weight: bold">Geo Tagging:<span
+                      style="color: red;">*</span></label>
                   <div class="col-sm-10">
                     <input matInput type="text" class="form-control" value="" />
                   </div>
                 </div>
               </div>
-              <button matStepperNext mat-button style="background-color: #3FB8DE;" class="float-end">Next</button>
+              <button matStepperNext mat-button style="background-color: #3FB8DE;color: white;"
+                class="float-end">Next</button>
             </form>
           </mat-step>
 
@@ -112,7 +125,8 @@
                     <div class="input-group">
                       <input type="file" class="form-control" id="inputGroupFile04"
                         aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                      <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                      <button type="button" class="ms-2 rounded btn"
+                        style="background-color: #3FB8DE;color: white;">Upload</button>
                     </div>
                   </div>
                   <div class="row col-7 mb-3">
@@ -143,8 +157,8 @@
                       style="background-color: gray;"></button>
                   </div>
                   <div class="row col-7 mb-3">
-                    <button (click)="addInputField()" type="button" class="btn btn-primary ms-2"
-                      style="width: 4rem;">Add</button>
+                    <button (click)="addInputField()" type="button" class="btn ms-2"
+                      style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                   </div>
                 </mat-expansion-panel>
 
@@ -160,7 +174,8 @@
                       <div class="input-group">
                         <input type="file" class="form-control" id="inputGroupFile04"
                           aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                        <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
                       </div>
                     </div>
                     <div class="row col-7 mb-3">
@@ -191,16 +206,18 @@
                         style="background-color: gray;"></button>
                     </div>
                     <div class="row col-7 mb-3">
-                      <button (click)="addInputField2()" type="button" class="btn btn-primary ms-2"
-                        style="width: 4rem;">Add</button>
+                      <button (click)="addInputField2()" type="button" class="btn ms-2"
+                        style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                     </div>
                   </mat-expansion-panel>
                 </div>
-                <button (click)="addForm()" class="btn btn-primary mb-3" style="width: 3rem;"><i
+                <button (click)="addForm()" class="btn mb-3"
+                  style="width: 3rem;background-color: #3FB8DE;color: white;"><i
                     class="bi bi-plus-circle"></i></button><br>
                 <div class="d-flex justify-content-end">
-                  <button mat-button matStepperPrevious class="border">Back</button>
-                  <button mat-button matStepperNext style="background-color: #3FB8DE;" class="ms-2">Next</button>
+                  <button mat-button matStepperPrevious class="border">Previous</button>
+                  <button mat-button matStepperNext style="background-color: #3FB8DE;color: white;"
+                    class="ms-2">Next</button>
                 </div>
 
               </form>
@@ -213,7 +230,6 @@
               <mat-accordion>
 
                 <form [formGroup]="contactInfoFormGroup">
-                  <ng-template matStepLabel>LPS</ng-template>
                   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
@@ -224,7 +240,8 @@
                       <div class="input-group">
                         <input type="file" class="form-control" id="inputGroupFile04"
                           aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                        <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
                       </div>
                     </div>
                     <div class="row col-7 mb-3">
@@ -255,8 +272,8 @@
                         style="background-color: gray;"></button>
                     </div>
                     <div class="row col-7 mb-3">
-                      <button (click)="addInputField()" type="button" class="btn btn-primary ms-2"
-                        style="width: 4rem;">Add</button>
+                      <button (click)="addInputField()" type="button" class="btn ms-2"
+                        style="width: 4rem;background-color: #3FB8DE; color: white;">Add</button>
                     </div>
                   </mat-expansion-panel>
 
@@ -272,7 +289,8 @@
                         <div class="input-group">
                           <input type="file" class="form-control" id="inputGroupFile04"
                             aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                          <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                          <button type="button" class="ms-2 rounded btn"
+                            style="background-color: #3FB8DE;color: white;">Upload</button>
                         </div>
                       </div>
                       <div class="row col-7 mb-3">
@@ -303,16 +321,18 @@
                           style="background-color: gray;"></button>
                       </div>
                       <div class="row col-7 mb-3">
-                        <button (click)="addInputField2()" type="button" class="btn btn-primary ms-2"
-                          style="width: 4rem;">Add</button>
+                        <button (click)="addInputField2()" type="button" class="btn ms-2"
+                          style="width: 4rem;background-color: #3FB8DE;">Add</button>
                       </div>
                     </mat-expansion-panel>
                   </div>
-                  <button (click)="addForm()" class="btn btn-primary mb-3" style="width: 3rem;"><i
+                  <button (click)="addForm()" class="btn mb-3"
+                    style="width: 3rem;background-color: #3FB8DE;color: white;"><i
                       class="bi bi-plus-circle"></i></button><br>
                   <div class="d-flex justify-content-end">
-                    <button mat-button matStepperPrevious class="border">Back</button>
-                    <button mat-button matStepperNext style="background-color: #3FB8DE;" class="ms-2">Next</button>
+                    <button mat-button matStepperPrevious class="border">Previous</button>
+                    <button mat-button matStepperNext style="background-color: #3FB8DE;color: white;"
+                      class="ms-2">Next</button>
                   </div>
 
                 </form>
@@ -327,7 +347,6 @@
               <mat-accordion>
 
                 <form [formGroup]="contactInfoFormGroup">
-                  <ng-template matStepLabel>LPS</ng-template>
                   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
@@ -338,7 +357,8 @@
                       <div class="input-group">
                         <input type="file" class="form-control" id="inputGroupFile04"
                           aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                        <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
                       </div>
                     </div>
                     <div class="row col-7 mb-3">
@@ -369,8 +389,8 @@
                         style="background-color: gray;"></button>
                     </div>
                     <div class="row col-7 mb-3">
-                      <button (click)="addInputField()" type="button" class="btn btn-primary ms-2"
-                        style="width: 4rem;">Add</button>
+                      <button (click)="addInputField()" type="button" class="btn ms-2"
+                        style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                     </div>
                   </mat-expansion-panel>
 
@@ -386,7 +406,8 @@
                         <div class="input-group">
                           <input type="file" class="form-control" id="inputGroupFile04"
                             aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                          <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                          <button type="button" class="ms-2 rounded btn"
+                            style="background-color: #3FB8DE;color: white;">Upload</button>
                         </div>
                       </div>
                       <div class="row col-7 mb-3">
@@ -422,11 +443,13 @@
                       </div>
                     </mat-expansion-panel>
                   </div>
-                  <button (click)="addForm()" class="btn btn-primary mb-3" style="width: 3rem;"><i
+                  <button (click)="addForm()" class="btn mb-3"
+                    style="width: 3rem;background-color: #3FB8DE;color: white;"><i
                       class="bi bi-plus-circle"></i></button><br>
                   <div class="d-flex justify-content-end">
-                    <button mat-button matStepperPrevious class="border">Back</button>
-                    <button mat-button matStepperNext style="background-color: #3FB8DE;" class="ms-2">Next</button>
+                    <button mat-button matStepperPrevious class="border">Previous</button>
+                    <button mat-button matStepperNext style="background-color: #3FB8DE;color: white;"
+                      class="ms-2">Next</button>
                   </div>
 
                 </form>
@@ -440,7 +463,6 @@
               <mat-accordion>
 
                 <form [formGroup]="contactInfoFormGroup">
-                  <ng-template matStepLabel>LPS</ng-template>
                   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
@@ -451,7 +473,8 @@
                       <div class="input-group">
                         <input type="file" class="form-control" id="inputGroupFile04"
                           aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                        <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
                       </div>
                     </div>
                     <div class="row col-7 mb-3">
@@ -482,8 +505,8 @@
                         style="background-color: gray;"></button>
                     </div>
                     <div class="row col-7 mb-3">
-                      <button (click)="addInputField()" type="button" class="btn btn-primary ms-2"
-                        style="width: 4rem;">Add</button>
+                      <button (click)="addInputField()" type="button" class="btn ms-2"
+                        style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                     </div>
                   </mat-expansion-panel>
 
@@ -499,7 +522,8 @@
                         <div class="input-group">
                           <input type="file" class="form-control" id="inputGroupFile04"
                             aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                          <button type="button" class="ms-2 rounded btn btn-primary">Upload</button>
+                          <button type="button" class="ms-2 rounded btn"
+                            style="background-color: #3FB8DE;color: white;">Upload</button>
                         </div>
                       </div>
                       <div class="row col-7 mb-3">
@@ -530,16 +554,18 @@
                           style="background-color: gray;"></button>
                       </div>
                       <div class="row col-7 mb-3">
-                        <button (click)="addInputField2()" type="button" class="btn btn-primary ms-2"
-                          style="width: 4rem;">Add</button>
+                        <button (click)="addInputField2()" type="button" class="btn ms-2"
+                          style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                       </div>
                     </mat-expansion-panel>
                   </div>
-                  <button (click)="addForm()" class="btn btn-primary mb-3" style="width: 3rem;"><i
+                  <button (click)="addForm()" class="btn mb-3"
+                    style="width: 3rem;background-color: #3FB8DE;color: white;"><i
                       class="bi bi-plus-circle"></i></button><br>
                   <div class="d-flex justify-content-end">
-                    <button mat-button matStepperPrevious class="border">Back</button>
-                    <button mat-button matStepperNext style="background-color: #3FB8DE;" class="ms-2">Next</button>
+                    <button mat-button matStepperPrevious class="border">Previous</button>
+                    <button mat-button matStepperNext style="background-color: #3FB8DE;color: white;"
+                      class="ms-2">Next</button>
                   </div>
 
                 </form>
@@ -551,524 +577,675 @@
             <mat-accordion>
               <mat-expansion-panel [expanded]="isPanel1Expanded" (opened)="togglePanel1()" (closed)="togglePanel1()">
                 <mat-expansion-panel-header>
-                  <mat-panel-title>Left over Between LPS and 4(1)</mat-panel-title>
+                  <mat-panel-title class="fw-bold">Left over Between LPS and 4(1)</mat-panel-title>
                 </mat-expansion-panel-header>
 
                 <form [formGroup]="awardInfoFormGroup">
                   <ng-template matStepLabel>Left over</ng-template>
                   <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" value="" />
+                    <div class="col-5">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:<span
+                          style="color: red;">*</span></label>
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:<span
+                          style="color: red;">*</span></label>
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-2 position-relative">
+                      <button (click)="addLeftForm1()" class="btn position-absolute bottom-0 end-0"
+                        style="width: 3rem;background-color: #3FB8DE;color: white;"><i
+                          class="bi bi-plus-circle"></i></button>
                     </div>
                   </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
                 </form>
+
+                <form [formGroup]="awardInfoFormGroup" *ngFor="let leftForm1 of leftForms1; let i = index">
+                  <div class="row mb-3">
+                    <div class="col-5">
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-2 position-relative">
+                      <div class="row d-flex justify-content-between">
+                        <button class=" col-5 btn"
+                          style="width: 3rem;background-color: #3FB8DE;color: white;">Save</button>
+                        <button (click)="removeLeftForm1(i)" class="btn"
+                          style="width: 3rem;background-color: red;color: white;"><i
+                            class="bi bi-x-circle"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
               </mat-expansion-panel>
 
               <mat-expansion-panel [expanded]="isPanel2Expanded" (opened)="togglePanel2()" (closed)="togglePanel2()">
                 <mat-expansion-panel-header>
-                  <mat-panel-title>Left over Between 4(1) and 6DD</mat-panel-title>
+                  <mat-panel-title class="fw-bold">Left over Between 4(1) and 6DD</mat-panel-title>
                 </mat-expansion-panel-header>
 
                 <form [formGroup]="awardInfoFormGroup">
-                  <ng-template matStepLabel>Left over</ng-template>
                   <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" value="" />
+                    <div class="col-5">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:<span
+                          style="color: red;">*</span></label>
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:<span
+                          style="color: red;">*</span></label>
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-2 position-relative">
+                      <button (click)="addLeftForm2()" class="btn position-absolute bottom-0 end-0"
+                        style="width: 3rem;background-color: #3FB8DE;color: white;"><i
+                          class="bi bi-plus-circle"></i></button>
                     </div>
                   </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-
                 </form>
+
+                <form [formGroup]="awardInfoFormGroup" *ngFor="let leftForm2 of leftForms2; let i = index">
+                  <div class="row mb-3">
+                    <div class="col-5">
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-2 position-relative">
+                      <div class="row d-flex justify-content-between">
+                        <button class=" col-5 btn"
+                          style="width: 3rem;background-color: #3FB8DE;color: white;">Save</button>
+                        <button (click)="removeLeftForm2(i)" class="btn"
+                          style="width: 3rem;background-color: red;color: white;"><i
+                            class="bi bi-x-circle"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
               </mat-expansion-panel>
-
-
 
               <mat-expansion-panel [expanded]="isPanel3Expanded" (opened)="togglePanel3()" (closed)="togglePanel3()">
                 <mat-expansion-panel-header>
-                  <mat-panel-title>Left over Between 6DD and Award</mat-panel-title>
+                  <mat-panel-title class="fw-bold">Left over Between 6DD and Award</mat-panel-title>
                 </mat-expansion-panel-header>
 
                 <form [formGroup]="awardInfoFormGroup">
-                  <ng-template matStepLabel>Left over</ng-template>
                   <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" value="" />
+                    <div class="col-5">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:<span
+                          style="color: red;">*</span></label>
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:<span
+                          style="color: red;">*</span></label>
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-2 position-relative">
+                      <button (click)="addLeftForm3()" class="btn position-absolute bottom-0 end-0"
+                        style="width: 3rem;background-color: #3FB8DE;color: white;"><i
+                          class="bi bi-plus-circle"></i></button>
                     </div>
                   </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
                 </form>
+
+                <form [formGroup]="awardInfoFormGroup" *ngFor="let leftForm3 of leftForms3; let i = index">
+                  <div class="row mb-3">
+                    <div class="col-5">
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-2 position-relative">
+                      <div class="row d-flex justify-content-between">
+                        <button class=" col-5 btn"
+                          style="width: 3rem;background-color: #3FB8DE;color: white;">Save</button>
+                        <button (click)="removeLeftForm3(i)" class="btn"
+                          style="width: 3rem;background-color: red;color: white;"><i
+                            class="bi bi-x-circle"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
               </mat-expansion-panel>
             </mat-accordion><br>
             <div class="d-flex justify-content-end">
-              <button mat-button matStepperPrevious class="border">Back</button>
-              <button mat-button matStepperNext style="background-color: #3FB8DE;" class="ms-2">Next</button>
+              <button mat-button matStepperPrevious class="border">Previous</button>
+              <button mat-button matStepperNext style="background-color: #3FB8DE;color: white;"
+                class="ms-2">Next</button>
             </div>
           </mat-step>
           <mat-step [stepControl]="awardInfoFormGroup">
             <mat-accordion>
               <mat-expansion-panel [expanded]="isPanel4Expanded" (opened)="togglePanel4()" (closed)="togglePanel4()">
                 <mat-expansion-panel-header>
-                  <mat-panel-title>Award Information</mat-panel-title>
+                  <mat-panel-title class="fw-bold fs-5">Award Information</mat-panel-title>
                 </mat-expansion-panel-header>
 
                 <form [formGroup]="awardInfoFormGroup">
                   <ng-template matStepLabel>Award Information</ng-template>
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Number:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Date:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent(in acres):</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-
-                    <div class="col-sm-10">
-                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Boundary PDF File:</label>
-                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                  <div class="row d-flex justify-content-center">
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Number:<span
+                          style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
                     </div>
 
-
-                  </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Notified Person:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Date:<span
+                          style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Direct
-                      Payment:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:<span
+                          style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Revenue
-                      Deposit:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent (in acres):<span
+                          style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Civil Court
-                      Deposit:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
+                    <div class="row col-6 mb-3">
+                      <label class="col-form-label" style="font-weight: bold">Boundary PDF File:<span
+                          style="color: red;">*</span></label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-                      <label class="col-sm-9 col-form-label" style="font-weight: bold;color:red">Possession Taken
-                        Over:</label>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Notified Person:<span
+                          style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
                     </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
 
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent (in acres):</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Award Amount_Direct
+                        Payment:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Revenue
+                        Deposit:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Award Amount_Civil Court
+                        Deposit:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
 
                     </div>
                   </div>
 
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Scheme Implemented_Survey
-                      Numbers:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
+                  <div class="row mb-3 col-6">
+                    <div class="col-sm-10 p-0">
+                      <label class="col-sm-9 col-form-label fs-5 ps-0" style="font-weight: bold;">Possession
+                        Taken Over</label>
                     </div>
                   </div>
 
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Scheme Implemented_Extent (in
-                      acres):</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent cannot be utilized for
-                      Scheme Implemented_Survey Numbers:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent cannot be utilized for
-                      Scheme Implemented_Extent (in acres):</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered by Court Case(in
-                      acres)</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">court case - Legal Proceedings
-                      Status:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Court Case - Document:</label>
-                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                  <div class="row d-flex justify-content-center">
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:<span
+                          style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
                     </div>
 
-                  </div>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent (in acres):<span
+                          style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
 
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under Want of
-                      approach road:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Want of approach road - Legal
-                      Proceedings Status:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Want of approach road -
-                        Document:</label>
-                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                      </div>
                     </div>
 
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under
-                      Encroachment:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment - Legal Proceedings
-                      Status:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment -
-                        Document:</label>
-                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Scheme Implemented_Survey
+                        Numbers:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
                     </div>
 
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under
-                      Scattered:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Scheme Implemented_Extent (in
+                        acres):<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
 
+                      </div>
                     </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Scattered - Legal Proceedings
-                      Status:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Scattered - Document:</label>
-                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent cannot be utilized for
+                        Scheme Implemented_Survey Numbers:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
                     </div>
 
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under
-                      Quashed:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Legal Proceedings
-                      Status:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent cannot be utilized for
+                        Scheme Implemented_Extent (in acres):<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
 
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Document:</label>
-                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                      </div>
+                    </div>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered by Court Case(in
+                        acres):<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+
+                      </div>
                     </div>
 
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under
-                      Reconveyed:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Reconveyed - Legal Proceedings
-                      Status:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Reconveyed - Document:</label>
-                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Court case - Legal Proceedings
+                        Status:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
                     </div>
 
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under NOC
-                      Issued:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">NOC Issued - Legal Proceedings
-                      Status:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">NOC Issued - Document:</label>
-                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    <div class="row col-6 mb-3">
+                      <label class="col-form-label" style="font-weight: bold">Boundary PDF File:<span
+                          style="color: red;">*</span></label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
+                      </div>
                     </div>
 
-                  </div>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under Want of
+                        approach road:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Want of approach road - Legal
+                        Proceedings Status:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
 
-                  <!-- <div class="row mb-3">
+                    <div class="row col-6 mb-3">
+                      <label class="col-form-label" style="font-weight: bold">Boundary PDF File:<span
+                          style="color: red;">*</span></label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
+                      </div>
+                    </div>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under
+                        Encroachment:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment - Legal Proceedings
+                        Status:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row col-6 mb-3">
+                      <label class="col-form-label" style="font-weight: bold">Boundary PDF File:<span
+                          style="color: red;">*</span></label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under
+                        Scattered:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+
+                      </div>
+                    </div>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Scattered - Legal Proceedings
+                        Status:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row col-6 mb-3">
+                      <label class="col-form-label" style="font-weight: bold">Boundary PDF File:<span
+                          style="color: red;">*</span></label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under
+                        Quashed:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Legal Proceedings
+                        Status:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row col-6 mb-3">
+                      <label class="col-form-label" style="font-weight: bold">Boundary PDF File:<span
+                          style="color: red;">*</span></label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under
+                        Reconveyed:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Reconveyed - Legal Proceedings
+                        Status:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row col-6 mb-3">
+                      <label class="col-form-label" style="font-weight: bold">Boundary PDF File:<span
+                          style="color: red;">*</span></label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent covered under NOC
+                        Issued:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">NOC Issued - Legal Proceedings
+                        Status:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row col-6 mb-3">
+                      <label class="col-form-label" style="font-weight: bold">Boundary PDF File:<span
+                          style="color: red;">*</span></label>
+                      <div class="input-group d-flex align-items-baseline">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
+                      </div>
+                    </div>
+
+                    <!-- <div class="row mb-3">
         <div class="col-sm-10">
           <label class="col-sm-9 col-form-label" style="font-weight: bold;color:blue">Extent available for scheme implementation:</label>
         </div>
       </div> -->
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent available for scheme
-                      implementation_Survey Numbers:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent available for scheme
+                        implementation_Survey Numbers:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent available for scheme
+                        implementation_Extent (in acres):<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold"></label>
+                      <div class="col-sm-10">
+
+                      </div>
                     </div>
                   </div>
 
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent available for scheme
-                      implementation_Extent (in acres):</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
 
-
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-                      <label class="col-sm-9 col-form-label" style="font-weight: bold;color:red">Possession Not Handed
+                  <div class="row mb-3 col-6">
+                    <div class="col-sm-10 p-0">
+                      <label class="col-sm-9 col-form-label fs-5 ps-0" style="font-weight: bold;">Possession Not Handed
                         Over:</label>
                     </div>
                   </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
 
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent (in acres):</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered by court case(in
-                      acres):</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">court case - Legal Proceedings
-                      Status:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Court Case - Document:</label>
-                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                  <div class="row d-flex justify-content-center">
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey Numbers:<span
+                          style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
                     </div>
 
-                  </div>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent (in acres):<span
+                          style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
 
-
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under
-                      encroachment(in acres):</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment - Legal Proceedings
-                      Status:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-
-                    <div class="col-sm-10">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment -
-                        Document:</label>
-                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                      </div>
                     </div>
 
-                  </div>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered by court case(in
+                        acres):<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
 
-
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under quashed(in
-                      acres):</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Legal Proceedings
-                      Status:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Document:</label>
-
-                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                      </div>
                     </div>
 
-                  </div>
-
-
-
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under Without
-                      encumbrance(in acres):</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
-
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Court case - Legal Proceedings
+                        Status:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="row mb-3">
-                    <label class="col-sm-10 col-form-label" style="font-weight: bold">Without encumbrance - Legal
-                      Proceedings Status:</label>
-                    <div class="col-sm-10">
-                      <input matInput type="text" class="form-control" value="" />
+                    <div class="row col-6 mb-3">
+                      <label class="col-form-label" style="font-weight: bold">Boundary PDF File:<span
+                          style="color: red;">*</span></label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Without encumbrance -
-                        Document:</label>
 
-                      <a target="_blank" href="#"><i class="bi bi-download" style="color: red;font-size: 32px;"></i></a>
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under
+                        encroachment(in acres):<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Encroachment - Legal Proceedings
+                        Status:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row col-6 mb-3">
+                      <label class="col-form-label" style="font-weight: bold">Boundary PDF File:<span
+                          style="color: red;">*</span></label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under quashed(in
+                        acres):<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Quashed - Legal Proceedings
+                        Status:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row col-6 mb-3">
+                      <label class="col-form-label" style="font-weight: bold">Boundary PDF File:<span
+                          style="color: red;">*</span></label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
+                      </div>
+                    </div>
+
+
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Extent covered under Without
+                        encumbrance(in acres):<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+
+                      </div>
+                    </div>
+
+                    <div class="row mb-3 col-6">
+                      <label class="col-sm-10 col-form-label" style="font-weight: bold">Without encumbrance - Legal
+                        Proceedings Status:<span style="color: red;">*</span></label>
+                      <div class="col-sm-10">
+                        <input matInput type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+
+                    <div class="row col-6 mb-3">
+                      <label class="col-form-label" style="font-weight: bold">Boundary PDF File:<span
+                          style="color: red;">*</span></label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button type="button" class="ms-2 rounded btn"
+                          style="background-color: #3FB8DE;color: white;">Upload</button>
+                      </div>
                     </div>
 
                   </div>
@@ -1077,7 +1254,8 @@
               </mat-expansion-panel>
             </mat-accordion><br>
             <div class="d-flex justify-content-end">
-              <button mat-button matStepperPrevious class="border">Back</button>
+              <button mat-button matStepperPrevious class="border">Previous</button>
+              <button mat-button style="background-color: #3FB8DE;color: white;" class="ms-2">Submit</button>
             </div>
           </mat-step>
 
