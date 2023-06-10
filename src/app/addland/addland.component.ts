@@ -67,116 +67,145 @@ export class AddlandComponent implements OnInit {
   }
 
 
-  panelOpenState = false;   // mat expansion panel
+  panelOpenState = false;   // mat expansion panel in Lps
 
-  fields: any[] = [];
+  // Lps input field - start
+  lpsFields: any[] = [];
 
-  addInputField() {
-    const newIndex = this.fields.length + 1;
-    const newField = { index: newIndex, value: '' };
-    this.fields.push(newField);
+  addLpsField() {
+    const newLpsField = 'New Lps Field';
+    this.lpsFields.push(newLpsField);
   }
 
-  removeInputField(field: any) {
-    const index = this.fields.indexOf(field);
-    if (index !== -1) {
-      this.fields.splice(index, 1);
-    }
+  removeLpsField(index: number) {
+    this.lpsFields.splice(index, 1);
+  }
+  // Lps input field - end
+
+  // Lps form addition - start
+  lpsForms: any[] = [];
+
+  addLpsForm() {
+    const newLpsIndex = this.lpsForms.length + 2;
+    const newLpsForm = { index: newLpsIndex, value: '' };
+    this.lpsForms.push(newLpsForm);
   }
 
-  fields2: any[] = [];
+  lpsFields2: any[] = [];
 
-  addInputField2() {
-    const newIndex2 = this.fields2.length + 1;
-    const newField2 = { index2: newIndex2, value: '' };
-    this.fields2.push(newField2);
+  addLpsField2() {
+    const newLpsField2 = 'New Lps Field2';
+    this.lpsFields2.push(newLpsField2);
   }
 
-  removeInputField2(field2: any) {
-    const index2 = this.fields2.indexOf(field2);
-    if (index2 !== -1) {
-      this.fields2.splice(index2, 1);
-    }
+  removeLpsField2(index: number) {
+    this.lpsFields2.splice(index, 1);
+  }
+  // Lps form addition - end
+
+
+  // Fmb input field - start
+  fmbFields: any[] = [];
+
+  addFmbField() {
+    const newFmbField = 'New Fmb Field';
+    this.fmbFields.push(newFmbField);
   }
 
+  removeFmbField(index: number) {
+    this.fmbFields.splice(index, 1);
+  }
+  // Fmb input field - end
 
+  // Fmb form addition - start
+  fmbForms: any[] = [];
 
-  fieldsFmb: any[] = [];
-
-  addInputFieldFmb() {
-    const newIndexFmb = this.fieldsFmb.length + 1;
-    const newFieldFmb = { index: newIndexFmb, value: '' };
-    this.fieldsFmb.push(newFieldFmb);
+  addFmbForm() {
+    const newFmbIndex = this.fmbForms.length + 2;
+    const newFmbForm = { index: newFmbIndex, value: '' };
+    this.fmbForms.push(newFmbForm);
   }
 
-  removeInputFieldFmb(fieldFmb: any) {
-    const indexFmb = this.fieldsFmb.indexOf(fieldFmb);
-    if (indexFmb !== -1) {
-      this.fieldsFmb.splice(indexFmb, 1);
-    }
+  fmbFields2: any[] = [];
+
+  addFmbField2() {
+    const newFmbField2 = 'New Fmb Field2';
+    this.fmbFields2.push(newFmbField2);
   }
 
-  fieldsFour: any[] = [];
+  removeFmbField2(index: number) {
+    this.fmbFields2.splice(index, 1);
+  }
+  // Fmb form addition - end
 
-  addInputFieldFour() {
-    const newIndexFour = this.fieldsFour.length + 1;
-    const newFieldFour = { index: newIndexFour, value: '' };
-    this.fieldsFour.push(newFieldFour);
+  // Four input field - start
+  fourFields: any[] = [];
+
+  addFourField() {
+    const newFourField = 'New Four Field';
+    this.fourFields.push(newFourField);
   }
 
-  removeInputFieldFour(fieldFour: any) {
-    const indexFour = this.fieldsFour.indexOf(fieldFour);
-    if (indexFour !== -1) {
-      this.fieldsFour.splice(indexFour, 1);
-    }
+  removeFourField(index: number) {
+    this.fourFields.splice(index, 1);
+  }
+  // Four input field - end
+
+  // Four form addition - start
+  fourForms: any[] = [];
+
+  addFourForm() {
+    const newFourIndex = this.fourForms.length + 2;
+    const newFourForm = { index: newFourIndex, value: '' };
+    this.fourForms.push(newFourForm);
   }
 
-  fieldsDD: any[] = [];
+  fourFields2: any[] = [];
 
-  addInputFieldDD() {
-    const newIndexDD = this.fieldsDD.length + 1;
-    const newFieldDD = { index: newIndexDD, value: '' };
-    this.fieldsDD.push(newFieldDD);
+  addFourField2() {
+    const newFourField2 = 'New Four Field2';
+    this.fourFields2.push(newFourField2);
   }
 
-  removeInputFieldDD(fieldDD: any) {
-    const indexDD = this.fieldsDD.indexOf(fieldDD);
-    if (indexDD !== -1) {
-      this.fieldsDD.splice(indexDD, 1);
-    }
+  removeFourField2(index: number) {
+    this.fourFields2.splice(index, 1);
+  }
+  // Four form addition - end
+
+
+  // Dd input field - start
+  ddFields: any[] = [];
+
+  addDdField() {
+    const newDdField = 'New Dd Field';
+    this.ddFields.push(newDdField);
   }
 
-  forms: any[] = [];
+  removeDdField(index: number) {
+    this.ddFields.splice(index, 1);
+  }
+  // Dd input field - end
 
-  addForm() {
-    const newIndex2 = this.forms.length + 2;
-    const newForm = { index: newIndex2, value: '' };
-    this.forms.push(newForm);
+  // Dd form addition - start
+  ddForms: any[] = [];
+
+  addDdForm() {
+    const newDdIndex = this.ddForms.length + 2;
+    const newDdForm = { index: newDdIndex, value: '' };
+    this.ddForms.push(newDdForm);
   }
 
-  formsFmb: any[] = [];
+  ddFields2: any[] = [];
 
-  addFormFmb() {
-    const newIndex2Fmb = this.formsFmb.length + 2;
-    const newFormFmb = { index: newIndex2Fmb, value: '' };
-    this.forms.push(newFormFmb);
+  addDdField2() {
+    const newDdField2 = 'New Dd Field2';
+    this.ddFields2.push(newDdField2);
   }
 
-  formsFour: any[] = [];
-
-  addFormFour() {
-    const newIndex2Four = this.formsFour.length + 2;
-    const newFormFour = { index: newIndex2Four, value: '' };
-    this.formsFour.push(newFormFour);
+  removeDdField2(index: number) {
+    this.ddFields2.splice(index, 1);
   }
-
-  formsDD: any[] = [];
-
-  addFormDD() {
-    const newIndex2DD = this.formsDD.length + 2;
-    const newFormDD = { index: newIndex2DD, value: '' };
-    this.formsDD.push(newFormDD);
-  }
+  // Dd form addition - end
 
 
   //left over add-start
