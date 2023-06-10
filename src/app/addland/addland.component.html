@@ -147,27 +147,25 @@
                       <input type="text" class="form-control" id="surveyno">
                     </div>
                   </div>
-                  <div *ngFor="let field of fields"
+                  <div *ngFor="let lpsField of lpsFields; let i=index"
                     class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                    <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
-                      style="width: 45%;">
-                    <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
-                      style="width: 45%;">
-                    <button (click)="removeInputField(field)" class="btn-close" aria-label="Close"
-                      style="background-color: gray;"></button>
+                    <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                    <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                    <button (click)="removeLpsField(lpsField)" class="btn-close" aria-label="Close"
+                      style="background-color: red;"></button>
                   </div>
                   <div class="row col-7 mb-3">
-                    <button (click)="addInputField()" type="button" class="btn ms-2"
+                    <button (click)="addLpsField()" type="button" class="btn ms-2"
                       style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                   </div>
                 </mat-expansion-panel>
 
 
-                <div *ngFor="let form of forms" [(ngModel)]="form.value" class="mb-3">
+                <div *ngFor="let lpsForm of lpsForms; let i=index" [(ngModel)]="lpsForm.value" class="mb-3">
                   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                        <label class="col-6 col-form-label" style="font-weight: bold">File {{form.index}}</label>
+                        <label class="col-6 col-form-label" style="font-weight: bold">File {{lpsForm.index}}</label>
                       </mat-panel-title>
                     </mat-expansion-panel-header>
                     <div class="row col-7 mb-3">
@@ -196,22 +194,20 @@
                         <input type="text" class="form-control" id="surveyno">
                       </div>
                     </div>
-                    <div *ngFor="let field2 of fields2"
+                    <div *ngFor="let lpsField2 of lpsFields2; let i=index"
                       class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                      <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
-                        style="width: 45%;">
-                      <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
-                        style="width: 45%;">
-                      <button (click)="removeInputField2(field2)" class="btn-close" aria-label="Close"
-                        style="background-color: gray;"></button>
+                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                      <button (click)="removeLpsField2(lpsField2)" class="btn-close" aria-label="Close"
+                        style="background-color: red;"></button>
                     </div>
                     <div class="row col-7 mb-3">
-                      <button (click)="addInputField2()" type="button" class="btn ms-2"
+                      <button (click)="addLpsField2()" type="button" class="btn ms-2"
                         style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                     </div>
                   </mat-expansion-panel>
                 </div>
-                <button (click)="addForm()" class="btn mb-3"
+                <button (click)="addLpsForm()" class="btn mb-3"
                   style="width: 3rem;background-color: #3FB8DE;color: white;"><i
                     class="bi bi-plus-circle"></i></button><br>
                 <div class="d-flex justify-content-end">
@@ -262,27 +258,25 @@
                         <input type="text" class="form-control" id="surveyno">
                       </div>
                     </div>
-                    <div *ngFor="let field of fields"
+                    <div *ngFor="let fmbField of fmbFields; let i=index"
                       class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                      <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
-                        style="width: 45%;">
-                      <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
-                        style="width: 45%;">
-                      <button (click)="removeInputField(field)" class="btn-close" aria-label="Close"
-                        style="background-color: gray;"></button>
+                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                      <button (click)="removeFmbField(fmbField)" class="btn-close" aria-label="Close"
+                        style="background-color: red;"></button>
                     </div>
                     <div class="row col-7 mb-3">
-                      <button (click)="addInputField()" type="button" class="btn ms-2"
-                        style="width: 4rem;background-color: #3FB8DE; color: white;">Add</button>
+                      <button (click)="addFmbField()" type="button" class="btn ms-2"
+                        style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                     </div>
                   </mat-expansion-panel>
 
 
-                  <div *ngFor="let form of forms" [(ngModel)]="form.value" class="mb-3">
+                  <div *ngFor="let fmbForm of fmbForms; let i=index" [(ngModel)]="fmbForm.value" class="mb-3">
                     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                       <mat-expansion-panel-header>
                         <mat-panel-title>
-                          <label class="col-6 col-form-label" style="font-weight: bold">File {{form.index}}</label>
+                          <label class="col-6 col-form-label" style="font-weight: bold">File {{fmbForm.index}}</label>
                         </mat-panel-title>
                       </mat-expansion-panel-header>
                       <div class="row col-7 mb-3">
@@ -311,22 +305,20 @@
                           <input type="text" class="form-control" id="surveyno">
                         </div>
                       </div>
-                      <div *ngFor="let field2 of fields2"
+                      <div *ngFor="let fmbField2 of fmbFields2; let i=index"
                         class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                        <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
-                          style="width: 45%;">
-                        <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
-                          style="width: 45%;">
-                        <button (click)="removeInputField2(field2)" class="btn-close" aria-label="Close"
-                          style="background-color: gray;"></button>
+                        <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                        <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                        <button (click)="removeFmbField2(fmbField2)" class="btn-close" aria-label="Close"
+                          style="background-color: red;"></button>
                       </div>
                       <div class="row col-7 mb-3">
-                        <button (click)="addInputField2()" type="button" class="btn ms-2"
-                          style="width: 4rem;background-color: #3FB8DE;">Add</button>
+                        <button (click)="addFmbField2()" type="button" class="btn ms-2"
+                          style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                       </div>
                     </mat-expansion-panel>
                   </div>
-                  <button (click)="addForm()" class="btn mb-3"
+                  <button (click)="addFmbForm()" class="btn mb-3"
                     style="width: 3rem;background-color: #3FB8DE;color: white;"><i
                       class="bi bi-plus-circle"></i></button><br>
                   <div class="d-flex justify-content-end">
@@ -379,27 +371,25 @@
                         <input type="text" class="form-control" id="surveyno">
                       </div>
                     </div>
-                    <div *ngFor="let field of fields"
+                    <div *ngFor="let fourField of fourFields; let i=index"
                       class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                      <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
-                        style="width: 45%;">
-                      <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
-                        style="width: 45%;">
-                      <button (click)="removeInputField(field)" class="btn-close" aria-label="Close"
-                        style="background-color: gray;"></button>
+                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                      <button (click)="removeFourField(fourField)" class="btn-close" aria-label="Close"
+                        style="background-color: red;"></button>
                     </div>
                     <div class="row col-7 mb-3">
-                      <button (click)="addInputField()" type="button" class="btn ms-2"
+                      <button (click)="addFourField()" type="button" class="btn ms-2"
                         style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                     </div>
                   </mat-expansion-panel>
 
 
-                  <div *ngFor="let form of forms" [(ngModel)]="form.value" class="mb-3">
+                  <div *ngFor="let fourForm of fourForms; let i=index" [(ngModel)]="fourForm.value" class="mb-3">
                     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                       <mat-expansion-panel-header>
                         <mat-panel-title>
-                          <label class="col-6 col-form-label" style="font-weight: bold">File {{form.index}}</label>
+                          <label class="col-6 col-form-label" style="font-weight: bold">File {{fourForm.index}}</label>
                         </mat-panel-title>
                       </mat-expansion-panel-header>
                       <div class="row col-7 mb-3">
@@ -428,22 +418,20 @@
                           <input type="text" class="form-control" id="surveyno">
                         </div>
                       </div>
-                      <div *ngFor="let field2 of fields2"
+                      <div *ngFor="let fourField2 of fourFields2; let i=index"
                         class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                        <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
-                          style="width: 45%;">
-                        <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
-                          style="width: 45%;">
-                        <button (click)="removeInputField2(field2)" class="btn-close" aria-label="Close"
-                          style="background-color: gray;"></button>
+                        <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                        <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                        <button (click)="removeFourField2(fourField2)" class="btn-close" aria-label="Close"
+                          style="background-color: red;"></button>
                       </div>
                       <div class="row col-7 mb-3">
-                        <button (click)="addInputField2()" type="button" class="btn btn-primary ms-2"
-                          style="width: 4rem;">Add</button>
+                        <button (click)="addFourField2()" type="button" class="btn ms-2"
+                          style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                       </div>
                     </mat-expansion-panel>
                   </div>
-                  <button (click)="addForm()" class="btn mb-3"
+                  <button (click)="addFourForm()" class="btn mb-3"
                     style="width: 3rem;background-color: #3FB8DE;color: white;"><i
                       class="bi bi-plus-circle"></i></button><br>
                   <div class="d-flex justify-content-end">
@@ -495,27 +483,25 @@
                         <input type="text" class="form-control" id="surveyno">
                       </div>
                     </div>
-                    <div *ngFor="let field of fields"
+                    <div *ngFor="let ddField of ddFields; let i=index"
                       class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                      <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
-                        style="width: 45%;">
-                      <input [(ngModel)]="field.value" placeholder="" type="text" class="form-control"
-                        style="width: 45%;">
-                      <button (click)="removeInputField(field)" class="btn-close" aria-label="Close"
-                        style="background-color: gray;"></button>
+                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                      <button (click)="removeDdField(ddField)" class="btn-close" aria-label="Close"
+                        style="background-color: red;"></button>
                     </div>
                     <div class="row col-7 mb-3">
-                      <button (click)="addInputField()" type="button" class="btn ms-2"
+                      <button (click)="addDdField()" type="button" class="btn ms-2"
                         style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                     </div>
                   </mat-expansion-panel>
 
 
-                  <div *ngFor="let form of forms" [(ngModel)]="form.value" class="mb-3">
+                  <div *ngFor="let ddForm of ddForms; let i=index" [(ngModel)]="ddForm.value" class="mb-3">
                     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                       <mat-expansion-panel-header>
                         <mat-panel-title>
-                          <label class="col-6 col-form-label" style="font-weight: bold">File {{form.index}}</label>
+                          <label class="col-6 col-form-label" style="font-weight: bold">File {{ddForm.index}}</label>
                         </mat-panel-title>
                       </mat-expansion-panel-header>
                       <div class="row col-7 mb-3">
@@ -544,22 +530,20 @@
                           <input type="text" class="form-control" id="surveyno">
                         </div>
                       </div>
-                      <div *ngFor="let field2 of fields2"
+                      <div *ngFor="let ddField2 of ddFields2; let i=index"
                         class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                        <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
-                          style="width: 45%;">
-                        <input [(ngModel)]="field2.value" placeholder="" type="text" class="form-control"
-                          style="width: 45%;">
-                        <button (click)="removeInputField2(field2)" class="btn-close" aria-label="Close"
-                          style="background-color: gray;"></button>
+                        <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                        <input placeholder="" type="text" class="form-control" style="width: 45%;">
+                        <button (click)="removeDdField2(ddField2)" class="btn-close" aria-label="Close"
+                          style="background-color: red;"></button>
                       </div>
                       <div class="row col-7 mb-3">
-                        <button (click)="addInputField2()" type="button" class="btn ms-2"
+                        <button (click)="addDdField2()" type="button" class="btn ms-2"
                           style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
                       </div>
                     </mat-expansion-panel>
                   </div>
-                  <button (click)="addForm()" class="btn mb-3"
+                  <button (click)="addDdForm()" class="btn mb-3"
                     style="width: 3rem;background-color: #3FB8DE;color: white;"><i
                       class="bi bi-plus-circle"></i></button><br>
                   <div class="d-flex justify-content-end">
