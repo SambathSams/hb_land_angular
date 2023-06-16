@@ -29,14 +29,14 @@ export class LanddataService {
   getDataforDivcircity(): Observable<any>  {
     const types = sessionStorage.getItem('type')! ;
     const values = sessionStorage.getItem('value')!;
-    return this.http.get(`http://localhost:8080/landdigitdata/GetData`, { params: { types: types, values:values } })
+    return this.http.post(`http://localhost:8080/GetData`, { types: types, values:values })
     .pipe();
   }
 
   getCountDataforDivcircity(): Observable<any>  {
     const types = sessionStorage.getItem('type')! ;
     const values = sessionStorage.getItem('value')!;
-    return this.http.get(`http://localhost:8080/landdigitdata/GetDataCount`, { params: { types: types, values:values } })
+    return this.http.get(`http://localhost:8080/GetDataCount`, { params: { types: types, values:values } })
     .pipe();
   }
 

@@ -17,7 +17,6 @@
 
   </section>
 </section>
-<br>
 <main id="main" class="main mx-auto">
   <div class="row">
 
@@ -39,8 +38,7 @@
                     Division:<span style="color: red;">*</span></label>
 
                   <div class="col-sm-10">
-                    <select class="form-select" aria-label="type of division">
-                      <option selected>Select</option>
+                    <select formControlName="citynrural" class="form-select" aria-label="type of division">
                       <option value="city">City</option>
                       <option value="rural">Rural</option>
                     </select>
@@ -53,8 +51,7 @@
                       style="color: red;">*</span></label>
 
                   <div class="col-sm-10">
-                    <select class="form-select" aria-label="name of the circle">
-                      <option selected>Select</option>
+                    <select formControlName="circle" class="form-select" aria-label="name of the circle">
                       <option value="city">Chennai</option>
                       <option value="rural">Trichy</option>
                       <option value="rural">Madurai</option>
@@ -66,8 +63,7 @@
                   <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Division:<span
                       style="color: red;">*</span></label>
                   <div class="col-sm-10">
-                    <select class="form-select" aria-label="name of the division">
-                      <option selected>Select</option>
+                    <select formControlName="division" class="form-select" aria-label="name of the division">
                       <option value="city">Anna Nagar</option>
                       <option value="rural">JJ Nagar</option>
                       <option value="rural">Besant Nagar</option>
@@ -79,8 +75,7 @@
                   <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Village:<span
                       style="color: red;">*</span></label>
                   <div class="col-sm-10">
-                    <select class="form-select" aria-label="name of the village">
-                      <option selected>Select</option>
+                    <select formControlName="village" class="form-select" aria-label="name of the village">
                       <option value="city">Ramapuram</option>
                       <option value="rural">Porur</option>
                       <option value="rural">Valasaravakkam</option>
@@ -92,7 +87,7 @@
                   <label class="col-sm-9 col-form-label" style="font-weight: bold">Name of the Land:<span
                       style="color: red;">*</span></label>
                   <div class="col-sm-10">
-                    <input matInput type="text" class="form-control" value="" />
+                    <input matInput type="text" formControlName="land_name" class="form-control" value="" />
                   </div>
                 </div>
 
@@ -101,7 +96,7 @@
                   <label class="col-sm-9 col-form-label" style="font-weight: bold">Geo Tagging:<span
                       style="color: red;">*</span></label>
                   <div class="col-sm-10">
-                    <input matInput type="text" class="form-control" value="" />
+                    <input matInput type="text" formControlName="geo_tagging_geo_fencing"  class="form-control" value="" />
                   </div>
                 </div>
               </div>
@@ -110,626 +105,310 @@
             </form>
           </mat-step>
 
-          <mat-step [stepControl]="contactInfoFormGroup">
-            <mat-accordion>
+            <mat-step [stepControl]="LPSFormGroup">
+              <mat-accordion>
+                <form [formGroup]="LPSFormGroup">
+                  <ng-template matStepLabel>LPS</ng-template>
+                
+                  <div formArrayName="expansionPanels">
+                    <mat-expansion-panel *ngFor="let panel of expansionPanelsArray.controls; let i = index">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <label class="col-6 col-form-label" style="font-weight: bold">File {{i + 1}}</label>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                
+                      <div [formGroup]="panel">
+                        <!-- File input field -->
+                        <div class="row col-7 mb-3">
+                          <div class="input-group">
+                            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+                            aria-label="Upload" (change)="onFileChange($event, i,'lps')">
+                                                    </div>
+                        </div>
+                
+                        <!-- Ref. No. input field -->
+                        <div class="row col-7 mb-3">
+                          <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="refno" formControlName="refNo">
+                          </div>
+                        </div>
+                
+                        <!-- Extent input field -->
+                        <div class="row col-7 mb-3">
+                          <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="extent" formControlName="extent">
+                          </div>
+                        </div>
+                
+                        <!-- Survey No. input field -->
+                        <div class="row col-7 mb-3">
+                          <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="surveyno" formControlName="surveyNo">
+                          </div>
+                        </div>
+                
+                        <!-- FormArray for repeated fields -->
+                        <div formArrayName="repeatedFields">
+                          <div *ngFor="let field of panel.get('repeatedFields').controls; let j = index" [formGroupName]="j"
+                            class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
+                            <input placeholder="" type="text" class="form-control" style="width: 45%;" formControlName="field1">
+                            <input placeholder="" type="text" class="form-control" style="width: 45%;" formControlName="field2">
+                            <button (click)="removeRepeatedField(i, j,'lps')" class="btn-close" aria-label="Close"
+                              style="background-color: red;"></button>
+                          </div>
+                        </div>
+                
+                        <!-- Add button for repeated fields -->
+                        <div class="row col-7 mb-3">
+                          <button (click)="addRepeatedField(i,'lps')" type="button" class="btn ms-2"
+                            style="width: auto;background-color: #3FB8DE;color: white;">Add</button>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="row col-7" style="margin-top: 5px;">
+                    <button (click)="addExpansionPanel()" type="button" class="btn ms-2"
+                      style="width: auto;background-color: #3FB8DE;color: white;">Add </button>
+                      <button *ngIf="expansionPanelsArray.length > 1" (click)="removeLastRepeatedField('lps')" type="button" class="btn ms-2"
+                      style="width: auto;background-color: red;color: white;">Remove</button>
+                  </div>
+                </form>
+                
+                
 
-              <form [formGroup]="contactInfoFormGroup">
-                <ng-template matStepLabel>LPS</ng-template>
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
+              </mat-accordion>
+            </mat-step>
+          
+
+          <mat-step [stepControl]="FMBFormGroup">
+              <mat-accordion>
+
+                <form [formGroup]="FMBFormGroup">
+                  <ng-template matStepLabel>FMB</ng-template>
+                
+                  <div formArrayName="expansionPanelsFMB">
+                    <mat-expansion-panel *ngFor="let panel of expansionPanelsArrayFMB.controls; let i = index">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <label class="col-6 col-form-label" style="font-weight: bold">File {{i + 1}}</label>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                
+                      <div [formGroup]="panel">
+                        <!-- File input field -->
+                        <div class="row col-7 mb-3">
+                          <div class="input-group">
+                            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+                            aria-label="Upload" (change)="onFileChange($event, i,'fmb')">
+                                                    </div>
+                        </div>
+                
+                        <!-- Ref. No. input field -->
+                        <div class="row col-7 mb-3">
+                          <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="refno" formControlName="refNo">
+                          </div>
+                        </div>
+                
+                        <!-- Extent input field -->
+                        <div class="row col-7 mb-3">
+                          <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="extent" formControlName="extent">
+                          </div>
+                        </div>
+                
+                        <!-- Survey No. input field -->
+                        <div class="row col-7 mb-3">
+                          <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="surveyno" formControlName="surveyNo">
+                          </div>
+                        </div>
+                
+                        <!-- FormArray for repeated fields -->
+                        <div formArrayName="repeatedFields">
+                          <div *ngFor="let field of panel.get('repeatedFields').controls; let j = index" [formGroupName]="j"
+                            class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
+                            <input placeholder="" type="text" class="form-control" style="width: 45%;" formControlName="field1">
+                            <input placeholder="" type="text" class="form-control" style="width: 45%;" formControlName="field2">
+                            <button (click)="removeRepeatedField(i, j,'fmb')" class="btn-close" aria-label="Close"
+                              style="background-color: red;"></button>
+                          </div>
+                        </div>
+                
+                        <!-- Add button for repeated fields -->
+                        <div class="row col-7 mb-3">
+                          <button (click)="addRepeatedField(i,'fmb')" type="button" class="btn ms-2"
+                            style="width: auto;background-color: #3FB8DE;color: white;">Add</button>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="row col-7" style="margin-top: 5px;">
+                    <button (click)="addExpansionPanelFMB()" type="button" class="btn ms-2"
+                      style="width: auto;background-color: #3FB8DE;color: white;">Add </button>
+                      <button *ngIf="expansionPanelsArrayFMB.length > 1" (click)="removeLastRepeatedField('fmb')" type="button" class="btn ms-2"
+                        style="width: auto;background-color: red;color: white;">Remove</button>
+                  </div>
+                </form>
+              </mat-accordion>
+
+          </mat-step>
+
+          <mat-step [stepControl]="fourOneFormGroup">
+            <form [formGroup]="fourOneFormGroup">
+              <ng-template matStepLabel>4(1)</ng-template>
+            
+              <div formArrayName="expansionPanels4">
+                <mat-expansion-panel *ngFor="let panel of expansionPanelsArray4.controls; let i = index">
                   <mat-expansion-panel-header>
                     <mat-panel-title>
-                      <label class="col-6 col-form-label" style="font-weight: bold">File 1</label>
+                      <label class="col-6 col-form-label" style="font-weight: bold">File {{i + 1}}</label>
                     </mat-panel-title>
                   </mat-expansion-panel-header>
-                  <div class="row col-7 mb-3">
-                    <div class="input-group">
-                      <input type="file" class="form-control" id="inputGroupFile04"
-                        aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                      <button type="button" class="ms-2 rounded btn"
-                        style="background-color: #3FB8DE;color: white;">Upload</button>
+            
+                  <div [formGroup]="panel">
+                    <!-- File input field -->
+                    <div class="row col-7 mb-3">
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+                        aria-label="Upload" (change)="onFileChange($event, i,'4(1)')">
+                                                </div>
                     </div>
-                  </div>
-                  <div class="row col-7 mb-3">
-                    <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="refno">
+            
+                    <!-- Ref. No. input field -->
+                    <div class="row col-7 mb-3">
+                      <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="refno" formControlName="refNo">
+                      </div>
                     </div>
-                  </div>
-                  <div class="row col-7 mb-3">
-                    <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="extent">
+            
+                    <!-- Extent input field -->
+                    <div class="row col-7 mb-3">
+                      <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="extent" formControlName="extent">
+                      </div>
                     </div>
-                  </div>
-                  <div class="row col-7 mb-3">
-                    <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="surveyno">
+            
+                    <!-- Survey No. input field -->
+                    <div class="row col-7 mb-3">
+                      <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="surveyno" formControlName="surveyNo">
+                      </div>
                     </div>
-                  </div>
-                  <div *ngFor="let lpsField of lpsFields; let i=index"
-                    class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                    <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                    <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                    <button (click)="removeLpsField(lpsField)" class="btn-close" aria-label="Close"
-                      style="background-color: red;"></button>
-                  </div>
-                  <div class="row col-7 mb-3">
-                    <button (click)="addLpsField()" type="button" class="btn ms-2"
-                      style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
+            
+                    <!-- FormArray for repeated fields -->
+                    <div formArrayName="repeatedFields">
+                      <div *ngFor="let field of panel.get('repeatedFields').controls; let j = index" [formGroupName]="j"
+                        class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
+                        <input placeholder="" type="text" class="form-control" style="width: 45%;" formControlName="field1">
+                        <input placeholder="" type="text" class="form-control" style="width: 45%;" formControlName="field2">
+                        <button (click)="removeRepeatedField(i, j,'4(1)')" class="btn-close" aria-label="Close"
+                          style="background-color: red;"></button>
+                      </div>
+                    </div>
+            
+                    <!-- Add button for repeated fields -->
+                    <div class="row col-7 mb-3">
+                      <button (click)="addRepeatedField(i,'4(1)')" type="button" class="btn ms-2"
+                        style="width: auto;background-color: #3FB8DE;color: white;">Add</button>
+                    </div>
                   </div>
                 </mat-expansion-panel>
-
-
-                <div *ngFor="let lpsForm of lpsForms; let i=index" [(ngModel)]="lpsForm.value" class="mb-3">
-                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                        <label class="col-6 col-form-label" style="font-weight: bold">File {{lpsForm.index}}</label>
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <div class="row col-7 mb-3">
-                      <div class="input-group">
-                        <input type="file" class="form-control" id="inputGroupFile04"
-                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                        <button type="button" class="ms-2 rounded btn"
-                          style="background-color: #3FB8DE;color: white;">Upload</button>
-                      </div>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="refno">
-                      </div>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="extent">
-                      </div>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="surveyno">
-                      </div>
-                    </div>
-                    <div *ngFor="let lpsField2 of lpsFields2; let i=index"
-                      class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                      <button (click)="removeLpsField2(lpsField2)" class="btn-close" aria-label="Close"
-                        style="background-color: red;"></button>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <button (click)="addLpsField2()" type="button" class="btn ms-2"
-                        style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
-                    </div>
-                  </mat-expansion-panel>
-                </div>
-                <button (click)="addLpsForm()" class="btn mb-3"
-                  style="width: 3rem;background-color: #3FB8DE;color: white;"><i
-                    class="bi bi-plus-circle"></i></button><br>
-                <div class="d-flex justify-content-end">
-                  <button mat-button matStepperPrevious class="border">Previous</button>
-                  <button mat-button matStepperNext style="background-color: #3FB8DE;color: white;"
-                    class="ms-2">Next</button>
-                </div>
-
-              </form>
-            </mat-accordion>
-          </mat-step>
-
-          <mat-step [stepControl]="contactInfoFormGroup">
-            <form [formGroup]="contactInfoFormGroup">
-              <ng-template matStepLabel>FMB</ng-template>
-              <mat-accordion>
-
-                <form [formGroup]="contactInfoFormGroup">
-                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                        <label class="col-6 col-form-label" style="font-weight: bold">File 1</label>
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <div class="row col-7 mb-3">
-                      <div class="input-group">
-                        <input type="file" class="form-control" id="inputGroupFile04"
-                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                        <button type="button" class="ms-2 rounded btn"
-                          style="background-color: #3FB8DE;color: white;">Upload</button>
-                      </div>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="refno">
-                      </div>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="extent">
-                      </div>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="surveyno">
-                      </div>
-                    </div>
-                    <div *ngFor="let fmbField of fmbFields; let i=index"
-                      class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                      <button (click)="removeFmbField(fmbField)" class="btn-close" aria-label="Close"
-                        style="background-color: red;"></button>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <button (click)="addFmbField()" type="button" class="btn ms-2"
-                        style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
-                    </div>
-                  </mat-expansion-panel>
-
-
-                  <div *ngFor="let fmbForm of fmbForms; let i=index" [(ngModel)]="fmbForm.value" class="mb-3">
-                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                      <mat-expansion-panel-header>
-                        <mat-panel-title>
-                          <label class="col-6 col-form-label" style="font-weight: bold">File {{fmbForm.index}}</label>
-                        </mat-panel-title>
-                      </mat-expansion-panel-header>
-                      <div class="row col-7 mb-3">
-                        <div class="input-group">
-                          <input type="file" class="form-control" id="inputGroupFile04"
-                            aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                          <button type="button" class="ms-2 rounded btn"
-                            style="background-color: #3FB8DE;color: white;">Upload</button>
-                        </div>
-                      </div>
-                      <div class="row col-7 mb-3">
-                        <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="refno">
-                        </div>
-                      </div>
-                      <div class="row col-7 mb-3">
-                        <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="extent">
-                        </div>
-                      </div>
-                      <div class="row col-7 mb-3">
-                        <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="surveyno">
-                        </div>
-                      </div>
-                      <div *ngFor="let fmbField2 of fmbFields2; let i=index"
-                        class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                        <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                        <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                        <button (click)="removeFmbField2(fmbField2)" class="btn-close" aria-label="Close"
-                          style="background-color: red;"></button>
-                      </div>
-                      <div class="row col-7 mb-3">
-                        <button (click)="addFmbField2()" type="button" class="btn ms-2"
-                          style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
-                      </div>
-                    </mat-expansion-panel>
-                  </div>
-                  <button (click)="addFmbForm()" class="btn mb-3"
-                    style="width: 3rem;background-color: #3FB8DE;color: white;"><i
-                      class="bi bi-plus-circle"></i></button><br>
-                  <div class="d-flex justify-content-end">
-                    <button mat-button matStepperPrevious class="border">Previous</button>
-                    <button mat-button matStepperNext style="background-color: #3FB8DE;color: white;"
-                      class="ms-2">Next</button>
-                  </div>
-
-                </form>
-              </mat-accordion>
-
+              </div>
+              <div class="row col-7" style="margin-top: 5px;">
+                <button (click)="addExpansionPanel4One()" type="button" class="btn ms-2"
+                  style="width: auto;background-color: #3FB8DE;color: white;">Add </button>
+                  <button *ngIf="expansionPanelsArray4.length > 1" (click)="removeLastRepeatedField('4(1)')" type="button" class="btn ms-2"
+                    style="width: auto;background-color: red;color: white;">Remove</button>
+              </div>
             </form>
           </mat-step>
 
-          <mat-step [stepControl]="contactInfoFormGroup">
-            <form [formGroup]="contactInfoFormGroup">
-              <ng-template matStepLabel>4(1)</ng-template>
-              <mat-accordion>
-
-                <form [formGroup]="contactInfoFormGroup">
-                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                        <label class="col-6 col-form-label" style="font-weight: bold">File 1</label>
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <div class="row col-7 mb-3">
-                      <div class="input-group">
-                        <input type="file" class="form-control" id="inputGroupFile04"
-                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                        <button type="button" class="ms-2 rounded btn"
-                          style="background-color: #3FB8DE;color: white;">Upload</button>
-                      </div>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="refno">
-                      </div>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="extent">
-                      </div>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="surveyno">
-                      </div>
-                    </div>
-                    <div *ngFor="let fourField of fourFields; let i=index"
-                      class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                      <button (click)="removeFourField(fourField)" class="btn-close" aria-label="Close"
-                        style="background-color: red;"></button>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <button (click)="addFourField()" type="button" class="btn ms-2"
-                        style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
-                    </div>
-                  </mat-expansion-panel>
-
-
-                  <div *ngFor="let fourForm of fourForms; let i=index" [(ngModel)]="fourForm.value" class="mb-3">
-                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                      <mat-expansion-panel-header>
-                        <mat-panel-title>
-                          <label class="col-6 col-form-label" style="font-weight: bold">File {{fourForm.index}}</label>
-                        </mat-panel-title>
-                      </mat-expansion-panel-header>
-                      <div class="row col-7 mb-3">
-                        <div class="input-group">
-                          <input type="file" class="form-control" id="inputGroupFile04"
-                            aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                          <button type="button" class="ms-2 rounded btn"
-                            style="background-color: #3FB8DE;color: white;">Upload</button>
-                        </div>
-                      </div>
-                      <div class="row col-7 mb-3">
-                        <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="refno">
-                        </div>
-                      </div>
-                      <div class="row col-7 mb-3">
-                        <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="extent">
-                        </div>
-                      </div>
-                      <div class="row col-7 mb-3">
-                        <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="surveyno">
-                        </div>
-                      </div>
-                      <div *ngFor="let fourField2 of fourFields2; let i=index"
-                        class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                        <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                        <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                        <button (click)="removeFourField2(fourField2)" class="btn-close" aria-label="Close"
-                          style="background-color: red;"></button>
-                      </div>
-                      <div class="row col-7 mb-3">
-                        <button (click)="addFourField2()" type="button" class="btn ms-2"
-                          style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
-                      </div>
-                    </mat-expansion-panel>
-                  </div>
-                  <button (click)="addFourForm()" class="btn mb-3"
-                    style="width: 3rem;background-color: #3FB8DE;color: white;"><i
-                      class="bi bi-plus-circle"></i></button><br>
-                  <div class="d-flex justify-content-end">
-                    <button mat-button matStepperPrevious class="border">Previous</button>
-                    <button mat-button matStepperNext style="background-color: #3FB8DE;color: white;"
-                      class="ms-2">Next</button>
-                  </div>
-
-                </form>
-              </mat-accordion>
-            </form>
-          </mat-step>
-
-          <mat-step [stepControl]="contactInfoFormGroup">
-            <form [formGroup]="contactInfoFormGroup">
+          <mat-step [stepControl]="sixDDFormGroup">
               <ng-template matStepLabel>6DD</ng-template>
               <mat-accordion>
 
-                <form [formGroup]="contactInfoFormGroup">
-                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                        <label class="col-6 col-form-label" style="font-weight: bold">File 1</label>
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <div class="row col-7 mb-3">
-                      <div class="input-group">
-                        <input type="file" class="form-control" id="inputGroupFile04"
-                          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                        <button type="button" class="ms-2 rounded btn"
-                          style="background-color: #3FB8DE;color: white;">Upload</button>
-                      </div>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="refno">
-                      </div>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="extent">
-                      </div>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="surveyno">
-                      </div>
-                    </div>
-                    <div *ngFor="let ddField of ddFields; let i=index"
-                      class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                      <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                      <button (click)="removeDdField(ddField)" class="btn-close" aria-label="Close"
-                        style="background-color: red;"></button>
-                    </div>
-                    <div class="row col-7 mb-3">
-                      <button (click)="addDdField()" type="button" class="btn ms-2"
-                        style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
-                    </div>
-                  </mat-expansion-panel>
-
-
-                  <div *ngFor="let ddForm of ddForms; let i=index" [(ngModel)]="ddForm.value" class="mb-3">
-                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <form [formGroup]="sixDDFormGroup">
+                  <ng-template matStepLabel>6DD</ng-template>
+                
+                  <div formArrayName="expansionPanelsSix">
+                    <mat-expansion-panel *ngFor="let panel of expansionPanelsSixDD.controls; let i = index">
                       <mat-expansion-panel-header>
                         <mat-panel-title>
-                          <label class="col-6 col-form-label" style="font-weight: bold">File {{ddForm.index}}</label>
+                          <label class="col-6 col-form-label" style="font-weight: bold">File {{i + 1}}</label>
                         </mat-panel-title>
                       </mat-expansion-panel-header>
-                      <div class="row col-7 mb-3">
-                        <div class="input-group">
-                          <input type="file" class="form-control" id="inputGroupFile04"
-                            aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                          <button type="button" class="ms-2 rounded btn"
-                            style="background-color: #3FB8DE;color: white;">Upload</button>
+                
+                      <div [formGroup]="panel">
+                        <!-- File input field -->
+                        <div class="row col-7 mb-3">
+                          <div class="input-group">
+                            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+                            aria-label="Upload" (change)="onFileChange($event, i,'6DD')">
+                                                    </div>
                         </div>
-                      </div>
-                      <div class="row col-7 mb-3">
-                        <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="refno">
+                
+                        <!-- Ref. No. input field -->
+                        <div class="row col-7 mb-3">
+                          <label for="refno" class="col-sm-2 col-form-label">Ref. No. :</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="refno" formControlName="refNo">
+                          </div>
                         </div>
-                      </div>
-                      <div class="row col-7 mb-3">
-                        <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="extent">
+                
+                        <!-- Extent input field -->
+                        <div class="row col-7 mb-3">
+                          <label for="extent" class="col-sm-2 col-form-label">Extent:</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="extent" formControlName="extent">
+                          </div>
                         </div>
-                      </div>
-                      <div class="row col-7 mb-3">
-                        <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="surveyno">
+                
+                        <!-- Survey No. input field -->
+                        <div class="row col-7 mb-3">
+                          <label for="surveyno" class="col-sm-2 col-form-label">Survey No. :</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="surveyno" formControlName="surveyNo">
+                          </div>
                         </div>
-                      </div>
-                      <div *ngFor="let ddField2 of ddFields2; let i=index"
-                        class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
-                        <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                        <input placeholder="" type="text" class="form-control" style="width: 45%;">
-                        <button (click)="removeDdField2(ddField2)" class="btn-close" aria-label="Close"
-                          style="background-color: red;"></button>
-                      </div>
-                      <div class="row col-7 mb-3">
-                        <button (click)="addDdField2()" type="button" class="btn ms-2"
-                          style="width: 4rem;background-color: #3FB8DE;color: white;">Add</button>
+                
+                        <!-- FormArray for repeated fields -->
+                        <div formArrayName="repeatedFields">
+                          <div *ngFor="let field of panel.get('repeatedFields').controls; let j = index" [formGroupName]="j"
+                            class="row mb-3 col-7 d-flex justify-content-between align-items-center p-2">
+                            <input placeholder="" type="text" class="form-control" style="width: 45%;" formControlName="field1">
+                            <input placeholder="" type="text" class="form-control" style="width: 45%;" formControlName="field2">
+                            <button (click)="removeRepeatedField(i, j,'6DD')" class="btn-close" aria-label="Close"
+                              style="background-color: red;"></button>
+                          </div>
+                        </div>
+                
+                        <!-- Add button for repeated fields -->
+                        <div class="row col-7 mb-3">
+                          <button (click)="addRepeatedField(i,'6DD')" type="button" class="btn ms-2"
+                            style="width: auto;background-color: #3FB8DE;color: white;">Add</button>
+                        </div>
                       </div>
                     </mat-expansion-panel>
                   </div>
-                  <button (click)="addDdForm()" class="btn mb-3"
-                    style="width: 3rem;background-color: #3FB8DE;color: white;"><i
-                      class="bi bi-plus-circle"></i></button><br>
-                  <div class="d-flex justify-content-end">
-                    <button mat-button matStepperPrevious class="border">Previous</button>
-                    <button mat-button matStepperNext style="background-color: #3FB8DE;color: white;"
-                      class="ms-2">Next</button>
+                  <div class="row col-7" style="margin-top: 5px;">
+                    <button (click)="addExpansionPanelSixDD()" type="button" class="btn ms-2"
+                      style="width: auto;background-color: #3FB8DE;color: white;">Add </button>
+                      <button *ngIf="expansionPanelsArray4.length > 1" (click)="removeLastRepeatedField('6DD')" type="button" class="btn ms-2"
+                        style="width: auto;background-color: red;color: white;">Remove</button>
                   </div>
-
                 </form>
               </mat-accordion>
-            </form>
-          </mat-step>
-
-          <mat-step [stepControl]="awardInfoFormGroup">
-            <mat-accordion>
-              <mat-expansion-panel [expanded]="isPanel1Expanded" (opened)="togglePanel1()" (closed)="togglePanel1()">
-                <mat-expansion-panel-header>
-                  <mat-panel-title class="fw-bold">Left over Between LPS and 4(1)</mat-panel-title>
-                </mat-expansion-panel-header>
-
-                <form [formGroup]="awardInfoFormGroup">
-                  <ng-template matStepLabel>Left over</ng-template>
-                  <div class="row mb-3">
-                    <div class="col-5">
-                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:<span
-                          style="color: red;">*</span></label>
-                      <div class="col">
-                        <input type="text" class="form-control" value="" />
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:<span
-                          style="color: red;">*</span></label>
-                      <div class="col">
-                        <input type="text" class="form-control" value="" />
-                      </div>
-                    </div>
-                    <div class="col-2 position-relative">
-                      <button (click)="addLeftForm1()" class="btn position-absolute bottom-0 end-0"
-                        style="width: 3rem;background-color: #3FB8DE;color: white;"><i
-                          class="bi bi-plus-circle"></i></button>
-                    </div>
-                  </div>
-                </form>
-
-                <form [formGroup]="awardInfoFormGroup" *ngFor="let leftForm1 of leftForms1; let i = index">
-                  <div class="row mb-3">
-                    <div class="col-5">
-                      <div class="col">
-                        <input type="text" class="form-control" value="" />
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <div class="col">
-                        <input type="text" class="form-control" value="" />
-                      </div>
-                    </div>
-                    <div class="col-2 position-relative">
-                      <div class="row d-flex justify-content-between">
-                        <button class=" col-5 btn"
-                          style="width: 3rem;background-color: #3FB8DE;color: white;">Save</button>
-                        <button (click)="removeLeftForm1(i)" class="btn"
-                          style="width: 3rem;background-color: red;color: white;"><i
-                            class="bi bi-x-circle"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-
-              </mat-expansion-panel>
-
-              <mat-expansion-panel [expanded]="isPanel2Expanded" (opened)="togglePanel2()" (closed)="togglePanel2()">
-                <mat-expansion-panel-header>
-                  <mat-panel-title class="fw-bold">Left over Between 4(1) and 6DD</mat-panel-title>
-                </mat-expansion-panel-header>
-
-                <form [formGroup]="awardInfoFormGroup">
-                  <div class="row mb-3">
-                    <div class="col-5">
-                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:<span
-                          style="color: red;">*</span></label>
-                      <div class="col">
-                        <input type="text" class="form-control" value="" />
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:<span
-                          style="color: red;">*</span></label>
-                      <div class="col">
-                        <input type="text" class="form-control" value="" />
-                      </div>
-                    </div>
-                    <div class="col-2 position-relative">
-                      <button (click)="addLeftForm2()" class="btn position-absolute bottom-0 end-0"
-                        style="width: 3rem;background-color: #3FB8DE;color: white;"><i
-                          class="bi bi-plus-circle"></i></button>
-                    </div>
-                  </div>
-                </form>
-
-                <form [formGroup]="awardInfoFormGroup" *ngFor="let leftForm2 of leftForms2; let i = index">
-                  <div class="row mb-3">
-                    <div class="col-5">
-                      <div class="col">
-                        <input type="text" class="form-control" value="" />
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <div class="col">
-                        <input type="text" class="form-control" value="" />
-                      </div>
-                    </div>
-                    <div class="col-2 position-relative">
-                      <div class="row d-flex justify-content-between">
-                        <button class=" col-5 btn"
-                          style="width: 3rem;background-color: #3FB8DE;color: white;">Save</button>
-                        <button (click)="removeLeftForm2(i)" class="btn"
-                          style="width: 3rem;background-color: red;color: white;"><i
-                            class="bi bi-x-circle"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-
-              </mat-expansion-panel>
-
-              <mat-expansion-panel [expanded]="isPanel3Expanded" (opened)="togglePanel3()" (closed)="togglePanel3()">
-                <mat-expansion-panel-header>
-                  <mat-panel-title class="fw-bold">Left over Between 6DD and Award</mat-panel-title>
-                </mat-expansion-panel-header>
-
-                <form [formGroup]="awardInfoFormGroup">
-                  <div class="row mb-3">
-                    <div class="col-5">
-                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:<span
-                          style="color: red;">*</span></label>
-                      <div class="col">
-                        <input type="text" class="form-control" value="" />
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:<span
-                          style="color: red;">*</span></label>
-                      <div class="col">
-                        <input type="text" class="form-control" value="" />
-                      </div>
-                    </div>
-                    <div class="col-2 position-relative">
-                      <button (click)="addLeftForm3()" class="btn position-absolute bottom-0 end-0"
-                        style="width: 3rem;background-color: #3FB8DE;color: white;"><i
-                          class="bi bi-plus-circle"></i></button>
-                    </div>
-                  </div>
-                </form>
-
-                <form [formGroup]="awardInfoFormGroup" *ngFor="let leftForm3 of leftForms3; let i = index">
-                  <div class="row mb-3">
-                    <div class="col-5">
-                      <div class="col">
-                        <input type="text" class="form-control" value="" />
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <div class="col">
-                        <input type="text" class="form-control" value="" />
-                      </div>
-                    </div>
-                    <div class="col-2 position-relative">
-                      <div class="row d-flex justify-content-between">
-                        <button class=" col-5 btn"
-                          style="width: 3rem;background-color: #3FB8DE;color: white;">Save</button>
-                        <button (click)="removeLeftForm3(i)" class="btn"
-                          style="width: 3rem;background-color: red;color: white;"><i
-                            class="bi bi-x-circle"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-
-              </mat-expansion-panel>
-            </mat-accordion><br>
-            <div class="d-flex justify-content-end">
-              <button mat-button matStepperPrevious class="border">Previous</button>
-              <button mat-button matStepperNext style="background-color: #3FB8DE;color: white;"
-                class="ms-2">Next</button>
-            </div>
           </mat-step>
           <mat-step [stepControl]="awardInfoFormGroup">
             <mat-accordion>
@@ -1239,10 +918,187 @@
             </mat-accordion><br>
             <div class="d-flex justify-content-end">
               <button mat-button matStepperPrevious class="border">Previous</button>
-              <button mat-button style="background-color: #3FB8DE;color: white;" class="ms-2">Submit</button>
+              <button mat-button matStepperNext style="background-color: #3FB8DE;color: white;"
+                class="ms-2">Next</button>
+
+                
             </div>
           </mat-step>
 
+          <mat-step [stepControl]="awardInfoFormGroup">
+            <mat-accordion>
+              <mat-expansion-panel [expanded]="isPanel1Expanded" (opened)="togglePanel1()" (closed)="togglePanel1()">
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="fw-bold">Left over Between LPS and 4(1)</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <form [formGroup]="awardInfoFormGroup">
+                  <ng-template matStepLabel>Left over</ng-template>
+                  <div class="row mb-3">
+                    <div class="col-5">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:<span
+                          style="color: red;">*</span></label>
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:<span
+                          style="color: red;">*</span></label>
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-2 position-relative">
+                      <button (click)="addLeftForm1()" class="btn position-absolute bottom-0 end-0"
+                        style="width: 3rem;background-color: #3FB8DE;color: white;"><i
+                          class="bi bi-plus-circle"></i></button>
+                    </div>
+                  </div>
+                </form>
+
+                <form [formGroup]="awardInfoFormGroup" *ngFor="let leftForm1 of leftForms1; let i = index">
+                  <div class="row mb-3">
+                    <div class="col-5">
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-2 position-relative">
+                      <div class="row d-flex justify-content-between">
+                        <button class=" col-5 btn"
+                          style="width: 3rem;background-color: #3FB8DE;color: white;">Save</button>
+                        <button (click)="removeLeftForm1(i)" class="btn"
+                          style="width: 3rem;background-color: red;color: white;"><i
+                            class="bi bi-x-circle"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+              </mat-expansion-panel>
+
+              <mat-expansion-panel [expanded]="isPanel2Expanded" (opened)="togglePanel2()" (closed)="togglePanel2()">
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="fw-bold">Left over Between 4(1) and 6DD</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <form [formGroup]="awardInfoFormGroup">
+                  <div class="row mb-3">
+                    <div class="col-5">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:<span
+                          style="color: red;">*</span></label>
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:<span
+                          style="color: red;">*</span></label>
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-2 position-relative">
+                      <button (click)="addLeftForm2()" class="btn position-absolute bottom-0 end-0"
+                        style="width: 3rem;background-color: #3FB8DE;color: white;"><i
+                          class="bi bi-plus-circle"></i></button>
+                    </div>
+                  </div>
+                </form>
+
+                <form [formGroup]="awardInfoFormGroup" *ngFor="let leftForm2 of leftForms2; let i = index">
+                  <div class="row mb-3">
+                    <div class="col-5">
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-2 position-relative">
+                      <div class="row d-flex justify-content-between">
+                        <button class=" col-5 btn"
+                          style="width: 3rem;background-color: #3FB8DE;color: white;">Save</button>
+                        <button (click)="removeLeftForm2(i)" class="btn"
+                          style="width: 3rem;background-color: red;color: white;"><i
+                            class="bi bi-x-circle"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+              </mat-expansion-panel>
+
+              <mat-expansion-panel [expanded]="isPanel3Expanded" (opened)="togglePanel3()" (closed)="togglePanel3()">
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="fw-bold">Left over Between 6DD and Award</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <form [formGroup]="awardInfoFormGroup">
+                  <div class="row mb-3">
+                    <div class="col-5">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Survey No:<span
+                          style="color: red;">*</span></label>
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <label class="col-sm-9 col-form-label" style="font-weight: bold">Extent:<span
+                          style="color: red;">*</span></label>
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-2 position-relative">
+                      <button (click)="addLeftForm3()" class="btn position-absolute bottom-0 end-0"
+                        style="width: 3rem;background-color: #3FB8DE;color: white;"><i
+                          class="bi bi-plus-circle"></i></button>
+                    </div>
+                  </div>
+                </form>
+
+                <form [formGroup]="awardInfoFormGroup" *ngFor="let leftForm3 of leftForms3; let i = index">
+                  <div class="row mb-3">
+                    <div class="col-5">
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="col">
+                        <input type="text" class="form-control" value="" />
+                      </div>
+                    </div>
+                    <div class="col-2 position-relative">
+                      <div class="row d-flex justify-content-between">
+                        <button class=" col-5 btn"
+                          style="width: 3rem;background-color: #3FB8DE;color: white;">Save</button>
+                        <button (click)="removeLeftForm3(i)" class="btn"
+                          style="width: 3rem;background-color: red;color: white;"><i
+                            class="bi bi-x-circle"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+              </mat-expansion-panel>
+            </mat-accordion><br>
+            <div class="d-flex justify-content-end">
+              <button mat-button matStepperPrevious class="border">Previous</button>
+              <button mat-button style="background-color: #3FB8DE;color: white;" class="ms-2" (click)="submit()">Submit</button>
+            </div>
+          </mat-step>
+       
         </mat-horizontal-stepper>
       </div>
     </div>

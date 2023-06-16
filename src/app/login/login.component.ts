@@ -1,11 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthenticationService } from '../services/authentication/authentication.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { AuthenticationService } from '../auth/services/authentication/authentication.service';
+import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MaterialModule } from '../material.module';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+  standalone:true,
+  imports:[CommonModule,MaterialModule,FormsModule,ReactiveFormsModule,RouterModule],
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
@@ -30,7 +34,9 @@ export class LoginComponent implements OnInit {
       localStorage.removeItem('foo')
     }
   }
-
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
   initializeForm() {
     this.form = this.fb.group({
       username: ['', Validators.required],
@@ -40,6 +46,8 @@ export class LoginComponent implements OnInit {
   checkLogin() {
     if (this.form.invalid) {
       this.submitted = true;
+    }else{
+      this.router.navigate(['/land/home'])
     }
     // (this.loginservice.authenticate(this.username, this.password_encrypted, this.role).subscribe(
     //   data => {

@@ -5,6 +5,11 @@ import { filter, reduce } from 'lodash';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from 'src/app/services/common.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { ConfirmDialogComponent } from 'src/app/shared-module/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -13,10 +18,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  dataSource = new MatTableDataSource<any>([]);
+  columnsToDisplay = ['uniqueCode', 'landName', 'cityrural', 'divisions', 'villages', 'actions'];
 
-  alldata : any[] = [];
-  countdata : any[] = [];
-  totalcountsingle! : number;
+  alldata: any[] = [];
+  countdata: any[] = [];
+  totalcountsingle!: number;
   message = '';
   filteredData: any[] = [];
   excelData: any[] = [];
@@ -27,6 +34,7 @@ export class HomeComponent implements OnInit {
   itemsPerPage = 10; // number of items to be displayed per page
   totalItems = this.alldata.length; // total number of items
   totalPages = Math.ceil(this.totalItems / this.itemsPerPage); // total number of pages
+  userList: any[];
   transform(items: any[], options: any): any[] {
     const { itemsPerPage, currentPage } = options;
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -34,25 +42,45 @@ export class HomeComponent implements OnInit {
     return items.slice(startIndex, endIndex);
   }
 
-  constructor(private landdataService: LanddataService) { }
+
+  constructor(private landdataService: LanddataService, private commonService: CommonService, private router: Router, public dialog: MatDialog, private snackbar: MatSnackBar,) { }
 
   ngOnInit(): void {
-
-
-    this.landdataService.getDataforDivcircity().subscribe(data => {
-      this.alldata = [...data];
-      this.alldata.sort((a, b) => a.unique_code - b.unique_code);
-    });
-    this.landdataService.getCountDataforDivcircity().subscribe(data => {
+    const body = {
+      types: null,
+      values: null
+    }
+    this.commonService.apiPostCall(body, 'GetData').subscribe((data) => {
+      this.userList = data;
+      this.dataSource.data = data;
+    })
+    this.commonService.apiPostCall(body, 'GetDataCount').subscribe((data) => {
       this.countdata = data;
       this.totalcountsingle = reduce(this.countdata, (sum, obj) => sum + parseInt(obj.totalcount, 10), 0);
-
-    });
-
-
-
+    })
   }
 
+  delete(id: string): void {
+    const dialog = this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+      data: {
+        from: "delete",
+      }
+    });
+    dialog.afterClosed().subscribe(data => {
+      if (data) {
+
+        // this.api.apiDeleteCall(id, 'Coupon/deleteCoupon').subscribe(response => {
+        //   if (response.message.includes('Successfully')) {
+        //     this.snackbar.openFromComponent(SnackbarComponent, {
+        //       data: response.message,
+        //     });
+        //     this.getCouponsList();
+        //   }
+        // })
+      }
+    })
+  }
 
 
 
@@ -77,7 +105,7 @@ export class HomeComponent implements OnInit {
 
 
 
- get filterData() {
+  get filterData() {
     if (this.legalProceedingsFilter || this.statusFilter) {
       return this.alldata.filter(data => {
         if (this.legalProceedingsFilter && data.legalproceedings !== this.legalProceedingsFilter) {
@@ -93,46 +121,38 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  Delete(id: number): void {
-
-    if (window.confirm('Are you sure  to delete this data ?')) {
-      this.landdataService.deletebyid(id)
-        .subscribe(
-          () => {
-            alert('This data was deleted successfully!');
-            window.location.reload()
-          },
-
-          error => {
-            console.log(error);
-          });
-    }
-}
-
-exportExcel() {
-
-  this.excelData = this.alldata.map(item => ({
 
 
-    unique_code : item.unique_code,
-    land_name : item.land_name,
-    citynrural : item.citynrural,
-    division : item.division,
-    total_extent_land_acquired : item.total_extent_land_acquired,
-    extent : item.extent,
-    not_handed_over_extent : item.not_handed_over_extent,
-    legalproceedings : item.legalproceedings
+  edit(type, id) {
+    console.log(id)
+    this.router.navigate(['/land/' + type, id]);
+  }
 
 
-  }));
+  exportExcel() {
 
-  const worksheet = XLSX.utils.json_to_sheet(this.excelData);
-  const workbook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
-  const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-  const data: Blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
-  FileSaver.saveAs(data, 'TableData.xlsx');
-}
+    this.excelData = this.alldata.map(item => ({
+
+
+      unique_code: item.unique_code,
+      land_name: item.land_name,
+      citynrural: item.citynrural,
+      division: item.division,
+      total_extent_land_acquired: item.total_extent_land_acquired,
+      extent: item.extent,
+      not_handed_over_extent: item.not_handed_over_extent,
+      legalproceedings: item.legalproceedings
+
+
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(this.excelData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const data: Blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+    FileSaver.saveAs(data, 'TableData.xlsx');
+  }
 
 
 

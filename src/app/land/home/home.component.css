@@ -131,3 +131,32 @@ td a i {
       left: calc(50% - 33px/2 - 110px);
     }
   }
+
+  ::ng-deep .mat-mdc-unelevated-button:not(:disabled) {
+    height: 3.5rem;
+    /* bottom: 10px; */
+    border-radius: 8px;
+    position: relative;
+  }
+  .section-b .input {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #f3f3f9;
+    width: 100%;
+    line-height: 24px;
+}
+.containertab{
+  width: 100%;
+}
+::ng-deep .mdc-button .mdc-button__label{
+  color:black;
+  font-weight: 600;
+}
+
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after, .mat-primary .mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-minimal::after {
+  color:#3FB8DE;
+}
+.displayicon {
+  display: flex;
+}

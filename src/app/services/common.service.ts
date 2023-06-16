@@ -16,9 +16,9 @@ export class CommonService {
     let finalURL = API_URL + endPoint;
     return this.http.put<AppResponse>(finalURL, postParam).pipe(catchError(this.handleError));
   }
-  apiPostCall(postParam: any, endPoint: string): Observable<AppResponse> {
+  apiPostCall(postParam: any, endPoint: string): Observable<any> {
     let finalURL = API_URL + endPoint;
-    return this.http.post<AppResponse>(finalURL, postParam).pipe(catchError(this.handleError));
+    return this.http.post<any>(finalURL, postParam).pipe(catchError(this.handleError));
   }
 
   apiFormDataPostCall(postParam: any, endPoint: string): Observable<AppResponse> {

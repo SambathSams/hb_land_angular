@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from './auth.component';
-import { LoginComponent } from './login/login.component';
 import { OtpComponent } from './otp/otp.component';
 import { NewpwdComponent } from './newpwd/newpwd.component';
 const routes: Routes = [
@@ -12,15 +11,13 @@ const routes: Routes = [
         path: '',
         component: AuthComponent,
         children: [
-            { path: '', redirectTo: 'login', pathMatch: 'full' },
-            { path: 'login', component: LoginComponent },
             { path: 'otp', component: OtpComponent },
             { path: 'newpwd', component: NewpwdComponent },
         ],
     },
 ];
 @NgModule({
-    declarations: [AuthComponent, LoginComponent, OtpComponent, NewpwdComponent],
+    declarations: [AuthComponent, OtpComponent, NewpwdComponent],
     imports: [
         CommonModule,
         MaterialModule,

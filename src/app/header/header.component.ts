@@ -14,10 +14,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   logout() {
-    let username = sessionStorage.getItem('username');
-    this.authenticationservice.logOut();
-    (this.authenticationservice.authenticatelogout(username).subscribe(
-      data => {},
-      error => {}));
+    this.router.navigate(['/auth/login'])
+
+    // let username = sessionStorage.getItem('username');
+    // this.authenticationservice.logOut();
+    // (this.authenticationservice.authenticatelogout(username).subscribe(
+    //   data => {},
+    //   error => {}));
   }
 }
