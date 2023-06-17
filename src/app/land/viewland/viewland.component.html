@@ -104,7 +104,7 @@
                     (click)="triggerUpload(i,'lps')"></i>
                   <i class="bi bi-patch-plus-fill add-icon" style="font-size: 32px;" (click)="addNewFileGroup('lps')"
                     *ngIf="!view"></i>
-                  <span *ngIf="!view"><i *ngIf="filesArrayOne.length > 1 && i!==0" class="bi bi-trash-fill delete-icon"
+                  <span *ngIf="!view"><i *ngIf="filesArrayOne?.length > 1 && i!==0" class="bi bi-trash-fill delete-icon"
                       style="font-size: 30px;" (click)="deleteFileGroup(i,'lps')"></i></span>&nbsp;&nbsp;&nbsp;
                   <a *ngIf="view"><i class="bi bi-box-arrow-up-right" style="color: #3FB8DE;font-size: 21px;"
                       (click)="getData(fileGroup,'lps')"></i></a>
@@ -253,11 +253,12 @@
         <ng-template matStepLabel>Left over</ng-template>
 
         <mat-accordion>
-          <mat-expansion-panel  *ngFor="let item of leftOver">
+          <mat-expansion-panel *ngFor="let item of leftOver">
             <mat-expansion-panel-header>
               <mat-panel-title>Left over Between &nbsp;&nbsp;{{item.file1}}&nbsp;&nbsp; and
                 &nbsp;&nbsp;{{item.file2}}&nbsp;&nbsp;</mat-panel-title>
             </mat-expansion-panel-header>
+            
 
             <form [formGroup]="leftOverGroup">
               <mat-label>Survey No:</mat-label>
@@ -268,7 +269,8 @@
                     {{ number }}
                     <!-- <mat-icon matChipRemove>cancel</mat-icon> -->
                   </mat-chip>
-                  <input matInput [(ngModel)]="newSurveyNumber" (keydown.enter)="addSurveyNumber()">
+                  <input matInput [(ngModel)]="newSurveyNumber" [ngModelOptions]="{standalone: true}"
+                    (keydown.enter)="addSurveyNumber()">
                 </mat-chip-list>
               </mat-form-field>&nbsp;&nbsp;
               <mat-label>Extent No:</mat-label>
@@ -280,7 +282,8 @@
                     {{ extent }}
                     <!-- <mat-icon matChipRemove>cancel</mat-icon> -->
                   </mat-chip>
-                  <input matInput [(ngModel)]="newExtent" (keydown.enter)="addExtent()">
+                  <input matInput [(ngModel)]="newExtent" [ngModelOptions]="{standalone: true}"
+                    (keydown.enter)="addExtent()">
                 </mat-chip-list>
               </mat-form-field>
 
@@ -293,6 +296,13 @@
           <button mat-flat-button class="primary" [disabled]="" matStepperNext>Next</button>
         </div>
       </mat-step>
+
+
+
+                      <!-- AWARD INFORMATION LAST TAB -->
+
+
+
       <mat-step [stepControl]="awardInfoFormGroup">
         <ng-template matStepLabel>Award Information</ng-template>
 
@@ -308,11 +318,12 @@
               <form [formGroup]="awardInfoFormGroup">
                 <div formArrayName="awardsDet">
                   <div [formGroupName]="i">
-                   
+
                     <div class="row">
                       <div class="section-b col-md-6">
                         <mat-label>Award Amount:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="award_details_award_amount">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="award_details_award_amount">
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Award Date:</mat-label>
@@ -322,17 +333,20 @@
                     <div class="row">
                       <div class="section-b col-md-6">
                         <mat-label>Civil Court Deposit:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="award_details_disbursement_civil_court_deposit">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="award_details_disbursement_civil_court_deposit">
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Direct Payment:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="award_details_disbursement_direct_payment">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="award_details_disbursement_direct_payment">
                       </div>
                     </div>
                     <div class="row">
                       <div class="section-b col-md-6">
                         <mat-label>Revenue Deposit:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="award_details_disbursement_revenue_deposit">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="award_details_disbursement_revenue_deposit">
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Extent:</mat-label>
@@ -346,13 +360,15 @@
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Award Notified Person:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="award_details_notified_person">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="award_details_notified_person">
                       </div>
                     </div>
                     <div class="row">
                       <div class="section-b col-md-6">
                         <mat-label>Survey Number:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="award_details_survey_nos">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="award_details_survey_nos">
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Land Name:</mat-label>
@@ -362,21 +378,25 @@
                     <div class="row">
                       <div class="section-b col-md-6">
                         <mat-label>Pocession Available Extent:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pho_extavailable_extent">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pho_extavailable_extent">
                       </div>
                       <div class="section-b col-md-6">
-                        <mat-label>Pocession Available  Survey:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pho_extavailable_survey_nos">
+                        <mat-label>Pocession Available Survey:</mat-label>
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pho_extavailable_survey_nos">
                       </div>
                     </div>
                     <div class="row">
                       <div class="section-b col-md-6">
                         <mat-label>Pocession Court Case:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pho_extcannot_court_case">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pho_extcannot_court_case">
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Pocession Encroachment:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pho_extcannot_encroachment">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pho_extcannot_encroachment">
                       </div>
                     </div>
                     <div class="row">
@@ -386,7 +406,8 @@
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Pocession issued:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pho_extcannot_noc_issued">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pho_extcannot_noc_issued">
                       </div>
                     </div>
                     <div class="row">
@@ -396,23 +417,27 @@
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Pocession Reconveyed:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pho_extcannot_reconveyed">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pho_extcannot_reconveyed">
                       </div>
-                    </div> 
+                    </div>
                     <div class="row">
                       <div class="section-b col-md-6">
                         <mat-label>Pocession Scattered:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pho_extcannot_scattered">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pho_extcannot_scattered">
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Pocession not survey number:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pho_extcannot_survey_nos">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pho_extcannot_survey_nos">
                       </div>
                     </div>
                     <div class="row">
                       <div class="section-b col-md-6">
                         <mat-label>Pocession want-of-approach:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pho_extcannot_wantofapproach">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pho_extcannot_wantofapproach">
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Pocession Extent number:</mat-label>
@@ -426,17 +451,20 @@
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Pocession SCheme survey number:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pho_schimpl_survey_nos">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pho_schimpl_survey_nos">
                       </div>
                     </div>
                     <div class="row">
                       <div class="section-b col-md-6">
                         <mat-label>Pocession Scattered:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pho_extcannot_scattered">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pho_extcannot_scattered">
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Pocession not survey number:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pho_extcannot_survey_nos">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pho_extcannot_survey_nos">
                       </div>
                     </div>
                     <div class="row">
@@ -456,7 +484,8 @@
                       </div>
                       <div class="section-b col-md-6">
                         <mat-label>Pocession not Handed Encumbrance:</mat-label>
-                        <input class="input" type="text" name="Search" matInput formControlName="pnho_without_encumbrance">
+                        <input class="input" type="text" name="Search" matInput
+                          formControlName="pnho_without_encumbrance">
                       </div>
                     </div>
                     <div class="row">
