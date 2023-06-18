@@ -1,5 +1,5 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LanddataService } from '../landdata.service';
 
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -9,7 +9,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 @Component({
   selector: 'app-addland',
   templateUrl: './addland.component.html',
-  styleUrls: ['./addland.component.css']
+  styleUrls: ['./addland.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class AddlandComponent implements OnInit {
 
