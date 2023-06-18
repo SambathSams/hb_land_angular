@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
@@ -10,7 +10,8 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-viewland',
   templateUrl: './viewland.component.html',
-  styleUrls: ['./viewland.component.css']
+  styleUrls: ['./viewland.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class ViewlandComponent implements OnInit {
 
@@ -33,6 +34,60 @@ export class ViewlandComponent implements OnInit {
   leftOver: any[];
   awardLists: any[]=[];
   LandData: any;
+
+
+  ngOnInit(): void {
+
+    this.personalInfoFormGroup = this.formBuilder.group({
+      citynrural: ['', Validators.required],
+      circle: ['', Validators.required],
+      division: ['', Validators.required],
+      village: ['', Validators.required],
+      unique_code: [''],
+      land_name: ['', Validators.required],
+      geo_tagging_geo_fencing: ['', Validators.required],
+    });
+
+    this.leftOverGroup = this.formBuilder.group(
+    {
+      extentNoControl : [''],
+      surveyNoControl : ['']
+    })
+
+    this.LPSFormGroup = this.formBuilder.group({
+      files: this.formBuilder.array([])
+    });
+
+    this.FMBInfoFormGroup = this.formBuilder.group({
+      files: this.formBuilder.array([])
+    });
+
+    this.FourOneFormGroup = this.formBuilder.group({
+      files: this.formBuilder.array([])
+    });
+
+    this.SixDDFormGroup = this.formBuilder.group({
+      files: this.formBuilder.array([])
+    });
+
+   this.awardInfoFormGroup = this.formBuilder.group({
+      awardsDet: this.formBuilder.array([]),
+    });
+
+    // Initialize form array controls for each expansion panel
+    this.awardLists.forEach(() => {
+      this.addAwardDetails();
+    });
+
+    // if(!this.edit && !this.view){
+    //   this.addNewFileGroup();
+    // }
+    this.getLandandFileDetails();
+
+
+
+  }
+
   togglePanel1() {
     this.isPanel1Expanded = !this.isPanel1Expanded;
   }
@@ -82,6 +137,8 @@ export class ViewlandComponent implements OnInit {
     this.commonService.apiPostCall(payload, 'getAllLandDetails').subscribe(data => {
       this.LandData = data;
       if (this.LandData) {
+
+        console.warn("LandDigitData", this.LandData)
         this.personalInfoFormGroup.patchValue(this.LandData.firstTabList[0])
         this.filesOne = this.LandData.secondTabList;
         if (this.filesOne) {
@@ -102,7 +159,7 @@ export class ViewlandComponent implements OnInit {
             const fileControl = fileGroup.get('file');
             // Create a File object from the file path
             const file = new File([item.fileName], item.fileName);
-            console.log(file)
+            // console.log(file) yazhini log
             // Patch the file value
             fileControl.patchValue(file);
           }
@@ -240,48 +297,55 @@ export class ViewlandComponent implements OnInit {
         this.awardLists.forEach((award, index) => {
          
           const awardGroup = this.awardDetailsArray.at(index) as FormGroup;
-          console.log('awrdgrp',awardGroup)
-          awardGroup.patchValue({
-            award_details_award_amount: award.awardDetailsList[0].award_details_award_amount,
-            award_details_date: award.awardDetailsList[0].award_details_date,
-            award_details_disbursement_civil_court_deposit: award.awardDetailsList[0].award_details_disbursement_civil_court_deposit,
-            award_details_disbursement_direct_payment:  award.awardDetailsList[0].award_details_disbursement_direct_payment,
-            award_details_disbursement_revenue_deposit:  award.awardDetailsList[0].award_details_disbursement_revenue_deposit,
-            award_details_extent:   award.awardDetailsList[0].award_details_extent,
-            award_details_no:  award.awardDetailsList[0].award_details_no,
-            award_details_notified_person:   award.awardDetailsList[0].award_details_notified_person,
-            award_details_survey_nos:   award.awardDetailsList[0].award_details_survey_nos,
-            filename:   award.awardDetailsList[0].filename,
-            id:   award.awardDetailsList[0].id,
-            landname:   award.awardDetailsList[0].landname,
-            pho_extavailable_extent:   award.awardDetailsList[0].pho_extavailable_extent,
-            pho_extavailable_survey_nos: award.awardDetailsList[0].pho_extavailable_survey_nos,
-            pho_extcannot_court_case: award.awardDetailsList[0].pho_extcannot_court_case,
-            pho_extcannot_encroachment: award.awardDetailsList[0].pho_extcannot_encroachment,
-            pho_extcannot_extent: award.awardDetailsList[0].pho_extcannot_extent,
-            pho_extcannot_noc_issued: award.awardDetailsList[0].pho_extcannot_noc_issued,
-            pho_extcannot_quashed: award.awardDetailsList[0].pho_extcannot_quashed,
-            pho_extcannot_reconveyed:award.awardDetailsList[0].pho_extcannot_reconveyed,
-            pho_extcannot_scattered: award.awardDetailsList[0].pho_extcannot_scattered,
-            pho_extcannot_survey_nos: award.awardDetailsList[0].pho_extcannot_survey_nos,
-            pho_extcannot_wantofapproach: award.awardDetailsList[0].pho_extcannot_wantofapproach,
-            pho_extent: award.awardDetailsList[0].pho_extent,
-            pho_schimpl_extent:award.awardDetailsList[0].pho_schimpl_extent,
-            pho_schimpl_survey_nos: award.awardDetailsList[0].pho_schimpl_survey_nos,
-            pnho_court_case:award.awardDetailsList[0].pnho_court_case,
-            pnho_encroachment: award.awardDetailsList[0].pnho_encroachment,
-            pnho_extent: award.awardDetailsList[0].pnho_extent,
-            pnho_quashed: award.awardDetailsList[0].pnho_quashed,
-            pnho_survey_nos: award.awardDetailsList[0].pnho_survey_nos,
-            pnho_without_encumbrance:award.awardDetailsList[0].pnho_without_encumbrance,
-          });
+          console.log('7th Tab',awardGroup); 
+          console.log("awardDetailsList[0]",award.awardDetailsList[0]);
+
+          if (award.awardDetailsList[0]) {
+            awardGroup.patchValue({
+              award_details_award_amount: award.awardDetailsList[0].award_details_award_amount,
+              award_details_date: award.awardDetailsList[0].award_details_date,
+              award_details_disbursement_civil_court_deposit: award.awardDetailsList[0].award_details_disbursement_civil_court_deposit,
+              award_details_disbursement_direct_payment:  award.awardDetailsList[0].award_details_disbursement_direct_payment,
+              award_details_disbursement_revenue_deposit:  award.awardDetailsList[0].award_details_disbursement_revenue_deposit,
+              award_details_extent:   award.awardDetailsList[0].award_details_extent,
+              award_details_no:  award.awardDetailsList[0].award_details_no,
+              award_details_notified_person:   award.awardDetailsList[0].award_details_notified_person,
+              award_details_survey_nos:   award.awardDetailsList[0].award_details_survey_nos,
+              filename:   award.awardDetailsList[0].filename,
+              id:   award.awardDetailsList[0].id,
+              landname:   award.awardDetailsList[0].landname,
+              pho_extavailable_extent:   award.awardDetailsList[0].pho_extavailable_extent,
+              pho_extavailable_survey_nos: award.awardDetailsList[0].pho_extavailable_survey_nos,
+              pho_extcannot_court_case: award.awardDetailsList[0].pho_extcannot_court_case,
+              pho_extcannot_encroachment: award.awardDetailsList[0].pho_extcannot_encroachment,
+              pho_extcannot_extent: award.awardDetailsList[0].pho_extcannot_extent,
+              pho_extcannot_noc_issued: award.awardDetailsList[0].pho_extcannot_noc_issued,
+              pho_extcannot_quashed: award.awardDetailsList[0].pho_extcannot_quashed,
+              pho_extcannot_reconveyed:award.awardDetailsList[0].pho_extcannot_reconveyed,
+              pho_extcannot_scattered: award.awardDetailsList[0].pho_extcannot_scattered,
+              pho_extcannot_survey_nos: award.awardDetailsList[0].pho_extcannot_survey_nos,
+              pho_extcannot_wantofapproach: award.awardDetailsList[0].pho_extcannot_wantofapproach,
+              pho_extent: award.awardDetailsList[0].pho_extent,
+              pho_schimpl_extent:award.awardDetailsList[0].pho_schimpl_extent,
+              pho_schimpl_survey_nos: award.awardDetailsList[0].pho_schimpl_survey_nos,
+              pnho_court_case:award.awardDetailsList[0].pnho_court_case,
+              pnho_encroachment: award.awardDetailsList[0].pnho_encroachment,
+              pnho_extent: award.awardDetailsList[0].pnho_extent,
+              pnho_quashed: award.awardDetailsList[0].pnho_quashed,
+              pnho_survey_nos: award.awardDetailsList[0].pnho_survey_nos,
+              pnho_without_encumbrance:award.awardDetailsList[0].pnho_without_encumbrance,
+            });
+          }
+          else{
+            console.warn("Award Details List Empty");
+          }
+         
         });
         this.awardDetailsArray.controls.forEach((control) => {
           control.disable();
         });
       }
     })
-
 
   }
 
@@ -375,48 +439,7 @@ export class ViewlandComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.personalInfoFormGroup = this.formBuilder.group({
-      citynrural: ['', Validators.required],
-      circle: ['', Validators.required],
-      division: ['', Validators.required],
-      village: ['', Validators.required],
-      unique_code: [''],
-      land_name: ['', Validators.required],
-      geo_tagging_geo_fencing: ['', Validators.required],
-    });
-
-    this.LPSFormGroup = this.formBuilder.group({
-      files: this.formBuilder.array([])
-    });
-
-    this.FMBInfoFormGroup = this.formBuilder.group({
-      files: this.formBuilder.array([])
-    });
-
-    this.FourOneFormGroup = this.formBuilder.group({
-      files: this.formBuilder.array([])
-    });
-
-    this.SixDDFormGroup = this.formBuilder.group({
-      files: this.formBuilder.array([])
-    });
-
-   this.awardInfoFormGroup = this.formBuilder.group({
-      awardsDet: this.formBuilder.array([]),
-    });
-
-    // Initialize form array controls for each expansion panel
-    this.awardLists.forEach(() => {
-      this.addAwardDetails();
-    });
-
-    // if(!this.edit && !this.view){
-    //   this.addNewFileGroup();
-    // }
-    this.getLandandFileDetails();
-
-  }
+  
   getAwardDetailsArrayControls(index: number): FormArray {
     return (this.awardInfoFormGroup.get('awardsDet') as FormArray).at(index) as FormArray;
   }

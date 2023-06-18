@@ -29,7 +29,7 @@
             <!-- <div style="font-weight: 700;
               font-size: 40px; color:white">20,000</div> -->
             <div style="font-weight: 700;
-              font-size: 40px; color:white">{{ userList.length ?? 0}}</div>
+              font-size: 40px; color:white">{{ userList?.length ?? 0}}</div>
             <h4 class="title" style="font-weight: 400;
               font-size: 24px;"><a class="stretched-link">Digitized Lands</a></h4>
           </div>
@@ -41,7 +41,7 @@
               font-size: 40px; color:white">40,000</div> -->
               <!--  -->
             <div style="font-weight: 700;
-              font-size: 40px; color:white">{{(totalcountsingle ?? 0) - (userList.length ?? 0)}}</div>
+              font-size: 40px; color:white">{{(totalcountsingle ?? 0) - (userList?.length ?? 0)}}</div>
             <h4 class="title" style="font-weight: 400;
               font-size: 24px;"><a class="stretched-link">Yet to be Digitized</a></h4>
           </div>
@@ -165,7 +165,7 @@
         <td mat-cell *matCellDef="let request">
             <div class="displayicon">
               <mat-icon style="font-size: 18px;cursor:pointer" matTooltip="Edit" (click)="edit('edit',request.id)">edit</mat-icon>
-              <mat-icon style="font-size: 18px;cursor:pointer;color:red" matTooltip="Delete" (click)="delete(request.id)">delete</mat-icon>
+              <mat-icon style="font-size: 18px;cursor:pointer;color:red" matTooltip="Delete" (click)="deleteLand(request.id)">delete</mat-icon>
               <mat-icon style="font-size: 18px;cursor:pointer;color:peru" matTooltip="View" (click)="edit('view',request.id)">visibility</mat-icon>
 
           </div>

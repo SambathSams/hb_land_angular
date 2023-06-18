@@ -49,18 +49,24 @@ export class HomeComponent implements OnInit {
     const body = {
       types: null,
       values: null
-    }
-    this.commonService.apiPostCall(body, 'GetData').subscribe((data) => {
-      this.userList = data;
-      this.dataSource.data = data;
-    })
+    };
+    this.getGridLandDetails();
     this.commonService.apiPostCall(body, 'GetDataCount').subscribe((data) => {
       this.countdata = data;
       this.totalcountsingle = reduce(this.countdata, (sum, obj) => sum + parseInt(obj.totalcount, 10), 0);
     })
   }
 
-  delete(id: string): void {
+  getGridLandDetails(){
+    
+    this.commonService.apiPostCall({}, 'GetData').subscribe((data) => {
+      console.log("Grid Data",data);
+      this.userList = data;
+      this.dataSource.data = data;
+    });
+  }
+
+  deleteLand(id: string): void {
     const dialog = this.dialog.open(ConfirmDialogComponent, {
       width: '400px',
       data: {
@@ -69,15 +75,21 @@ export class HomeComponent implements OnInit {
     });
     dialog.afterClosed().subscribe(data => {
       if (data) {
+        console.log("delete Popup data",data,id);
 
-        // this.api.apiDeleteCall(id, 'Coupon/deleteCoupon').subscribe(response => {
-        //   if (response.message.includes('Successfully')) {
-        //     this.snackbar.openFromComponent(SnackbarComponent, {
-        //       data: response.message,
-        //     });
-        //     this.getCouponsList();
-        //   }
-        // })
+        const deleteBody = {
+          "id": +id
+        }
+
+        if (data === true) {
+          this.commonService.apiPostCall(deleteBody,'deleteLandDigitData').subscribe((deleteResponse)=>{
+            console.log("delete response",deleteResponse);
+            this.getGridLandDetails();
+          });
+        } else {
+          
+        }
+        
       }
     })
   }
