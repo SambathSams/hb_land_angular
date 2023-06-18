@@ -3,6 +3,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { LanddataService } from '../landdata.service';
 
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FinalSaveLand } from '../editland/editland.component';
+import { CommonService } from 'src/app/services/common.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -45,7 +48,7 @@ export class AddlandComponent implements OnInit {
   expansionPanelsArray4: FormArray;
   sixDDFormGroup:FormGroup;
   expansionPanelsSixDD:FormArray;
-  constructor(private builder: FormBuilder, private formBuilder: FormBuilder) { }
+  constructor(private builder: FormBuilder, private formBuilder: FormBuilder , private commonService : CommonService,private _snackBar: MatSnackBar) { }
   isLinear = true;
 
   ngOnInit(): void {
@@ -206,14 +209,228 @@ export class AddlandComponent implements OnInit {
 
   }
 
+ generateString(length) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = ' ';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
+
   submit() {
     // Final Save
     console.log(this.personalInfoFormGroup.value);
     console.log(this.LPSFormGroup.value)
     console.log(this.FMBFormGroup.value)
     console.log(this.fourOneFormGroup.value)
-     console.log(this.sixDDFormGroup.value)
+    console.log(this.sixDDFormGroup.value);
+
+    const first = this.personalInfoFormGroup.value;
+
+    console.log("first", first)
+    const randomString = this.generateString(5);
+
+    first.uniqueCode = randomString;
+    const second = this.LPSFormGroup.value;
+
+    const secArr = second?.expansionPanels;
+    console.log("second", secArr);
+
+    const third = this.FMBFormGroup.value;
+    const thirdArr = third?.expansionPanelsFMB;
+    console.log("thirdArr", thirdArr);
+
+    const four = this.fourOneFormGroup.value;
+    const fourthArr = four?.expansionPanels4;
+    console.log("thirdArr", fourthArr);
+
+
+    const five = this.sixDDFormGroup.value;
+    const fifththArr = five?.expansionPanelsSix;
+    console.log("fifththArr", fifththArr);
+
+    const sixth = [
+      {
+        "landName": "forth",
+        "fileName": "award_1_file",
+        "left_4one_6d_extent": "Api Test new Extent",
+        "left_4one_6d_survey_nos": "Dummy 4one 6d Survey Nos",
+        "left_6d_award_extent": "Dummy 6d Award Extent",
+        "left_6d_award_extent_survey_nos": "Dummy 6d Award Extent Survey Nos",
+        "left_lps_4one_extent": "Dummy LPS 4one Extent",
+        "left_lps_4one_survey_nos": "Dummy LPS Karthiy Nos"
+      },
+      {
+        "landName": "forth",
+        "fileName": "award_2_file",
+        "left_4one_6d_extent": "Dummy 4one 6d Extent",
+        "left_4one_6d_survey_nos": "Dummy 4one 6d Survey Nos",
+        "left_6d_award_extent": "Dummy 6d Award Extent",
+        "left_6d_award_extent_survey_nos": "Dummy 6d Award Extent Survey Nos",
+        "left_lps_4one_extent": "Dummy LPS 4one Extent",
+        "left_lps_4one_survey_nos": "Dummy LPS 4one Survey Nos"
+      }
+    ]
+
+    const seventh = [
+      {
+        "extent": "extent",
+        "fileName": "award_1_file",
+        "filePath": "C:\\Users\\Admin\\Desktop\\TNHB\\7523b9f2-810b-42bf-882e-6532f383bb77.pdf",
+        "refNo": "",
+        "surveyerNo": "",
+        "landName": "forth",
+        "dynamicValues": [
+          {
+            "fileId": 1,
+            "value": "VALUE 1",
+            "columnName": "FIRST COLUMN"
+          },
+          {
+            "fileId": 1,
+            "value": "VALUE 2",
+            "columnName": "SECOND COLUMN"
+          }
+        ],
+        "awardOtherDetailsEntity": [
+          {
+            "fileName": "pho_court_file",
+            "filePath": "C:\\Users\\Admin\\Desktop\\TNHB\\95b5b886-a9ae-4b9c-b952-dd98b38bdd31.pdf",
+            "name": "award_1_file",
+            "status": "O.S",
+            "landName": "forth"
+          }
+        ],
+        "awardDetailsList": [
+          {
+            "award_details_award_amount": "100",
+            "award_details_date": "10/06/1999",
+            "award_details_disbursement_civil_court_deposit": "100000",
+            "award_details_disbursement_direct_payment": null,
+            "award_details_disbursement_revenue_deposit": "50000",
+            "award_details_extent": "19887",
+            "award_details_no": "100005",
+            "award_details_notified_person": "yazhini",
+            "award_details_survey_nos": null,
+            "pho_extavailable_extent": "10009993",
+            "pho_extavailable_survey_nos": "1989",
+            "pho_extcannot_court_case": "100988",
+            "pho_extcannot_encroachment": "100000",
+            "pho_extcannot_extent": null,
+            "pho_extcannot_noc_issued": "100000",
+            "pho_extcannot_quashed": "789",
+            "pho_extcannot_reconveyed": "6778",
+            "pho_extcannot_scattered": "09877",
+            "pho_extcannot_survey_nos": null,
+            "pho_extcannot_wantofapproach": "214666",
+            "pho_extent": "64773",
+            "pho_schimpl_extent": "78876",
+            "pho_schimpl_survey_nos": "66677",
+            "pnho_court_case": "3456",
+            "pnho_encroachment": null,
+            "pnho_extent": "15637",
+            "pnho_quashed": "67y",
+            "pnho_survey_nos": "45366",
+            "pnho_without_encumbrance": "2556",
+            "filename": "award_1_file",
+            "landname": "forth"
+          }
+        ]
+      },
+      {
+        "extent": "",
+        "fileName": "award_2_file",
+        "filePath": "C:\\Users\\Admin\\Desktop\\TNHB\\7523b9f2-810b-42bf-882e-6532f383bb77.pdf",
+        "refNo": "",
+        "surveyerNo": "",
+        "landName": "forth",
+        "dynamicValues": [
+          {
+            "fileId": 1,
+            "value": "VALUE 1",
+            "columnName": "FIRST COLUMN"
+          },
+          {
+            "fileId": 1,
+            "value": "VALUE 2",
+            "columnName": "SECOND COLUMN"
+          }
+        ],
+        "awardOtherDetailsEntity": [
+          {
+            "fileName": "pho_court_file",
+            "filePath": "C:\\Users\\Admin\\Desktop\\TNHB\\95b5b886-a9ae-4b9c-b952-dd98b38bdd31.pdf",
+            "name": "award_2_file",
+            "status": "O.S",
+            "landName": "forth"
+          }
+        ],
+        "awardDetailsList": [
+          {
+            "award_details_award_amount": "100",
+            "award_details_date": "10/06/1999",
+            "award_details_disbursement_civil_court_deposit": "100000",
+            "award_details_disbursement_direct_payment": null,
+            "award_details_disbursement_revenue_deposit": "50000",
+            "award_details_extent": "19887",
+            "award_details_no": "100005",
+            "award_details_notified_person": "yazhini",
+            "award_details_survey_nos": null,
+            "pho_extavailable_extent": "10009993",
+            "pho_extavailable_survey_nos": "1989",
+            "pho_extcannot_court_case": "100988",
+            "pho_extcannot_encroachment": "100000",
+            "pho_extcannot_extent": null,
+            "pho_extcannot_noc_issued": "100000",
+            "pho_extcannot_quashed": "789",
+            "pho_extcannot_reconveyed": "6778",
+            "pho_extcannot_scattered": "09877",
+            "pho_extcannot_survey_nos": null,
+            "pho_extcannot_wantofapproach": "214666",
+            "pho_extent": "64773",
+            "pho_schimpl_extent": "78876",
+            "pho_schimpl_survey_nos": "66677",
+            "pnho_court_case": "3456",
+            "pnho_encroachment": null,
+            "pnho_extent": "15637",
+            "pnho_quashed": "67y",
+            "pnho_survey_nos": "45366",
+            "pnho_without_encumbrance": "2556",
+            "filename": "award_2_file",
+            "landname": "forth"
+          }
+        ]
+      }
+    ]
+
+    const saveBody : FinalSaveLand= {
+      firstTabEntity: first,
+      secondTabEntity: secArr,
+      thirdTabEntity: thirdArr,
+      fourthTabEntity: fourthArr,
+      fifthTabEntity: fifththArr,
+      sixthTabEntity: sixth,
+      seventhTabEntity: seventh
+    }
+
+    console.warn("Final Save Body",saveBody);
+    return;
+    this.commonService.apiPostCall(saveBody,'saveLandDetails').subscribe((response=>{
+     console.log("response save", response);
+    }))
+    
+   //  this.snackBar.dismiss();
+   this.openSnackBar("Saved Succesfully", "Done");
+
   }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action,{duration : 3000});
+  };
+  
   removeExpansionPanel(index: number, type) {
     if (type === 'lps') {
       this.expansionPanelsArray.removeAt(index);

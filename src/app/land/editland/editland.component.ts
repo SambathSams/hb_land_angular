@@ -3,6 +3,143 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LanddataService } from '../landdata.service';
 
+export interface FinalSaveLand {
+  firstTabEntity: FirstTabEntity
+  secondTabEntity: SecondTabEntity[]
+  thirdTabEntity: ThirdTabEntity[]
+  fourthTabEntity: FourthTabEntity[]
+  fifthTabEntity: FifthTabEntity[]
+  sixthTabEntity: SixthTabEntity[]
+  seventhTabEntity: SeventhTabEntity[]
+}
+
+export interface FirstTabEntity {
+  village: string
+  circle: string
+  citynrural: string
+  division: string
+  geoTaggingGeoFencing: string
+  landName: string
+  uniqueCode: string
+}
+
+export interface SecondTabEntity {
+  extent: string
+  filename: string
+  filePath: string
+  refNo: string
+  surveyNo: string
+  landname: string
+  dynamicValues: DynamicValue[]
+}
+
+export interface DynamicValue {
+  fileId: number
+  value: string
+  columnName: string
+}
+
+export interface ThirdTabEntity {
+  extent: string
+  filename: string
+  filePath: string
+  refNo: string
+  surveyNo: string
+  landname: string
+  dynamicValues: any[]
+}
+
+export interface FourthTabEntity {
+  extent: string
+  filename: string
+  filePath: string
+  refNo: string
+  surveyNo: string
+  landname: string
+  dynamicValues: any[]
+}
+
+export interface FifthTabEntity {
+  extent: string
+  filename: string
+  filePath: string
+  refNo: string
+  surveyNo: string
+  landname: string
+  dynamicValues: any[]
+}
+
+export interface SixthTabEntity {
+  landName: string
+  fileName: string
+  left_4one_6d_extent: string
+  left_4one_6d_survey_nos: string
+  left_6d_award_extent: string
+  left_6d_award_extent_survey_nos: string
+  left_lps_4one_extent: string
+  left_lps_4one_survey_nos: string
+}
+
+export interface SeventhTabEntity {
+  extent: string
+  fileName: string
+  filePath: string
+  refNo: string
+  surveyerNo: string
+  landName: string
+  dynamicValues: DynamicValue2[]
+  awardOtherDetailsEntity: AwardOtherDetailsEntity[]
+  awardDetailsList: AwardDetailsList[]
+}
+
+export interface DynamicValue2 {
+  fileId: number
+  value: string
+  columnName: string
+}
+
+export interface AwardOtherDetailsEntity {
+  fileName: string
+  filePath: string
+  name: string
+  status: string
+  landName: string
+}
+
+export interface AwardDetailsList {
+  award_details_award_amount: string
+  award_details_date: string
+  award_details_disbursement_civil_court_deposit: string
+  award_details_disbursement_direct_payment: any
+  award_details_disbursement_revenue_deposit: string
+  award_details_extent: string
+  award_details_no: string
+  award_details_notified_person: string
+  award_details_survey_nos: any
+  pho_extavailable_extent: string
+  pho_extavailable_survey_nos: string
+  pho_extcannot_court_case: string
+  pho_extcannot_encroachment: string
+  pho_extcannot_extent: any
+  pho_extcannot_noc_issued: string
+  pho_extcannot_quashed: string
+  pho_extcannot_reconveyed: string
+  pho_extcannot_scattered: string
+  pho_extcannot_survey_nos: any
+  pho_extcannot_wantofapproach: string
+  pho_extent: string
+  pho_schimpl_extent: string
+  pho_schimpl_survey_nos: string
+  pnho_court_case: string
+  pnho_encroachment: any
+  pnho_extent: string
+  pnho_quashed: string
+  pnho_survey_nos: string
+  pnho_without_encumbrance: string
+  filename: string
+  landname: string
+}
+
 @Component({
   selector: 'app-editland',
   templateUrl: './editland.component.html',
