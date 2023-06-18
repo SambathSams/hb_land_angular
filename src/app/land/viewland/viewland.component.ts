@@ -252,6 +252,8 @@ export class ViewlandComponent implements OnInit {
 
         ]
 
+        // To do Change Dynamic
+
         this.awardLists = this.LandData.seventhTabList;
         this.awardDetailsArray = this.awardInfoFormGroup.get('awardsDet') as FormArray;
         this.awardLists.forEach((item) => {
