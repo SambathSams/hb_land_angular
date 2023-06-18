@@ -60,7 +60,8 @@ export class HomeComponent implements OnInit {
   getGridLandDetails(){
     
     this.commonService.apiPostCall({}, 'GetData').subscribe((data) => {
-      console.log("Grid Data",data);
+      console.log("Grid Data",data); 
+      // Main Grid
       this.userList = data;
       this.dataSource.data = data;
     });
