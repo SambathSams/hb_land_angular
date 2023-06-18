@@ -6,6 +6,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { FinalSaveLand } from '../editland/editland.component';
 import { CommonService } from 'src/app/services/common.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 
 
@@ -41,21 +43,25 @@ export class AddlandComponent implements OnInit {
   personalInfoFormGroup!: FormGroup;
   contactInfoFormGroup!: FormGroup;
 
+  // Award Details Form 7th Tab 
   awardInfoFormGroup!: FormGroup;
+  awardDetailsArray: FormArray;
+  awardLists: any[]=[];
+
+
+
   FMBFormGroup: FormGroup;
   expansionPanelsArrayFMB: FormArray;
   fourOneFormGroup: FormGroup;
   expansionPanelsArray4: FormArray;
   sixDDFormGroup:FormGroup;
   expansionPanelsSixDD:FormArray;
-  constructor(private builder: FormBuilder, private formBuilder: FormBuilder , private commonService : CommonService,private _snackBar: MatSnackBar) { }
+  constructor(private builder: FormBuilder, private formBuilder: FormBuilder , private commonService : CommonService,private _snackBar: MatSnackBar, private router: Router,) { }
   isLinear = true;
 
   ngOnInit(): void {
 
-    this.awardInfoFormGroup = this.formBuilder.group({
    
-    });
 
     this.personalInfoFormGroup = this.formBuilder.group({
       citynrural: ['', Validators.required],
@@ -100,6 +106,17 @@ export class AddlandComponent implements OnInit {
 
     this.expansionPanelsSixDD = this.sixDDFormGroup.get('expansionPanelsSix') as FormArray;
     this.addExpansionPanelSixDD();
+
+
+    // Award Details formgroup 7th tab
+    this.awardInfoFormGroup = this.formBuilder.group({
+      awardsDet: this.formBuilder.array([]),
+    });
+
+    // Initialize form array controls for each expansion panel
+    this.awardLists.forEach(() => {
+      this.addAwardDetails();
+    }); 
   }
 
   addExpansionPanel4One() {
@@ -209,6 +226,7 @@ export class AddlandComponent implements OnInit {
 
   }
 
+  // Generate Unique id
  generateString(length) {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = ' ';
@@ -217,9 +235,156 @@ export class AddlandComponent implements OnInit {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
 
-    return result;
-}
+    return result.toUpperCase();
+  }
 
+  // After Create Move to View 
+  back(){
+    this.router.navigate(['/land/home']);
+  }
+
+  // Seventh Tab Details
+
+  addAwardDetails() {
+    const awardDetailsGroup = this.formBuilder.group({
+      award_details_award_amount: [' '],
+      award_details_date: [' '],
+      award_details_disbursement_civil_court_deposit: [' '],
+      award_details_disbursement_direct_payment: [' '],
+      award_details_disbursement_revenue_deposit: [' '],
+      award_details_extent: [' '],
+      award_details_no: [' '],
+      award_details_notified_person: [' '],
+      award_details_survey_nos: [' '],
+      filename: [' '],
+      landname: [' '],
+      pho_extavailable_extent: [' '],
+      pho_extavailable_survey_nos: [' '],
+      pho_extcannot_court_case: [' '],
+      pho_extcannot_encroachment: [' '],
+      pho_extcannot_extent: [' '],
+      pho_extcannot_noc_issued: [' '],
+      pho_extcannot_quashed: [' '],
+      pho_extcannot_reconveyed: [' '],
+      pho_extcannot_scattered: [' '],
+      pho_extcannot_survey_nos: [' '],
+      pho_extcannot_wantofapproach: [' '],
+      pho_extent: [' '],
+      pho_schimpl_extent: [' '],
+      pho_schimpl_survey_nos: [' '],
+      pnho_court_case: [' '],
+      pnho_encroachment: [' '],
+      pnho_extent: [' '],
+      pnho_quashed: [' '],
+      pnho_survey_nos: [' '],
+      pnho_without_encumbrance: [' '],  
+      });
+
+    (this.awardInfoFormGroup.get('awardsDet') as FormArray).push(awardDetailsGroup);
+  } 
+  
+
+  getAwardDetailsArrayControls(index: number): FormArray {
+    return (this.awardInfoFormGroup.get('awardsDet') as FormArray).at(index) as FormArray;
+  }
+
+  getAwardDetailsValues(){
+    const firstAwardFormArrayValue = this.awardInfoFormGroup.get('awardsDet') as FormArray;
+    console.warn("FormArray Create", firstAwardFormArrayValue);
+    return
+    // this.awardLists = this.LandData.seventhTabList; Check karthick 
+        this.awardDetailsArray = this.awardInfoFormGroup.get('awardsDet') as FormArray;
+        this.awardLists.forEach((item) => {
+          const awardDetailsGroup = this.formBuilder.group({
+            award_details_award_amount: [item.award_details_award_amount],
+            award_details_date: [item.award_details_date],
+            award_details_disbursement_civil_court_deposit: [item.award_details_disbursement_civil_court_deposit],
+            award_details_disbursement_direct_payment: [item.award_details_disbursement_direct_payment],
+            award_details_disbursement_revenue_deposit: [item.award_details_disbursement_revenue_deposit],
+            award_details_extent: [item.award_details_extent],
+            award_details_no: [item.award_details_no],
+            award_details_notified_person: [item.award_details_notified_person],
+            award_details_survey_nos: [item.award_details_survey_nos],
+            filename: [item.filename],
+            id: [item.id],
+            landname: [item.landname],
+            pho_extavailable_extent: [item.pho_extavailable_extent],
+            pho_extavailable_survey_nos: [item.pho_extavailable_survey_nos],
+            pho_extcannot_court_case: [item.pho_extcannot_court_case],
+            pho_extcannot_encroachment: [item.pho_extcannot_encroachment],
+            pho_extcannot_extent: [item.pho_extcannot_extent],
+            pho_extcannot_noc_issued: [item.pho_extcannot_noc_issued],
+            pho_extcannot_quashed: [item.pho_extcannot_quashed],
+            pho_extcannot_reconveyed: [item.pho_extcannot_reconveyed],
+            pho_extcannot_scattered: [item.pho_extcannot_scattered],
+            pho_extcannot_survey_nos: [item.pho_extcannot_survey_nos],
+            pho_extcannot_wantofapproach: [item.pho_extcannot_wantofapproach],
+            pho_extent: [item.pho_extent],
+            pho_schimpl_extent: [item.pho_schimpl_extent],
+            pho_schimpl_survey_nos: [item.pho_schimpl_survey_nos],
+            pnho_court_case: [item.pnho_court_case],
+            pnho_encroachment: [item.pnho_encroachment],
+            pnho_extent: [item.pnho_extent],
+            pnho_quashed: [item.pnho_quashed],
+            pnho_survey_nos: [item.pnho_survey_nos],
+            pnho_without_encumbrance: [item.pnho_without_encumbrance],
+
+
+          });
+          this.awardDetailsArray.push(awardDetailsGroup);
+        });
+      
+        this.awardLists.forEach((award, index) => {
+         
+          const awardGroup = this.awardDetailsArray.at(index) as FormGroup;
+          console.log('7th Tab',awardGroup); 
+          console.log("awardDetailsList[0]",award.awardDetailsList[0]);
+
+          if (award.awardDetailsList[0]) {
+            awardGroup.patchValue({
+              award_details_award_amount: award.awardDetailsList[0].award_details_award_amount,
+              award_details_date: award.awardDetailsList[0].award_details_date,
+              award_details_disbursement_civil_court_deposit: award.awardDetailsList[0].award_details_disbursement_civil_court_deposit,
+              award_details_disbursement_direct_payment:  award.awardDetailsList[0].award_details_disbursement_direct_payment,
+              award_details_disbursement_revenue_deposit:  award.awardDetailsList[0].award_details_disbursement_revenue_deposit,
+              award_details_extent:   award.awardDetailsList[0].award_details_extent,
+              award_details_no:  award.awardDetailsList[0].award_details_no,
+              award_details_notified_person:   award.awardDetailsList[0].award_details_notified_person,
+              award_details_survey_nos:   award.awardDetailsList[0].award_details_survey_nos,
+              filename:   award.awardDetailsList[0].filename,
+              id:   award.awardDetailsList[0].id,
+              landname:   award.awardDetailsList[0].landname,
+              pho_extavailable_extent:   award.awardDetailsList[0].pho_extavailable_extent,
+              pho_extavailable_survey_nos: award.awardDetailsList[0].pho_extavailable_survey_nos,
+              pho_extcannot_court_case: award.awardDetailsList[0].pho_extcannot_court_case,
+              pho_extcannot_encroachment: award.awardDetailsList[0].pho_extcannot_encroachment,
+              pho_extcannot_extent: award.awardDetailsList[0].pho_extcannot_extent,
+              pho_extcannot_noc_issued: award.awardDetailsList[0].pho_extcannot_noc_issued,
+              pho_extcannot_quashed: award.awardDetailsList[0].pho_extcannot_quashed,
+              pho_extcannot_reconveyed:award.awardDetailsList[0].pho_extcannot_reconveyed,
+              pho_extcannot_scattered: award.awardDetailsList[0].pho_extcannot_scattered,
+              pho_extcannot_survey_nos: award.awardDetailsList[0].pho_extcannot_survey_nos,
+              pho_extcannot_wantofapproach: award.awardDetailsList[0].pho_extcannot_wantofapproach,
+              pho_extent: award.awardDetailsList[0].pho_extent,
+              pho_schimpl_extent:award.awardDetailsList[0].pho_schimpl_extent,
+              pho_schimpl_survey_nos: award.awardDetailsList[0].pho_schimpl_survey_nos,
+              pnho_court_case:award.awardDetailsList[0].pnho_court_case,
+              pnho_encroachment: award.awardDetailsList[0].pnho_encroachment,
+              pnho_extent: award.awardDetailsList[0].pnho_extent,
+              pnho_quashed: award.awardDetailsList[0].pnho_quashed,
+              pnho_survey_nos: award.awardDetailsList[0].pnho_survey_nos,
+              pnho_without_encumbrance:award.awardDetailsList[0].pnho_without_encumbrance,
+            });
+          }
+          else{
+            console.warn("Award Details List Empty");
+          }
+         
+        });
+        this.awardDetailsArray.controls.forEach((control) => {
+          control.disable();
+        });
+  }
   submit() {
     // Final Save
     console.log(this.personalInfoFormGroup.value);
@@ -227,6 +392,7 @@ export class AddlandComponent implements OnInit {
     console.log(this.FMBFormGroup.value)
     console.log(this.fourOneFormGroup.value)
     console.log(this.sixDDFormGroup.value);
+    console.log("seventhTab Values",this.awardInfoFormGroup.value)
 
     const first = this.personalInfoFormGroup.value;
 
